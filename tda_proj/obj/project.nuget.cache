@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ukqn9rmCMfsxd1aAtHMERa7fc0jgmuu+ducXSYzRfo9XDsA8YxGRcWesq6qoRWsrWxF+5anU7jDW2agBdfS0yg==",
+  "success": true,
+  "projectFilePath": "C:\\Develop\\C#\\prg\\tda_proj\\tda_proj\\tda_proj.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Jenda\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.5\\microsoft.visualstudio.azure.containers.tools.targets.1.19.5.nupkg.sha512"
+  ],
+  "logs": []
+}
