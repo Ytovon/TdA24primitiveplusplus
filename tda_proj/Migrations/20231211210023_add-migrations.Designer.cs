@@ -12,8 +12,8 @@ using tda_proj.Data;
 namespace tda_proj.Migrations
 {
     [DbContext(typeof(tda_proj_Context))]
-    [Migration("20231210203736_InitialBuild")]
-    partial class InitialBuild
+    [Migration("20231211210023_add-migrations")]
+    partial class addmigrations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -143,12 +143,6 @@ namespace tda_proj.Migrations
                     b.Property<double>("pricePerHour")
                         .HasColumnType("float");
 
-                    b.Property<string>("titleAfter")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("titleBefore")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("UUID");
 
                     b.ToTable("Lectors");
@@ -188,6 +182,50 @@ namespace tda_proj.Migrations
                     b.HasKey("TagUUID");
 
                     b.ToTable("Tags");
+                });
+
+            modelBuilder.Entity("tda_proj.Model.TitleAfter", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<Guid>("LectorUUID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("LectorUUID");
+
+                    b.ToTable("TitlesAfter");
+                });
+
+            modelBuilder.Entity("tda_proj.Model.TitleBefore", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<Guid>("LectorUUID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("LectorUUID");
+
+                    b.ToTable("TitlesBefore");
                 });
 
             modelBuilder.Entity("tda_proj.Model.Claims", b =>
@@ -253,6 +291,28 @@ namespace tda_proj.Migrations
                     b.Navigation("Tag");
                 });
 
+            modelBuilder.Entity("tda_proj.Model.TitleAfter", b =>
+                {
+                    b.HasOne("tda_proj.Model.Lector", "lector")
+                        .WithMany("titlesAfter")
+                        .HasForeignKey("LectorUUID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("lector");
+                });
+
+            modelBuilder.Entity("tda_proj.Model.TitleBefore", b =>
+                {
+                    b.HasOne("tda_proj.Model.Lector", "lector")
+                        .WithMany("titlesBefore")
+                        .HasForeignKey("LectorUUID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("lector");
+                });
+
             modelBuilder.Entity("tda_proj.Model.Contact", b =>
                 {
                     b.Navigation("Emails");
@@ -268,6 +328,10 @@ namespace tda_proj.Migrations
                     b.Navigation("claims");
 
                     b.Navigation("lectorTags");
+
+                    b.Navigation("titlesAfter");
+
+                    b.Navigation("titlesBefore");
                 });
 
             modelBuilder.Entity("tda_proj.Model.Tag", b =>

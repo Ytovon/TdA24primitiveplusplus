@@ -11,9 +11,5 @@ namespace tda_proj.Model
 
         public Guid LectorTagUUID { get; set; }
         public Tag Tag { get; set; }
-
-        public LectorTag() { 
-        
-        }
     }
 }

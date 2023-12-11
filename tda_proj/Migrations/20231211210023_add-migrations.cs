@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace tda_proj.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialBuild : Migration
+    public partial class addmigrations : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,8 +19,6 @@ namespace tda_proj.Migrations
                     firstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     middleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     lastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    titleBefore = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    titleAfter = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     pictureUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     location = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     bio = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -83,12 +81,51 @@ namespace tda_proj.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TitlesAfter",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LectorUUID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TitlesAfter", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_TitlesAfter_Lectors_LectorUUID",
+                        column: x => x.LectorUUID,
+                        principalTable: "Lectors",
+                        principalColumn: "UUID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TitlesBefore",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LectorUUID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TitlesBefore", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_TitlesBefore_Lectors_LectorUUID",
+                        column: x => x.LectorUUID,
+                        principalTable: "Lectors",
+                        principalColumn: "UUID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "LectorTags",
                 columns: table => new
                 {
                     LectorUUID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LectorTagUUID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TagUUID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -101,7 +138,7 @@ namespace tda_proj.Migrations
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_LectorTags_Tags_TagUUID",
-                        column: x => x.TagUUID,
+                        column: x => x.LectorTagUUID,
                         principalTable: "Tags",
                         principalColumn: "TagUUID",
                         onDelete: ReferentialAction.Cascade);
@@ -169,14 +206,19 @@ namespace tda_proj.Migrations
                 column: "LectorUUID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LectorTags_TagUUID",
-                table: "LectorTags",
-                column: "TagUUID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_TelNumbers_ContactID",
                 table: "TelNumbers",
                 column: "ContactID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TitlesAfter_LectorUUID",
+                table: "TitlesAfter",
+                column: "LectorUUID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TitlesBefore_LectorUUID",
+                table: "TitlesBefore",
+                column: "LectorUUID");
         }
 
         /// <inheritdoc />
@@ -193,6 +235,12 @@ namespace tda_proj.Migrations
 
             migrationBuilder.DropTable(
                 name: "TelNumbers");
+
+            migrationBuilder.DropTable(
+                name: "TitlesAfter");
+
+            migrationBuilder.DropTable(
+                name: "TitlesBefore");
 
             migrationBuilder.DropTable(
                 name: "Tags");
