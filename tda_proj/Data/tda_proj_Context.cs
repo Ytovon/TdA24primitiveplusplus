@@ -13,6 +13,8 @@ namespace tda_proj.Data
         public DbSet<ContactEmail> Emails { get; set; }
         public DbSet<ContactTelNumber> TelNumbers { get; set; }
         public DbSet<Claims> Claims { get; set; }
+        public DbSet<TitleAfter> TitlesAfter { get; set; }
+        public DbSet<TitleBefore> TitlesBefore { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

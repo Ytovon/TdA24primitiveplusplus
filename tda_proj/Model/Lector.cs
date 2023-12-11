@@ -9,22 +9,24 @@ namespace tda_proj.Model
         [Key]
         public Guid UUID { get; set; }
         public Contact Contact { get; set; }
-        public List<LectorTag> lectorTags { get; set; } = new List<LectorTag>();
+        public List<LectorTag>? lectorTags { get; set; } = new List<LectorTag>();
 
+        [Required]
         public string firstName { get; set; }
         public string? middleName { get; set; }
+        
+        [Required]
         public string lastName { get; set; }
-        public string? titleBefore { get; set; }
-        public string? titleAfter { get; set; }
+        public List<TitleBefore>? titlesBefore { get; set; } = new List<TitleBefore>();
+        public List<TitleAfter>? titlesAfter { get; set; } = new List<TitleAfter>();
+        public List<Claims> claims { get; set; } = new List<Claims>();
+        
+        [Required]
         public string pictureUrl { get; set; }
         public string location { get; set; }       
         public string bio { get; set; }
+       
+        [Required]
         public double pricePerHour { get; set; }
-        public List<Claims> claims { get; set; } = new List<Claims>();
-
-        public Lector()
-        {
-
-        }
     }
 }
