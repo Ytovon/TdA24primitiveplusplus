@@ -9,11 +9,11 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = tda_proj
 build_property.RootNamespace = tda_proj
-build_property.ProjectDir = C:\Users\c22novotnyj2\source\repos\Ytovon\primitiveTDA\tda_proj\
+build_property.ProjectDir = C:\Users\c22novotnyj2\Source\Repos\Ytovon\primitiveTDA\tda_proj\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\c22novotnyj2\source\repos\Ytovon\primitiveTDA\tda_proj
+build_property.MSBuildProjectDirectory = C:\Users\c22novotnyj2\Source\Repos\Ytovon\primitiveTDA\tda_proj
 build_property._RazorSourceGeneratorDebug = 
 
 [C:/Users/c22novotnyj2/source/repos/Ytovon/primitiveTDA/tda_proj/App.razor]

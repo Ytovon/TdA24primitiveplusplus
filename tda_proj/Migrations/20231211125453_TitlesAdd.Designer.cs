@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using tda_proj.Data;
 
@@ -11,9 +12,11 @@ using tda_proj.Data;
 namespace tda_proj.Migrations
 {
     [DbContext(typeof(tda_proj_Context))]
-    partial class tda_proj_ContextModelSnapshot : ModelSnapshot
+    [Migration("20231211125453_TitlesAdd")]
+    partial class TitlesAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
