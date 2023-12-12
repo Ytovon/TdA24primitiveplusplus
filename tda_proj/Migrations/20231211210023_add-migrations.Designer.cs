@@ -11,7 +11,7 @@ using tda_proj.Data;
 
 namespace tda_proj.Migrations
 {
-    [DbContext(typeof(tda_proj_Context))]
+    [DbContext(typeof(tdaContext))]
     [Migration("20231211210023_add-migrations")]
     partial class addmigrations
     {
