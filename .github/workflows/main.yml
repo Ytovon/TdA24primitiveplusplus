@@ -1,34 +1,9 @@
-# on:
-#   push:
-#     branches:
-#       - main
-
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
-
-#     steps:
-#     - name: Checkout Repository
-#       uses: actions/checkout@v2
-
-#     - name: Build and Push Docker Image
-#       run: 
-#         docker build -t tdaproj:dev -p 443 .
-#         docker push tdaproj:dev
-
-#     - name: Deploy to Tour-de-App
-#       uses: Tour-de-App/deploy-action@v1
-#       with:
-#         image: tdaproj:dev
-#         name: tdaproj:dev
-#         team_secret: ${{ secrets.TEAM_SECRET }}
-
 name: Build and push to TdA
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
