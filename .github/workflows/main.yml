@@ -1,25 +1,56 @@
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - name: Checkout Repository
+#       uses: actions/checkout@v2
+
+#     - name: Build and Push Docker Image
+#       run: 
+#         docker build -t tdaproj:dev -p 443 .
+#         docker push tdaproj:dev
+
+#     - name: Deploy to Tour-de-App
+#       uses: Tour-de-App/deploy-action@v1
+#       with:
+#         image: tdaproj:dev
+#         name: tdaproj:dev
+#         team_secret: ${{ secrets.TEAM_SECRET }}
+
+name: Build and push to TdA
+
 on:
   push:
     branches:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+      - name: Check Out Repo
+        uses: actions/checkout@v3
 
-    - name: Build and Push Docker Image
-      run: |
-        # Build and push your Docker image
-        docker build -t tdaproj:dev -p 443 .
-        docker push tdaproj:dev
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
-    - name: Deploy to Tour-de-App
-      uses: Tour-de-App/deploy-action@v1
-      with:
-        image: tdaproj:dev
-        name: tdaproj:dev
-        team_secret: 55b6d716b77bc555e5550c8da1eb0839
+      - name: Build
+        uses: docker/build-push-action@v3
+        with:
+          context: ./
+          tags: tda-generic:latest
+          outputs: type=docker,dest=/tmp/tda-generic.tar
+
+      - name: Upload to TdA
+        uses: Tour-de-App/upload-app@tda-24
+        with:
+          team_secret: ${{ secrets.TEAM_SECRET }}
+          image_name: tdaproj:dev
+          image_path: /tmp/tda-generic.tar
