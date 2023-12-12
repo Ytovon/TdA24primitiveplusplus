@@ -19,7 +19,7 @@ jobs:
       - name: Build
         uses: docker/build-push-action@v3
         with:
-          context: ./tda_proj/Dockerfile
+          context: ./
           tags: tda-generic:latest
           outputs: type=docker,dest=/tmp/tda-generic.tar
 
