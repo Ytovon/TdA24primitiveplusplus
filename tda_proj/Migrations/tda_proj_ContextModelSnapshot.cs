@@ -10,7 +10,7 @@ using tda_proj.Data;
 
 namespace tda_proj.Migrations
 {
-    [DbContext(typeof(tda_proj_Context))]
+    [DbContext(typeof(tdaContext))]
     partial class tda_proj_ContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

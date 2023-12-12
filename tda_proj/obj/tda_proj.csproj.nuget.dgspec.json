@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jedli\\source\\repos\\Ytovon\\primitiveTDA\\tda_proj\\tda_proj.csproj": {}
+    "C:\\Users\\Jenda\\source\\repos\\primitiveTDA\\tda_proj\\tda_proj.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jedli\\source\\repos\\Ytovon\\primitiveTDA\\tda_proj\\tda_proj.csproj": {
+    "C:\\Users\\Jenda\\source\\repos\\primitiveTDA\\tda_proj\\tda_proj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jedli\\source\\repos\\Ytovon\\primitiveTDA\\tda_proj\\tda_proj.csproj",
+        "projectUniqueName": "C:\\Users\\Jenda\\source\\repos\\primitiveTDA\\tda_proj\\tda_proj.csproj",
         "projectName": "tda_proj",
-        "projectPath": "C:\\Users\\jedli\\source\\repos\\Ytovon\\primitiveTDA\\tda_proj\\tda_proj.csproj",
-        "packagesPath": "C:\\Users\\jedli\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jedli\\source\\repos\\Ytovon\\primitiveTDA\\tda_proj\\obj\\",
+        "projectPath": "C:\\Users\\Jenda\\source\\repos\\primitiveTDA\\tda_proj\\tda_proj.csproj",
+        "packagesPath": "C:\\Users\\Jenda\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jenda\\source\\repos\\primitiveTDA\\tda_proj\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jedli\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -49,6 +49,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.14, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.19.5, )"
             }
           },
           "imports": [
