@@ -28,5 +28,5 @@ jobs:
         uses: Tour-de-App/upload-app@tda-24
         with:
           team_secret: ${{ secrets.TEAM_SECRET }}
-          image_name: tdaproj:dev
+          image_name: tda-generic:latest  # Use the correct image name
           image_path: /tmp/tda-generic.tar
