@@ -1,7 +1,7 @@
-﻿@using tda_proj.Model
+﻿@page "/counter"
+@using tda_proj.Model
 @using tda_proj.Service
 
-@page "/counter"
 
 <PageTitle>Counter</PageTitle>
 
@@ -11,40 +11,32 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
-
-
 @foreach (var contact in allContacts)
 {
-    <p>Kontakt na Lektora: @contact.LectorUUID  </p>
+    <hr>
+    <p>kontakt číslo: @i</p>
+    foreach (var telNumber in contact.TelNumbers)
+    {
+        <p>@telNumber.TelNumber</p>
+    }
 
+    @foreach (var email in contact.Emails)
+    {
+        <p>@email.Email</p>
+    }
+    <hr>
+    i++;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @code {
     private int currentCount = 0;
-
+    private int i = 1;
     private List<Contact> allContacts = new List<Contact>();
-    private ContactService contactService = new ContactService();
-    private void IncrementCount()
-    {
-        currentCount++;
+    ContactService contactService = new ContactService();
+
+    private void IncrementCount()    {
+        currentCount++;        
         allContacts = contactService.GetAllContactsWithDetails();
     }
 }
