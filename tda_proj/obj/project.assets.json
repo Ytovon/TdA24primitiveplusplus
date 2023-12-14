@@ -2978,11 +2978,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jenda\\source\\repos\\primitiveTDA\\tda_proj\\tda_proj.csproj",
+      "projectUniqueName": "C:\\Users\\jedli\\source\\repos\\Ytovon\\primitiveTDA\\tda_proj\\tda_proj.csproj",
       "projectName": "tda_proj",
-      "projectPath": "C:\\Users\\Jenda\\source\\repos\\primitiveTDA\\tda_proj\\tda_proj.csproj",
-      "packagesPath": "C:\\Users\\Jenda\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jenda\\source\\repos\\primitiveTDA\\tda_proj\\obj\\",
+      "projectPath": "C:\\Users\\jedli\\source\\repos\\Ytovon\\primitiveTDA\\tda_proj\\tda_proj.csproj",
+      "packagesPath": "C:\\Users\\jedli\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jedli\\source\\repos\\Ytovon\\primitiveTDA\\tda_proj\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jedli\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3037,24 +3037,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[7.0.14, 7.0.14]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[7.0.14, 7.0.14]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[7.0.14, 7.0.14]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[7.0.14, 7.0.14]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
