@@ -8,26 +8,12 @@
 
 <h1>Helllo TdA</h1>
 
-Welcome to your new app.
-
-@foreach(Lector lector in lectors)
-{
-    <hr>
-    <div class="d-flex gap-1">
-        <p>@lector.firstName</p>
-        <p>@lector.middleName</p>
-        <p>@lector.lastName</p>
-    </div>
-
-    <hr>
-}
-
 
 @code{
     private List<Lector> lectors = new List<Lector>();
     LectorService lectorService = new LectorService();
 
     protected override void OnInitialized(){
-        lectors = lectorService.GetAllLectors();
+        lectors = lectorService.GetAllLectorsWithDetails();
     }
 }

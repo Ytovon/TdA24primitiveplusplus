@@ -153,14 +153,9 @@ namespace tda_proj.Migrations
                     b.Property<Guid>("LectorUUID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("TagUUID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("LectorTagUUID", "LectorUUID");
 
                     b.HasIndex("LectorUUID");
-
-                    b.HasIndex("TagUUID");
 
                     b.ToTable("LectorTags");
                 });
@@ -271,15 +266,15 @@ namespace tda_proj.Migrations
 
             modelBuilder.Entity("tda_proj.Model.LectorTag", b =>
                 {
-                    b.HasOne("tda_proj.Model.Lector", "Lector")
-                        .WithMany("lectorTags")
-                        .HasForeignKey("LectorUUID")
+                    b.HasOne("tda_proj.Model.Tag", "Tag")
+                        .WithMany("Tags")
+                        .HasForeignKey("LectorTagUUID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("tda_proj.Model.Tag", "Tag")
-                        .WithMany("Tags")
-                        .HasForeignKey("TagUUID")
+                    b.HasOne("tda_proj.Model.Lector", "Lector")
+                        .WithMany("lectorTags")
+                        .HasForeignKey("LectorUUID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

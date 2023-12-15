@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
 using tda_proj.Model;
 
 namespace tda_proj.Data
@@ -33,6 +32,17 @@ namespace tda_proj.Data
 
             modelBuilder.Entity<LectorTag>()
                 .HasKey(e => new {e.LectorTagUUID, e.LectorUUID});
+
+            modelBuilder.Entity<LectorTag>()
+           .HasOne(lt => lt.Lector)
+           .WithMany(l => l.lectorTags)
+           .HasForeignKey(lt => lt.LectorUUID);
+
+            modelBuilder.Entity<LectorTag>()
+                .HasOne(lt => lt.Tag)
+                .WithMany(t => t.Tags)
+                .HasForeignKey(lt => lt.LectorTagUUID);
+
         }
 
     }

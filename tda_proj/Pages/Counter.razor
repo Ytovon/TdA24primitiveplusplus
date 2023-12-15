@@ -11,10 +11,15 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+
+
+
 @foreach (var contact in allContacts)
 {
     <hr>
-    <p>kontakt číslo: @i</p>
+    <p>kontakt číslo: @contact.ID </p>
+
+
     foreach (var telNumber in contact.TelNumbers)
     {
         <p>@telNumber.TelNumber</p>
@@ -24,19 +29,24 @@
     {
         <p>@email.Email</p>
     }
+
     <hr>
-    i++;
 }
 
 
 @code {
+
+    // tady můžeš psát normálně c# kod
     private int currentCount = 0;
-    private int i = 1;
+
+
+
     private List<Contact> allContacts = new List<Contact>();
     ContactService contactService = new ContactService();
 
-    private void IncrementCount()    {
-        currentCount++;        
+    private void IncrementCount(){
+        currentCount++; 
+        
         allContacts = contactService.GetAllContactsWithDetails();
     }
 }

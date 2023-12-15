@@ -1,0 +1,63 @@
+﻿@using tda_proj.Model;
+@using tda_proj.Service;
+
+@page "/lecturer"
+
+
+
+<h3>Lectors</h3>
+
+@foreach (var lector in allLectors)
+{
+    Tags = lector.lectorTags.Select(lt => lt.Tag).ToList();
+
+
+    <hr>
+    <div class="d-flex gap-1">
+        
+      @*   tohle jsou tituly před *@
+        @foreach (var titleBefore in lector.titlesBefore)
+        {
+            if (titleBefore.Title != null)
+            {
+                <p>@titleBefore.Title</p>
+            }
+        }
+
+        <p>@lector.firstName</p>
+        <p>@lector.middleName</p>
+        <p>@lector.lastName</p>
+
+   @*      tohle jsou tituly po*@
+        @foreach (var titleAfter in lector.titlesAfter)
+        {
+            if (titleAfter.Title != null)
+            {
+                <p>@titleAfter.Title</p>
+            }
+        }
+
+@*         tohle jsou tagy *@
+        @foreach (var tag in Tags)
+        {
+            <p>@tag.TagName</p>
+        }
+
+           <img src="@lector.pictureUrl">
+    </div>
+
+    <hr>
+}
+
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        allLectors = lectorService.GetAllLectorsWithDetails();
+    }
+
+    private List<Lector> allLectors = new List<Lector>();
+    private List<Tag> Tags = new List<Tag>();
+    LectorService lectorService = new LectorService();
+}

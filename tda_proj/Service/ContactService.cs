@@ -7,6 +7,7 @@ namespace tda_proj.Service
 {
     public class ContactService
     {
+        // vrátit všechny kontakty s detailama (emaily a tel. čísla)
         public List<Contact> GetAllContactsWithDetails()
         {
             using (tdaContext context = new tdaContext())
@@ -17,5 +18,6 @@ namespace tda_proj.Service
                     .ToList();
             }
         }
+
     }
 }
