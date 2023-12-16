@@ -3,19 +3,18 @@
 //using tda_proj.Data;
 //using tda_proj.Model;
 
-//public class TagService
+//namespace tda_proj.Service
 //{
-//    public List<Tag> GetAllTags()
-//    { 
-//        using (tdaContext context = new tdaContext()) 
+//    public class TagService
+//    {
+//        public List<Lector> GetAllTags()
 //        {
-//            return context.Tags
-//                .Include(lt => lt.LectorTag)
-//                .ThenInclude(t => t.Tag)
-//                .ToList();
+//            using (tdaContext context = new tdaContext())
+//            {
+//                return context.Lectors 
 //        }
-    
-//    }
 
+//        }
+//    }
 
 //}
