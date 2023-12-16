@@ -1,33 +1,48 @@
-﻿@using tda_proj.Data;
-@using tda_proj.Model;
+﻿@using tda_proj.Model;
 @using tda_proj.Service;
 
-@page "/"
 
-<PageTitle>Index</PageTitle>
 
-<h1>Helllo TdA</h1>
+<h3>Lectors</h3>
 
-Welcome to your new app.
-
-@foreach(Lector lector in lectors)
+@foreach (var lector in allLectors)
 {
     <hr>
     <div class="d-flex gap-1">
+        @foreach (var titleBefore in lector.titlesBefore)
+        {
+            if (titleBefore.Title != null)
+            {
+                <p>@titleBefore.Title</p>
+            }
+        }
+
         <p>@lector.firstName</p>
         <p>@lector.middleName</p>
         <p>@lector.lastName</p>
+
+        @foreach (var titleAfter in lector.titlesAfter)
+        {
+            if (titleAfter.Title != null)
+            {
+                <p>@titleAfter.Title</p>
+            }
+        }
+
+        @*    <img src="@lector.pictureUrl"> *@
     </div>
 
     <hr>
 }
 
 
-@code{
-    private List<Lector> lectors = new List<Lector>();
-    LectorService lectorService = new LectorService();
+@code {
 
-    protected override void OnInitialized(){
-        lectors = lectorService.GetAllLectors();
+    protected override void OnInitialized()
+    {
+        allLectors = lectorService.GetAllLectorsWithTitles();
     }
+
+    private List<Lector> allLectors = new List<Lector>();
+    LectorService lectorService = new LectorService();
 }
