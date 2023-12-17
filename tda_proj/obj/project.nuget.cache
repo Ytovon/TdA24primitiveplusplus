@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wH/ZyojfE2DW9A72RO3dH9RO4jS/PKUUmEUhQOi2tcBeIz8ghR6M0uaaqvDEKA+JbsMPwgwILak9sWuRrEqo5A==",
+  "dgSpecHash": "01ARTgw0JtplUZvZz8HrUVOSZpLmKRo2awcQhk9RPcrRugp8BzKnqwjchMlrRNi8BV54SW29oqHw/cVfLI0YVQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jenda\\source\\repos\\primitiveTDA\\tda_proj\\tda_proj.csproj",
+  "projectFilePath": "C:\\Develop\\C#\\prg\\tda_proj\\tda_proj\\tda_proj.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jenda\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Jenda\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

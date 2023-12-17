@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jenda\\source\\repos\\primitiveTDA\\tda_proj\\tda_proj.csproj": {}
+    "C:\\Develop\\C#\\prg\\tda_proj\\tda_proj\\tda_proj.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jenda\\source\\repos\\primitiveTDA\\tda_proj\\tda_proj.csproj": {
+    "C:\\Develop\\C#\\prg\\tda_proj\\tda_proj\\tda_proj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jenda\\source\\repos\\primitiveTDA\\tda_proj\\tda_proj.csproj",
+        "projectUniqueName": "C:\\Develop\\C#\\prg\\tda_proj\\tda_proj\\tda_proj.csproj",
         "projectName": "tda_proj",
-        "projectPath": "C:\\Users\\Jenda\\source\\repos\\primitiveTDA\\tda_proj\\tda_proj.csproj",
+        "projectPath": "C:\\Develop\\C#\\prg\\tda_proj\\tda_proj\\tda_proj.csproj",
         "packagesPath": "C:\\Users\\Jenda\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jenda\\source\\repos\\primitiveTDA\\tda_proj\\obj\\",
+        "outputPath": "C:\\Develop\\C#\\prg\\tda_proj\\tda_proj\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jenda\\AppData\\Roaming\\NuGet\\NuGet.Config",
