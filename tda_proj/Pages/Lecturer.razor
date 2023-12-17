@@ -5,7 +5,7 @@
 
 
 
-<h3>Lectors</h3>
+<h3>Lector</h3>
 
 @foreach (var lector in allLectors)
 {
@@ -20,27 +20,46 @@
         {
             if (titleBefore.Title != null)
             {
-                <p>@titleBefore.Title</p>
+                <h1>@titleBefore.Title</h1>
             }
         }
 
-        <p>@lector.firstName</p>
-        <p>@lector.middleName</p>
-        <p>@lector.lastName</p>
+        <h1 class="title">@lector.firstName</h1>
+        <h1 class="title">@lector.middleName</h1>
+        <h1 class="title">@lector.lastName</h1>
 
    @*      tohle jsou tituly po*@
         @foreach (var titleAfter in lector.titlesAfter)
         {
             if (titleAfter.Title != null)
             {
-                <p>@titleAfter.Title</p>
+                <h1>@titleAfter.Title</h1>
             }
         }
 
-@*         tohle jsou tagy *@
+   @*tohle jsou claimy*@
+        @foreach (var claim in lector.claims)
+        {
+
+            if (claim.Lector != null)
+            {
+                <p class="subtitle">@claim.Lector</p>
+            }
+
+
+        }
+   @*tohle je lokace*@
+
+        <p><span class="special_text1"></span> lokace: @lector.location </p>
+        
+   @*tohle je price_per_hour*@
+
+        <p> <span class="special_text1">cena za hodinu: @lector.pricePerHour</span></p>
+
+    @*tohle jsou tagy *@
         @foreach (var tag in Tags)
         {
-            <p>@tag.TagName</p>
+            <p class="tag">@tag.TagName</p>
         }
 
            <img src="@lector.pictureUrl">

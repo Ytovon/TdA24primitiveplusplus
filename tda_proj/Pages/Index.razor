@@ -10,10 +10,14 @@
 
 
 @code{
-    private List<Lector> lectors = new List<Lector>();
-    LectorService lectorService = new LectorService();
+    
 
     protected override void OnInitialized(){
         lectors = lectorService.GetAllLectorsWithDetails();
     }
+
+    private List<Lector> lectors = new List<Lector>();
+    private List<Tag> Tags = new List<Tag>();
+    LectorService lectorService = new LectorService();
+
 }
