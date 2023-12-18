@@ -13,7 +13,8 @@ namespace tda_proj.Service
                 return context.Lectors
                     .Include(c => c.titlesAfter)
                     .Include(c => c.titlesBefore)
-                    .Include(l => l.lectorTags)
+                    .Include(c => c.claims)
+                    .Include(l => l.lectorTags)                    
                         .ThenInclude(lt => lt.Tag)
                     .ToList();
             }

@@ -1,0 +1,365 @@
+﻿/* Vymazání všech nepotřebných serepetiček/restart */
+/* Box sizing rules */
+*,
+*::before,
+::after {
+    box-sizing: border-box;
+}
+/* Remove default margin */
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    text-decoration: none;
+}
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+    list-style: none;
+    list-style: none;
+}
+/* Set core root defaults */
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    height: 100%;
+}
+/* Set core body defaults */
+body {
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    font-family: Arial;
+}
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+a[href^=tel] {
+    text-decoration: inherit;
+    color: inherit;
+}
+/* Make images easier to work with */
+img,
+picture,
+svg {
+    max-width: 100%;
+    display: block;
+}
+/* ************************ */
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+
+:root {
+    --bila: white;
+    --cerna: black;
+    --tmave_modra: #00384D;
+    --svetle_modra: #74C7D3;
+    --zlata: #FECB2E;
+}
+/* úprava písma*/
+p {
+    font-family: Open Sans;
+}
+
+.kontakty i {
+    color: var(--zlata);
+}
+/* helper classes */
+.special_text {
+    color: #74C7D3;
+    font-weight: 700;
+}
+
+.special_text1 {
+    color: var(--zlata);
+}
+
+/*main style*/
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    flex-direction: column;
+}
+
+#logo {
+    height: 100px;
+    margin-block: max(30px,3vw)
+}
+
+#filter {
+    color: black;
+    position: fixed;
+    right: 1vw;
+    top: 80%;
+    padding: 38px 34px;
+    background-color: var(--zlata);
+    border-radius: 100px;
+    z-index: 1;
+}
+
+.filter {
+    display: none;
+    position: fixed;
+    width: 35vw;
+    min-width: 400px;
+    right: 0;
+    line-height: 1;
+    z-index: 1;
+    border-top-left-radius: 100px;
+}
+
+.filtration_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    background-color: var(--zlata);
+}
+
+    .filtration_title p {
+        font-size: 60px;
+        font-weight: 800;
+        font-family: Lalezar;
+        gap: 10px;
+    }
+
+.filtration_main {
+    position: relative;
+    height: 85vh;
+    background-color: white;
+    font-size: 1.2rem;
+}
+
+#xmark {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 30px;
+    color: black;
+}
+
+.filtration_main_content {
+    position: absolute;
+    top: 50px;
+    left: 40px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.background_image {
+    background: url(images/icons_tda.png), repeat;
+    background-size: cover;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 4vw;
+    row-gap: 4vh;
+    margin: 0 5vw;
+    margin-block-end: 10px;
+    padding-bottom: 5rem;
+    justify-content: center;
+}
+
+.card {
+    width: 40vw;
+    max-width: 750px;
+    min-width: 650px;
+    max-height: 528px;
+    background-color: var(--tmave_modra);
+    border-radius: 17px;
+    position: relative;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+    .card img {
+        height: 175px;
+        width: 175px;
+        border-radius: 100px;
+        position: relative;
+        top: 10px;
+        display: inline;
+        margin: 0 auto 20px auto;       
+    }
+
+.info {
+    position: absolute;
+    color: var(--zlata);
+    top: 8px;
+    right: 15px;
+    font-size: 2.5rem;
+    font-size: 2.5rem;
+}
+
+.title {
+    font-family: Lalezar;
+    font-size: 2.5rem;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap: 7px;
+}
+.contacts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 1.25rem;
+    column-gap: 1.5vw;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+.contacts i{
+    margin-right: 5px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: nowrap;
+    column-gap: 5px;
+    white-space: nowrap;
+    overflow-x: scroll;
+    align-items: center;
+    justify-content: normal;
+    padding-inline: 1rem;
+    scroll-behavior: smooth; /* Add this line */
+   
+}
+
+.tag {
+    display: inline-block;
+    color: black;
+    background-color: #DEDEDE;
+    text-align: center;
+    padding: 4px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: 0.5s;
+    cursor: normal;
+    user-select: none;
+    margin: 0;
+}
+
+.tags::-webkit-scrollbar {
+    display: none;
+}
+
+.tag:hover {
+    background-color: white;
+}
+
+.btn {
+    border: none;
+    font-size: 22px;
+    width: 40px;
+    height: 40px;
+    background-color: #FECB2E;
+    border-radius: 50%;
+    position: absolute;
+    color: black;
+    animation: 5s;
+    display: block;
+}
+
+    .btn:active {
+        width: 38px;
+        height: 38px;
+    }
+
+.dalsi_btn {
+    right: 9px;
+}
+
+.predchozi_btn {
+    left: 9px;
+}
+
+@media screen and (max-width: 1535px) {
+    :root {
+        font-size: 13px;
+    }
+
+    #filter {
+        padding: 23.25px 20px;
+    }
+    /*.cards{
+  margin: 0 68px;
+}*/
+    .card {
+        min-width: 450px;
+    }
+
+        .card img {
+            height: 130px;
+            width:130px;
+        }
+
+    .subtitle {
+        margin-bottom: 15px;
+    }
+
+    .contacts {
+        margin-bottom: 25px;
+    }
+
+    .tags {
+        margin: 0 20px;
+    }
+
+    .footer_wrapper {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .card {
+        width: 65vw;
+        min-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    :root {
+        font-size: 12px;
+    }
+
+    .card {
+        width: 80vw;
+        min-width: 350px;
+    }
+}
+
+
+
+/* patička */
+.footer {
+    width: 70vw;
+    margin: 0 auto;
+}
+
+.footer_wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 3rem
+}
+
+.footer_line {
+    height: 3px;
+    background-color: black;
+}
