@@ -2,6 +2,10 @@
 @using tda_proj.Service;
 
 @page "/"
+
+    <head>
+        <link href="css/main-page.css" rel="stylesheet" />
+    </head>
     <body>
         <main>
         <div class="cards">
@@ -14,6 +18,7 @@
                 <div class="card">
                     <NavLink href="lektor" class="info"><i class="fa-solid fa-circle-info"></i></NavLink>
                     <img src="@lector.pictureUrl">
+
 
                     @*  header *@
                     <h1 class="title">
@@ -35,9 +40,8 @@
                         }
                     </h1>
 
+
                     @* claim *@
-
-
                    <div class="subtitle">
                         @for (int i = 0; i < lector.claims.Count; i++)
                         {
@@ -53,8 +57,6 @@
                             }
                         }
                    </div>
-
-
 
 
                     <div class="contacts">
@@ -74,54 +76,11 @@
                     </div>
                 </div>
             }
-
         </div>
-
-
-    </main>
-    </body>                    
-                  
-        
-  @*   <div class="background_image">
-                <div class="cards">
-                    <div class="card">
-        
-                        <a href="lektor.html" class="info"><i class="fa-solid fa-circle-info"></i></a>
-                        <img src="https://tourdeapp.cz/storage/images/2023_02_25/412ff296a291f021bbb6de10e8d0b94863fa89308843b/big.png.webp" alt="">
-                        
-                        <h1 class="title">Mgr. Petra "Swis" Plachá MBA</h1>
-                        <p class="subtitle">Aktivní studentka / Předsedkyně spolku / Projektová manažerka</p>
-                        
-                        <div class="contacts">
-                            <p><span class="special_text1"><i class="fa-solid fa-location-dot fa-xl"></i></span> Brno</p>
-                            <p> <p>cena za hodinu: <span class="special_text1">1200 Kč</span></p></p>
-                        </div>
-
-
-        
-                        <div class="tags">
-                            <button class="predchozi_btn btn" onclick="scrollLeftSmooth()"><i class="fa-solid fa-chevron-left"></i></button>
-                    
-                              <p class="tag">Dobrovolničení</p>
-                              <p class="tag">Studentské spolky</p>
-                              <p class="tag">Efektivní učení</p>
-                              <p class="tag">Prezentační dovednosti</p>
-                              <p class="tag">Marketing pro neziskové studentské projekty</p>
-                              <p class="tag">Mimoškolní aktivity</p>
-                              <p class="tag">Projektový management, event management</p>
-                              <p class="tag">Fundraising pro neziskové studentské projekty</p>
-                    
-                            <button class="dalsi_btn btn" onclick="scrollRightSmooth()"><i class="fa-solid fa-chevron-right"></i></button>
-                           </div>
-                    </div>                                  
-            </div> *@
-      
-    
-   
-
+        </main>
+    </body>                      
 
 @code {
-    string mezera = "  ";
 
     protected override void OnInitialized()
     {
