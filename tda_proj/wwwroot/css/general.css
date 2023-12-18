@@ -1,0 +1,97 @@
+﻿/* Vymazání všech nepotřebných serepetiček/restart */
+/* Box sizing rules */
+*,
+*::before,
+::after {
+    box-sizing: border-box;
+}
+/* Remove default margin */
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    text-decoration: none;
+}
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+    list-style: none;
+    list-style: none;
+}
+/* Set core root defaults */
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    height: 100%;
+}
+/* Set core body defaults */
+body {
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    font-family: Arial;
+}
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+a[href^=tel] {
+    text-decoration: inherit;
+    color: inherit;
+}
+/* Make images easier to work with */
+img,
+picture,
+svg {
+    max-width: 100%;
+    display: block;
+}
+/* ************************ */
+
+
+/* variables */
+:root {
+    --bila: white;
+    --cerna: black;
+    --tmave_modra: #00384D;
+    --svetle_modra: #74C7D3;
+    --zlata: #FECB2E;
+}
+
+/* general styling */
+
+#logo {
+    height: 100px;
+    display: block;
+    margin: auto;
+    margin-block: max(30px,3.5vw);
+}
+
+
+/* patička */
+.footer {
+    width: 70vw;
+    margin: 0 auto;
+}
+
+.footer_wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 3rem
+}
+
+.footer_line {
+    height: 3px;
+    background-color: black;
+}
+
+
+@media screen and (max-width: 1535px) {
+
+    .footer_wrapper {
+        font-size: 16px;
+    }
+}
