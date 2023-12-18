@@ -17,12 +17,9 @@ namespace tda_proj.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-<<<<<<< Updated upstream
-            optionsBuilder.UseSqlServer(@"Server=VT2-15\SQLEXPRESSN;database=TdA;Integrated Security=true;Encrypt=True;TrustServerCertificate=True;");
 
-=======
             optionsBuilder.UseSqlServer(@"Server=DESKTOP-H7G1B7O\SQLEXPRESS;Database=TdA;Integrated Security=true;Encrypt=True;TrustServerCertificate=True;");
->>>>>>> Stashed changes
+
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
