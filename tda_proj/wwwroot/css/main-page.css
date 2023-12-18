@@ -90,7 +90,9 @@ p {
 
 #logo {
     height: 100px;
-    margin-block: max(30px,3vw)
+    display: block;
+    margin: auto;
+    margin-block: max(30px,3.5vw);
 }
 
 #filter {

@@ -17,8 +17,12 @@ namespace tda_proj.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+<<<<<<< HEAD
 
             optionsBuilder.UseSqlServer(@"Server=DESKTOP-H7G1B7O\SQLEXPRESS;Database=TdA;Integrated Security=true;Encrypt=True;TrustServerCertificate=True;");
+=======
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-8Q71K8S;database=TdA;Integrated Security=true;Encrypt=True;TrustServerCertificate=True;");
+>>>>>>> 5569b955cef89159022897e971970aeb87393570
 
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
