@@ -8,6 +8,8 @@
     </head>
     <body>
         <main>
+        <button id="filter"><i class="fa-solid fa-filter fa-2xl"></i></button>
+
         <div class="cards">
 
             @foreach (var lector in allLectors)
@@ -27,10 +29,12 @@
                             @titleBefore.Title
 
                         }
-
-                        @lector.firstName
-                        @lector.middleName
-                        @lector.lastName
+                        <h1>
+                            @lector.firstName
+                            @lector.middleName
+                            @lector.lastName
+                        </h1>
+                        
 
                         @foreach (var titleAfter in lector.titlesAfter)
                         {
@@ -61,6 +65,7 @@
 
                     <div class="contacts">
                         <p><span class="special_text1"><i class="fa-solid fa-location-dot fa-xl"></i></span>  @lector.location</p>
+                        <p> | </p>
                         <p>Cena za hodinu: <span class="special_text1">@lector.pricePerHour Kč</span></p>
                     </div>
 

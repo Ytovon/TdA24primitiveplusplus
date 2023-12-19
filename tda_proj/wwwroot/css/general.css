@@ -70,6 +70,11 @@ svg {
     margin-block: max(30px,3.5vw);
 }
 
+/*background*/
+.background_image {
+    background: url(../images/icon_background.png), repeat;
+    background-size: cover;
+}
 
 /* patička */
 .footer {

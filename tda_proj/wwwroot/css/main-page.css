@@ -31,11 +31,12 @@ p {
     color: black;
     position: fixed;
     right: 1vw;
-    top: 80%;
+    bottom: 30px;
     padding: 38px 34px;
     background-color: var(--zlata);
     border-radius: 100px;
     z-index: 1;
+    border: none;
 }
 
 .filter {
@@ -116,15 +117,15 @@ p {
     padding: 20px;
 }
 
-    .card img {
-        height: 175px;
-        width: 175px;
-        border-radius: 100px;
-        position: relative;
-        top: 10px;
-        display: inline;
-        margin: 0 auto 20px auto;       
-    }
+.card img {
+    height: 175px;
+    width: 175px;
+    border-radius: 100px;
+    position: relative;
+    top: 10px;
+    display: inline;
+    margin: 0 auto 20px auto;       
+}
 
 .info {
     position: absolute;
@@ -139,6 +140,10 @@ p {
     font-family: Lalezar;
     font-size: 2.5rem;
     line-height: 1.2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 5px;
 }
 
 .subtitle {
@@ -148,13 +153,14 @@ p {
     justify-content:center;
     flex-wrap:wrap;
     gap: 7px;
+    margin-bottom: 30px;
 }
 .contacts {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     font-size: 1.25rem;
-    column-gap: 1.5vw;
+    column-gap: 1vw;
     font-weight: 600;
     margin-bottom: 40px;
 }
@@ -171,6 +177,7 @@ p {
     align-items: center;
     justify-content: normal;
     padding-inline: 1rem;
+    margin: 0 18px;
     scroll-behavior: smooth; /* Add this line */
    
 }
@@ -213,6 +220,9 @@ p {
     .btn:active {
         width: 38px;
         height: 38px;
+    }
+    .btn:focus{
+        box-shadow: unset;
     }
 
 .dalsi_btn {
@@ -262,16 +272,56 @@ p {
         min-width: 600px;
         margin: 0 auto;
     }
+
+    @media screen and (max-width: 780px) {
+        :root {
+            font-size: 12px;
+        }
+
+        #filter {
+            bottom: 10px;
+            padding: 20px 17px;
+        }
+
+        .card {
+            width: 80vw;
+            min-width: 350px;
+        }
+
+            .card img {
+                height: 115px;
+                width: 115px;
+            }
+
+        .tags {
+            font-size: 1.1rem;
+        }
+    }
 }
 
-@media screen and (max-width: 780px) {
-    :root {
-        font-size: 12px;
+@media screen and (max-width: 400px) {
+    :root{
+        font-size: 10px;
     }
-
-    .card {
-        width: 80vw;
-        min-width: 350px;
+    #filter{
+        padding: ;
+    }
+    .card{
+        width: 98vw;
+        min-width: 280px;
+    }
+    .title{
+        line-height: 1.1;
+    }
+    .subtitle{
+        font-size: 1.3rem;
+    }
+    .tags{
+        margin: 0 18px;
+    }
+    .btn {
+        width: 35px;
+        height: 35px;
     }
 }
 
