@@ -19,5 +19,26 @@ namespace tda_proj.Service
                     .ToList();
             }
         }
+
+        public Lector GetLectorByUUID(Guid UUID)
+        {
+            using (tdaContext context = new tdaContext())
+            {
+                return context.Lectors
+                     .Include(c => c.Contact)
+                        .ThenInclude(c => c.TelNumbers)
+                     .Include(c => c.Contact)
+                        .ThenInclude(c => c.Emails)
+                     .Include(c => c.claims)
+                     .Include(c => c.titlesAfter)
+                     .Include(c => c.titlesBefore)
+                     .Include(l => l.lectorTags)
+                        .ThenInclude(lt => lt.Tag)
+                        .FirstOrDefault(l => l.UUID == UUID);
+            }               
+        }
+
+
+
     }
 }
