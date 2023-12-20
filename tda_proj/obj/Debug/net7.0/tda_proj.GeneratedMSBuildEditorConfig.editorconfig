@@ -9,13 +9,13 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = tda_proj
 build_property.RootNamespace = tda_proj
-build_property.ProjectDir = C:\Users\vyhna\Source\Repos\Ytovon\TdA24primitiveplusplus\tda_proj\
+build_property.ProjectDir = C:\Users\vyhna\source\repos\Ytovon\TdA24primitiveplusplus\tda_proj\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\vyhna\Source\Repos\Ytovon\TdA24primitiveplusplus\tda_proj
+build_property.MSBuildProjectDirectory = C:\Users\vyhna\source\repos\Ytovon\TdA24primitiveplusplus\tda_proj
 build_property._RazorSourceGeneratorDebug = 
 
 [C:/Users/vyhna/Source/Repos/Ytovon/TdA24primitiveplusplus/tda_proj/App.razor]

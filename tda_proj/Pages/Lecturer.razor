@@ -4,85 +4,93 @@
 
 @page "/lecturer/{id:guid}"
 <head>
-    <link href="css/lector.css" rel="stylesheet"/>
+    <link href="css/Lecturer.css" rel="stylesheet"/>
 </head>
 <body>
-    <main>
-        <NavLink id="exit" href="/"><i class="fa-solid fa-house"></i></NavLink>
-        <div class="vizitka">
-            <h1 class="nadpis">
-            
-            @foreach (var titleBefore in lector.titlesBefore)
-            {
-                @titleBefore.Title
+    <div class="background_image">
+        <main>
+            <NavLink id="exit" href="/"><i class="fa-solid fa-house"></i></NavLink>
+            <div class="vizitka">
+                <h1 class="nadpis">
 
-            }
+                    @foreach (var titleBefore in lector.titlesBefore)
+                    {
+                        @titleBefore.Title
 
-            @lector.firstName
-            @lector.middleName
-            @lector.lastName
+                    }
+                    <h1>
+                        @lector.firstName
+                        @lector.middleName
+                        @lector.lastName
+                    </h1>
 
-            @foreach (var titleAfter in lector.titlesAfter)
-            {
+                    @foreach (var titleAfter in lector.titlesAfter)
+                    {
 
-                @titleAfter.Title
+                        @titleAfter.Title
 
-            }
-            </h1>
-            
-            <p class="podnadpis">
-            @for (int i = 0; i < lector.claims.Count; i++)
-            {
-                @if (i < lector.claims.Count - 1)
-                {
-                    <p>@lector.claims[i].Name</p>
-                    <p> /</p>
-                }
-                else
-                {
-                    <p>@lector.claims[i].Name</p>
-                }
-            }
-            </p>
+                    }
+                </h1>
 
-            <img src="@lector.pictureUrl">
-        </div>
-        <div class="kontakty">
-            <p><i class="fa-solid fa-location-dot fa-xl"></i>@lector.location</p>       
-            <p><i class="fa-solid fa-phone fa-lg"></i>
-            
-            @foreach (var telNumber in telNumbers)
-            {
-                @telNumber.TelNumber
-            } 
-            </p>
+                <p class="podnadpis">
+                    @for (int i = 0; i < lector.claims.Count; i++)
+                    {
+                        @if (i < lector.claims.Count - 1)
+                        {
+                        <p>@lector.claims[i].Name</p>
+                        <p> /</p>
+                        }
+                        else
+                        {
+                        <p>@lector.claims[i].Name</p>
+                        }
+                    }
+                </p>
 
-            <p><i class="fa-solid fa-envelope fa-lg"></i>
-            
-            @foreach (var email in emails)
-            {
-                @email.Email      
-            } 
-            </p>
-               
-            <p>Cena za hodinu: <i>@lector.pricePerHour</i></p>
-        </div>
-    
-            <p class="text">@lector.bio</p>
+                <img src="@lector.pictureUrl">
 
-        <div id="vizitka_tagy" class="tagy">
+                <div class="kontakty">
+                    <p><i class="fa-solid fa-location-dot fa-xl"></i>@lector.location</p>
+                    <p>
+                        <i class="fa-solid fa-phone fa-lg"></i>
 
-            <button class="predchozi_btn btn" onclick="scrollLeftSmooth()"><i class="fa-solid fa-chevron-left"></i></button>
+                        @foreach (var telNumber in telNumbers)
+                        {
+                            @telNumber.TelNumber
+                        }
+                    </p>
 
-            @foreach (var tag in tags)
-            {
-                <p class="tag">@tag.TagName</p>
+                    <p>
+                        <i class="fa-solid fa-envelope fa-lg"></i>
 
-            }
+                        @foreach (var email in emails)
+                        {
+                            @email.Email
+                        }
+                    </p>
 
-            <button class="dalsi_btn btn" onclick="scrollRightSmooth()"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-    </main>
+                    <p>Cena za hodinu: <i>@lector.pricePerHour</i></p>
+                </div>
+
+                <p class="text">@lector.bio</p>
+
+                <div id="vizitka_tagy" class="tagy">
+
+                    <button class="predchozi_btn btn" onclick="scrollLeftSmooth()"><i class="fa-solid fa-chevron-left"></i></button>
+
+                    @foreach (var tag in tags)
+                    {
+                        <p class="tag">@tag.TagName</p>
+
+                    }
+
+                    <button class="dalsi_btn btn" onclick="scrollRightSmooth()"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+ 
 </body>
 
 

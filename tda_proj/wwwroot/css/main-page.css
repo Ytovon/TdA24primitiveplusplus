@@ -4,19 +4,6 @@ p {
     font-family: Open Sans;
 }
 
-.kontakty i {
-    color: var(--zlata);
-}
-/* helper classes */
-.special_text {
-    color: #74C7D3;
-    font-weight: 700;
-}
-
-.special_text1 {
-    color: var(--zlata);
-}
-
 /*main style*/
 .container {
     height: 100%;
@@ -89,7 +76,7 @@ p {
 }
 
 .background_image {
-    background: url(images/icons_tda.png), repeat;
+    background: url(../images/icon_background.png), repeat;
     background-size: cover;
 }
 
@@ -99,7 +86,6 @@ p {
     column-gap: 4vw;
     row-gap: 4vh;
     margin: 0 5vw;
-    margin-block-end: 10px;
     padding-bottom: 5rem;
     justify-content: center;
 }
@@ -114,7 +100,7 @@ p {
     position: relative;
     text-align: center;
     color: white;
-    padding: 20px;
+    padding: 30px;
 }
 
 .card img {
@@ -177,7 +163,7 @@ p {
     align-items: center;
     justify-content: normal;
     padding-inline: 1rem;
-    margin: 0 18px;
+    margin: 0 10px;
     scroll-behavior: smooth; /* Add this line */
    
 }
@@ -241,9 +227,6 @@ p {
     #filter {
         padding: 23.25px 20px;
     }
-    /*.cards{
-  margin: 0 68px;
-}*/
     .card {
         min-width: 450px;
     }
@@ -254,15 +237,11 @@ p {
         }
 
     .subtitle {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
     }
 
     .contacts {
-        margin-bottom: 25px;
-    }
-
-    .tags {
-        margin: 0 20px;
+        margin-bottom: 30px;
     }
 }
 
@@ -317,7 +296,7 @@ p {
         font-size: 1.3rem;
     }
     .tags{
-        margin: 0 18px;
+        margin: 0 8px;
     }
     .btn {
         width: 35px;

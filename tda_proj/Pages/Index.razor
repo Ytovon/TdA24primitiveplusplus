@@ -7,81 +7,82 @@
         <link href="css/main-page.css" rel="stylesheet" />
     </head>
     <body>
-        <main>
-        <button id="filter"><i class="fa-solid fa-filter fa-2xl"></i></button>
+        <main class="background_image">
+            <button id="filter"><i class="fa-solid fa-filter fa-2xl"></i></button>
 
-        <div class="cards">
+            <div class="cards">
 
-            @foreach (var lector in allLectors)
-            {
-                Tags = lector.lectorTags.Select(lt => lt.Tag).ToList();
-
-
-                <div class="card">
-                    <NavLink href=@($"lecturer/{lector.UUID}") class="info"><i class="fa-solid fa-circle-info"></i></NavLink>
-                    <img src="@lector.pictureUrl">
+                @foreach (var lector in allLectors)
+                {
+                    Tags = lector.lectorTags.Select(lt => lt.Tag).ToList();
 
 
-                    @*  header *@
-                    <h1 class="title">
-                        @foreach (var titleBefore in lector.titlesBefore)
-                        {
-                            @titleBefore.Title
+                    <div class="card">
+                        <NavLink href=@($"lecturer/{lector.UUID}") class="info"><i class="fa-solid fa-circle-info"></i></NavLink>
+                        <img src="@lector.pictureUrl">
 
-                        }
-                        <h1>
-                            @lector.firstName
-                            @lector.middleName
-                            @lector.lastName
+
+                        @*  header *@
+                        <h1 class="title">
+                            @foreach (var titleBefore in lector.titlesBefore)
+                            {
+                                @titleBefore.Title
+
+                            }
+
+                            <h1>
+                                @lector.firstName
+                                @lector.middleName
+                                @lector.lastName
+                            </h1>
+
+
+                            @foreach (var titleAfter in lector.titlesAfter)
+                            {
+
+                                @titleAfter.Title
+
+                            }
                         </h1>
-                        
-
-                        @foreach (var titleAfter in lector.titlesAfter)
-                        {
-
-                            @titleAfter.Title
-
-                        }
-                    </h1>
 
 
-                    @* claim *@
-                   <div class="subtitle">
-                        @for (int i = 0; i < lector.claims.Count; i++)
-                        {
-
-                            @if (i < lector.claims.Count - 1)
+                        @* claim *@
+                        <div class="subtitle">
+                            @for (int i = 0; i < lector.claims.Count; i++)
                             {
-                                <p>@lector.claims[i].Name</p>
-                                <p> /</p>
+
+                                @if (i < lector.claims.Count - 1)
+                                {
+                                    <p>@lector.claims[i].Name</p>
+                                    <p> /</p>
+                                }
+                                else
+                                {
+                                    <p>@lector.claims[i].Name</p>
+                                }
                             }
-                            else
+                        </div>
+
+
+                        <div class="contacts">
+                            <p><span class="special_text1"><i class="fa-solid fa-location-dot fa-xl"></i></span>  @lector.location</p>
+                            <p> | </p>
+                            <p>Cena za hodinu: <span class="special_text1">@lector.pricePerHour Kč</span></p>
+                        </div>
+
+                        <div class="tags">
+                            <button class="predchozi_btn btn"><i class="fa-solid fa-chevron-left"></i></button>
+
+                            @foreach (var tag in Tags)
                             {
-                                <p>@lector.claims[i].Name</p>
+                                <p class="tag">@tag.TagName</p>
                             }
-                        }
-                   </div>
 
-
-                    <div class="contacts">
-                        <p><span class="special_text1"><i class="fa-solid fa-location-dot fa-xl"></i></span>  @lector.location</p>
-                        <p> | </p>
-                        <p>Cena za hodinu: <span class="special_text1">@lector.pricePerHour Kč</span></p>
+                            <button class="dalsi_btn btn"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
                     </div>
-
-                    <div class="tags">
-                        <button class="predchozi_btn btn"><i class="fa-solid fa-chevron-left"></i></button>
-
-                        @foreach (var tag in Tags)
-                        {
-                            <p class="tag">@tag.TagName</p>
-                        }
-
-                        <button class="dalsi_btn btn"><i class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-            }
-        </div>
+                }
+            </div>
         </main>
     </body>                      
 
