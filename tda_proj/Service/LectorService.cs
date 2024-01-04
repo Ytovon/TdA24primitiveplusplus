@@ -6,19 +6,36 @@ namespace tda_proj.Service
 {
     public class LectorService
     {
-        public List<Lector> GetAllLectorsWithDetails()
+        public async Task<List<Lector>> GetAllLectorsAsync()
         {
             using (tdaContext context = new tdaContext())
             {
-                return context.Lectors
+                return await context.Lectors
                     .Include(c => c.titlesAfter)
                     .Include(c => c.titlesBefore)
                     .Include(c => c.claims)
-                    .Include(l => l.lectorTags)                    
+                    .Include(l => l.lectorTags)
                         .ThenInclude(lt => lt.Tag)
-                    .ToList();
+                    .ToListAsync();
             }
         }
+
+        public async Task<List<Lector>> GetSpecificLectorsAsync(double minPrice, double maxPrice, List<string> Locations, List<string> Tagy)
+        {
+            using (tdaContext context = new tdaContext())
+            {
+                return await context.Lectors
+                    .Include(c => c.titlesAfter)
+                    .Include(c => c.titlesBefore)
+                    .Include(c => c.claims)
+                    .Include(l => l.lectorTags)
+                        .ThenInclude(lt => lt.Tag)
+                    .Where(p => p.pricePerHour >= minPrice && p.pricePerHour <= maxPrice &&
+                        Locations.Contains(p.location))
+                    .ToListAsync();
+            }
+        }
+
 
         public Lector GetLectorByUUID(Guid UUID)
         {

@@ -25,8 +25,12 @@
     position: absolute;
     right: 20px;
     top: 15px;
+    transition:0.3s ease;
 }
 
+#exit:hover{
+    transform:scale(0.92);
+}
 
 .vizitka img {
     position: absolute;
@@ -39,6 +43,7 @@
 .background_image {
     background: url(../images/icon_background.png), repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .nadpis {
