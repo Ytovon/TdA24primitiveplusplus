@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace tda_proj.Migrations
 {
     /// <inheritdoc />
-    public partial class addmigrations : Migration
+    public partial class addmigrationfirstmig : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,14 +15,14 @@ namespace tda_proj.Migrations
                 name: "Lectors",
                 columns: table => new
                 {
-                    UUID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
-                    firstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    middleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    lastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    pictureUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    location = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    bio = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    pricePerHour = table.Column<double>(type: "float", nullable: false)
+                    UUID = table.Column<Guid>(type: "TEXT", nullable: false, defaultValueSql: "NEWID()"),
+                    firstName = table.Column<string>(type: "TEXT", nullable: false),
+                    middleName = table.Column<string>(type: "TEXT", nullable: true),
+                    lastName = table.Column<string>(type: "TEXT", nullable: false),
+                    pictureUrl = table.Column<string>(type: "TEXT", nullable: false),
+                    location = table.Column<string>(type: "TEXT", nullable: false),
+                    bio = table.Column<string>(type: "TEXT", nullable: false),
+                    pricePerHour = table.Column<double>(type: "REAL", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,8 +33,8 @@ namespace tda_proj.Migrations
                 name: "Tags",
                 columns: table => new
                 {
-                    TagUUID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
-                    TagName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    TagUUID = table.Column<Guid>(type: "TEXT", nullable: false, defaultValueSql: "NEWID()"),
+                    TagName = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,10 +45,10 @@ namespace tda_proj.Migrations
                 name: "Claims",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LectorUUID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    LectorUUID = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -65,9 +65,9 @@ namespace tda_proj.Migrations
                 name: "Contacts",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    LectorUUID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    LectorUUID = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -84,10 +84,10 @@ namespace tda_proj.Migrations
                 name: "TitlesAfter",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LectorUUID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(type: "TEXT", nullable: false),
+                    LectorUUID = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -104,10 +104,10 @@ namespace tda_proj.Migrations
                 name: "TitlesBefore",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LectorUUID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(type: "TEXT", nullable: false),
+                    LectorUUID = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -124,8 +124,8 @@ namespace tda_proj.Migrations
                 name: "LectorTags",
                 columns: table => new
                 {
-                    LectorUUID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LectorTagUUID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LectorUUID = table.Column<Guid>(type: "TEXT", nullable: false),
+                    LectorTagUUID = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -137,7 +137,7 @@ namespace tda_proj.Migrations
                         principalColumn: "UUID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LectorTags_Tags_TagUUID",
+                        name: "FK_LectorTags_Tags_LectorTagUUID",
                         column: x => x.LectorTagUUID,
                         principalTable: "Tags",
                         principalColumn: "TagUUID",
@@ -148,10 +148,10 @@ namespace tda_proj.Migrations
                 name: "Emails",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ContactID = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    ContactID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -168,10 +168,10 @@ namespace tda_proj.Migrations
                 name: "TelNumbers",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TelNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ContactID = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    TelNumber = table.Column<string>(type: "TEXT", nullable: false),
+                    ContactID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

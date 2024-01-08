@@ -197,8 +197,13 @@
             Prices.Add(lector.pricePerHour);
         }
 
-        minPriceOriginal = Prices.Min();
-        maxPriceOriginal = Prices.Max();
+
+        if (Prices.Any())
+        {
+            minPriceOriginal = Prices.Min();
+            maxPriceOriginal = Prices.Max();
+        }
+
 
         maxPrice = 1500;
 
