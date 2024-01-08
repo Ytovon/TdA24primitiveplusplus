@@ -1,0 +1,283 @@
+﻿﻿ /*problémy
+    1 - text se vypisuje i s tagy
+    2 - background
+*/
+.vizitka {
+    width: 85%;
+    height: 100%;
+    max-width: 1400px;
+    border-radius: 17px;
+    padding: 3rem 2rem;
+    margin: 0 auto 5vw auto;
+    position: relative;
+    background-color: var(--tmave_modra);
+    box-shadow: 0px 8px 24px 0px rgba(0, 39, 54, 0.20);
+}
+
+#logo {
+    height: 100px;
+    margin-block: max(30px,3vw)
+}
+
+#exit {
+    color: var(--tmave_modra);
+    font-size: 40px;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    transition: 0.3s ease;
+}
+
+    #exit:hover {
+        transform: scale(0.92);
+    }
+
+.vizitka img {
+    position: absolute;
+    right: 3%;
+    height: 250px;
+    border-radius: 100%;
+    top: 50px;
+}
+
+.background_image {
+    background: url(../images/icon_background.png), repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.nadpis {
+    font-family: Lalezar;
+    font-size: 4rem;
+    line-height: 1.3;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5px;
+}
+
+.podnadpis {
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.kontakty {
+    line-height: 2.5;
+    margin-bottom: 30px;
+    font-size: 20px;
+    color: white;
+}
+
+    .kontakty p {
+        font-weight: 600;
+    }
+
+    .kontakty i {
+        padding-right: 10px;
+        color: var(--zlata);
+    }
+
+.text {
+    margin-bottom: 30px;
+    font-size: 1.05rem;
+    color: white;
+}
+
+/* úprava tagů */
+.tagy {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5px;
+    row-gap: 8px;
+    justify-content: center;
+}
+
+    .tagy::-webkit-scrollbar {
+        height: 0px;
+    }
+
+.tag {
+    display: inline-block;
+    color: black;
+    background-color: #DEDEDE;
+    text-align: center;
+    padding: 4px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: 0.5s;
+    cursor: normal;
+    user-select: none;
+}
+
+    .tag:hover {
+        background-color: white;
+    }
+
+.btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 22px;
+    width: 40px;
+    height: 40px;
+    background-color: #FECB2E;
+    border-radius: 50%;
+    position: absolute;
+    color: black;
+}
+
+/* responzivita*/
+@media screen and (max-width: 1330px) {
+    :root {
+        font-size: 15px;
+    }
+
+    .vizitka {
+        width: 90%;
+        padding: 50px 20px;
+    }
+
+        .vizitka img {
+            top: 100px;
+            height: 220px;
+        }
+
+    .nadpis {
+        margin-bottom: 5px;
+    }
+
+    .podnadpis {
+        font-size: 1.15rem;
+        margin-bottom: 25px;
+    }
+
+    .kontakty {
+        font-size: 18px;
+    }
+
+    .tagy {
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        width: 96%;
+        overflow-x: scroll;
+        align-items: center;
+        justify-content: normal;
+        padding-top: 1rem;
+        padding-inline: 1rem;
+        margin: 0 auto;
+    }
+
+    .btn {
+        display: block;
+    }
+
+    .dalsi_btn {
+        right: 9px;
+    }
+
+    .predchozi_btn {
+        left: 9px;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .vizitka {
+        width: 90%;
+        overflow-x: hidden;
+    }
+
+        .vizitka img {
+            height: 210px;
+            top: 140px;
+        }
+
+    .podnadpis {
+        margin-bottom: 20px;
+    }
+
+    .tagy {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 880px) {
+    .container {
+        height: fit-content;
+    }
+
+    #exit {
+        display: none;
+    }
+
+    .vizitka {
+        text-align: center;
+        padding: 50px 15px;
+    }
+
+        .vizitka img {
+            position: relative;
+            display: inline;
+            right: 0%;
+            top: auto;
+            margin: 10px 0px;
+        }
+
+    .nadpis {
+        line-height: 1;
+        padding: 0px;
+        justify-content: center;
+    }
+
+    .kontakty {
+        padding: 0px 5px;
+    }
+
+    .footer_wrapper {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 515px) {
+    :root {
+        font-size: 14px;
+    }
+
+    .container img {
+        margin-block: 25px;
+    }
+
+    .vizitka {
+        width: 100%;
+        padding: 40px 0px;
+    }
+
+        .vizitka .nadpis {
+            font-size: 40px;
+        }
+
+    .kontakty {
+        font-size: 16px;
+    }
+
+    .text {
+        margin: 0px 5px 30px;
+    }
+
+    .btn {
+        width: 45px;
+        height: 45px;
+    }
+
+    .tagy {
+        width: 87%;
+        padding-inline: 38px;
+    }
+
+    .tag {
+        padding-block: 8px;
+    }
+}

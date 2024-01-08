@@ -1,7 +1,256 @@
-﻿@page "/"
+﻿@using tda_proj.Model;
+@using tda_proj.Service;
 
-<PageTitle>Index</PageTitle>
+@page "/"
 
-<h1>Hello TdA</h1>
+<head>
+    <link href="css/main-page.css" rel="stylesheet" />
+</head>
+<body>
+    <main>
+        @if (IsFilteringOn == false)
+        {
+            <div class="@(IsFilterShown ? "filter filter--open" : "filter")">
+                <h2>Filtrace</h2>
+                <button @onclick="SwitchValues">Klikni na mě!</button>
+                <p>click count: @clickCount</p>
+            </div>
+            <button id="filter" @onclick="ShowFilter"><i class="fa-solid fa-filter fa-2xl"></i></button>
+            <div class="cards">
 
-Welcome to your new app.
+
+
+                @foreach (var lector in allLectors)
+                {
+                    Tags = lector.lectorTags.Select(lt => lt.Tag).ToList();
+
+                    <div class="card">
+                        <NavLink href=@($"lecturer/{lector.UUID}") class="info"><i class="fa-solid fa-circle-info"></i></NavLink>
+                        <img src="@lector.pictureUrl">
+
+                        @*  header *@
+                        <h1 class="title">
+                            @foreach (var titleBefore in lector.titlesBefore)
+                            {
+                                @titleBefore.Title
+                            }
+
+                            <h1>
+                                @lector.firstName
+                                @lector.middleName
+                                @lector.lastName
+                            </h1>
+
+                            @foreach (var titleAfter in lector.titlesAfter)
+                            {
+                                @titleAfter.Title
+                            }
+                        </h1>
+
+
+                        @* claim *@
+                        <div class="subtitle">
+                            @for (int i = 0; i < lector.claims.Count; i++)
+                            {
+                                @if (i < lector.claims.Count - 1)
+                                {
+                                    <p>@lector.claims[i].Name</p>
+                                    <p> /</p>
+                                }
+                                else
+                                {
+                                    <p>@lector.claims[i].Name</p>
+                                }
+                            }
+                        </div>
+
+                        <div class="contacts">
+                            <p><span class="special_text1"><i class="fa-solid fa-location-dot fa-xl"></i></span>  @lector.location</p>
+                            <p> | </p>
+                            <p>Cena za hodinu: <span class="special_text1">@lector.pricePerHour Kč</span></p>
+                        </div>
+
+                        <div class="tags">
+                            <button class="predchozi_btn btn"><i class="fa-solid fa-chevron-left"></i></button>
+
+                            @foreach (var tag in Tags)
+                            {
+                                <p class="tag">@tag.TagName</p>
+                            }
+
+                            <button class="dalsi_btn btn"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="@(IsFilterShown ? "filter filter--open" : "filter")">
+                <h2>Filtrace</h2>
+                <button @onclick="SwitchValues">Klikni na mě!</button>
+                <p>click count: @clickCount</p>
+
+            </div>
+            <button id="filter" @onclick="ShowFilter"><i class="fa-solid fa-filter fa-2xl"></i></button>
+            <div class="cards">
+
+
+                @foreach (var lector in specificLectors)
+                {
+                    Tags = lector.lectorTags.Select(lt => lt.Tag).ToList();
+
+                    <div class="card">
+                        <NavLink href=@($"lecturer/{lector.UUID}") class="info"><i class="fa-solid fa-circle-info"></i></NavLink>
+                        <img src="@lector.pictureUrl">
+
+                        @*  header *@
+                        <h1 class="title">
+                            @foreach (var titleBefore in lector.titlesBefore)
+                            {
+                                @titleBefore.Title
+                            }
+
+                            <h1>
+                                @lector.firstName
+                                @lector.middleName
+                                @lector.lastName
+                            </h1>
+
+                            @foreach (var titleAfter in lector.titlesAfter)
+                            {
+                                @titleAfter.Title
+                            }
+                        </h1>
+
+
+                        @* claim *@
+                        <div class="subtitle">
+                            @for (int i = 0; i < lector.claims.Count; i++)
+                            {
+                                @if (i < lector.claims.Count - 1)
+                                {
+                                    <p>@lector.claims[i].Name</p>
+                                    <p> /</p>
+                                }
+                                else
+                                {
+                                    <p>@lector.claims[i].Name</p>
+                                }
+                            }
+                        </div>
+
+                        <div class="contacts">
+                            <p><span class="special_text1"><i class="fa-solid fa-location-dot fa-xl"></i></span>  @lector.location</p>
+                            <p> | </p>
+                            <p>Cena za hodinu: <span class="special_text1">@lector.pricePerHour Kč</span></p>
+                        </div>
+
+                        <div class="tags">
+                            <button class="predchozi_btn btn"><i class="fa-solid fa-chevron-left"></i></button>
+
+                            @foreach (var tag in Tags)
+                            {
+                                <p class="tag">@tag.TagName</p>
+                            }
+
+                            <button class="dalsi_btn btn"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </main>
+</body>
+
+
+
+@code {
+    // otevírání filter baru
+    private bool IsFilterShown = false;
+
+    // filter logika
+    private bool IsFilteringOn = false;
+
+    private double minPriceOriginal;
+    private double maxPriceOriginal;
+    private double maxPrice;
+    private double minPrice;
+
+    private List<double> Prices = new List<double>();
+    private List<string> Locations = new List<string>();
+    private List<string> ChosenTags = new List<string>(); // je to samé jako Tags ale Tags už je zabrané
+
+    private List<Lector> allLectors = new List<Lector>();
+    private List<Lector> specificLectors = new List<Lector>();
+    private List<Tag> Tags = new List<Tag>();
+    LectorService lectorService = new LectorService();
+
+    // konec filter logiky
+
+    protected override async Task OnInitializedAsync()
+    {
+        allLectors = await lectorService.GetAllLectorsAsync();
+
+        foreach (Lector lector in allLectors)
+        {
+            Prices.Add(lector.pricePerHour);
+        }
+
+
+        if (Prices.Any())
+        {
+            minPriceOriginal = Prices.Min();
+            maxPriceOriginal = Prices.Max();
+        }
+
+
+        maxPrice = 1500;
+
+        Locations.Add("Brno");
+        Locations.Add("Praha");
+        Locations.Add("Králíky");
+        Locations.Add("Trutnov");
+        Locations.Add("Bratislava");
+
+        FilterState();
+        specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, Locations, ChosenTags);
+    }
+
+
+
+    private void ShowFilter()
+    {
+        IsFilterShown = !IsFilterShown;
+    }
+
+    private void FilterState()
+    {
+        if (minPrice == minPriceOriginal && maxPrice == maxPriceOriginal && Locations.Any() == false && ChosenTags.Any() == false)
+        {
+            IsFilteringOn = false;
+        }
+        else
+        {
+            IsFilteringOn = true;
+        }
+    }
+    private int clickCount = 0;
+
+    private async Task SwitchValues()
+    {
+        if (clickCount % 2 == 0)
+        {
+            minPrice = 400;
+        }
+        else
+        {
+            minPrice = 150;
+        }
+        clickCount++;
+
+        // Await the asynchronous method to ensure UI is updated correctly
+        specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, Locations, ChosenTags);
+        StateHasChanged();
+    }
+}

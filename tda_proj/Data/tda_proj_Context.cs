@@ -18,7 +18,7 @@ namespace tda_proj.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //var basePath = AppDomain.CurrentDomain.BaseDirectory;
-            optionsBuilder.UseSqlite(@"Data Source=wwwroot/DemoDB.db");
+            optionsBuilder.UseSqlite(@"Data Source=wwwroot/tdaDB.db");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

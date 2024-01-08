@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "j4FJuVGvHfnthBv4C2n/UT/uZZrAwJiS+mtOkEKWtRx5U4ca6xcytVUXWQ2tdVuJZtghingPrNZ2FIuw8DtQxQ==",
+  "dgSpecHash": "01H4YDFqxXO4fKbg9reHZpDLPCmz3U0CQ7cinu83rSejRhlkmZMLZ3IZ8xX8zcYOj0M+PWJt1Vj0Y5/RehCZvA==",
   "success": true,
   "projectFilePath": "C:\\Users\\c22novotnyj2\\source\\repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\tda_proj.csproj",
   "expectedPackageFiles": [
@@ -43,7 +43,10 @@
     "C:\\Users\\c22novotnyj2\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\c22novotnyj2\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\c22novotnyj2\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
-    "C:\\Users\\c22novotnyj2\\.nuget\\packages\\sqlitepclraw.core\\2.1.4\\sqlitepclraw.core.2.1.4.nupkg.sha512",
+    "C:\\Users\\c22novotnyj2\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.7\\sqlitepclraw.bundle_e_sqlite3.2.1.7.nupkg.sha512",
+    "C:\\Users\\c22novotnyj2\\.nuget\\packages\\sqlitepclraw.core\\2.1.7\\sqlitepclraw.core.2.1.7.nupkg.sha512",
+    "C:\\Users\\c22novotnyj2\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.7\\sqlitepclraw.lib.e_sqlite3.2.1.7.nupkg.sha512",
+    "C:\\Users\\c22novotnyj2\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.7\\sqlitepclraw.provider.e_sqlite3.2.1.7.nupkg.sha512",
     "C:\\Users\\c22novotnyj2\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\c22novotnyj2\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",
     "C:\\Users\\c22novotnyj2\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",

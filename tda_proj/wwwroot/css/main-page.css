@@ -1,0 +1,330 @@
+﻿
+/* úprava písma*/
+p {
+    font-family: Open Sans;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+/*main style*/
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    flex-direction: column;
+}
+
+#filter {
+    color: black;
+    position: fixed;
+    right: 1vw;
+    bottom: 30px;
+    padding: 38px 34px;
+    background-color: var(--zlata);
+    border-radius: 100px;
+    z-index: 1;
+    border: none;
+    z-index: 150;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+    #filter:hover {
+        transform: scale(0.92);
+    }
+
+.filter {
+    display: none;
+    position: fixed;
+    max-width: 400px;
+    min-width: 300px;
+    height: 100%;
+    background-color: white;
+    top: 0;
+    z-index: 100;
+    right: 0;
+}
+
+.filter--open {
+    display: block;
+}
+
+.filtration_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    background-color: var(--zlata);
+}
+
+    .filtration_title p {
+        font-size: 60px;
+        font-weight: 800;
+        font-family: Lalezar;
+        gap: 10px;
+    }
+
+.filtration_main {
+    position: relative;
+    height: 85vh;
+    background-color: white;
+    font-size: 1.2rem;
+}
+
+#xmark {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 30px;
+    color: black;
+}
+
+.filtration_main_content {
+    position: absolute;
+    top: 50px;
+    left: 40px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.background_image {
+    background: url(../images/icon_background.png), repeat;
+    background-size: cover;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 4vw;
+    row-gap: 4vh;
+    margin: 0 5vw;
+    padding-bottom: 5rem;
+    justify-content: center;
+}
+
+.card {
+    width: 40vw;
+    max-width: 750px;
+    min-width: 650px;
+    max-height: 528px;
+    background-color: var(--tmave_modra);
+    border-radius: 17px;
+    position: relative;
+    text-align: center;
+    color: white;
+    padding: 30px;
+}
+
+    .card img {
+        height: 175px;
+        width: 175px;
+        border-radius: 100px;
+        position: relative;
+        top: 10px;
+        display: inline;
+        margin: 0 auto 20px auto;
+    }
+
+.info {
+    position: absolute;
+    color: var(--zlata);
+    top: 8px;
+    right: 15px;
+    font-size: 2.5rem;
+    font-size: 2.5rem;
+}
+
+.title {
+    font-family: Lalezar;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 5px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 30px;
+}
+
+.contacts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 1.25rem;
+    column-gap: 1vw;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+    .contacts i {
+        margin-right: 5px;
+    }
+
+.tags {
+    display: flex;
+    flex-wrap: nowrap;
+    column-gap: 5px;
+    white-space: nowrap;
+    overflow-x: scroll;
+    align-items: center;
+    justify-content: normal;
+    padding-inline: 1rem;
+    margin: 0 10px;
+    scroll-behavior: smooth; /* Add this line */
+}
+
+.tag {
+    display: inline-block;
+    color: black;
+    background-color: #DEDEDE;
+    text-align: center;
+    padding: 4px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: 0.5s;
+    cursor: normal;
+    user-select: none;
+    margin: 0;
+}
+
+.tags::-webkit-scrollbar {
+    display: none;
+}
+
+.tag:hover {
+    background-color: white;
+}
+
+.btn {
+    border: none;
+    font-size: 22px;
+    width: 40px;
+    height: 40px;
+    background-color: #FECB2E;
+    border-radius: 50%;
+    position: absolute;
+    color: black;
+    animation: 5s;
+    display: block;
+}
+
+    .btn:active {
+        width: 38px;
+        height: 38px;
+    }
+
+    .btn:focus {
+        box-shadow: unset;
+    }
+
+.dalsi_btn {
+    right: 9px;
+}
+
+.predchozi_btn {
+    left: 9px;
+}
+
+@media screen and (max-width: 1535px) {
+    :root {
+        font-size: 13px;
+    }
+
+    #filter {
+        padding: 23.25px 20px;
+    }
+
+    .card {
+        min-width: 450px;
+    }
+
+        .card img {
+            height: 130px;
+            width: 130px;
+        }
+
+    .subtitle {
+        margin-bottom: 20px;
+    }
+
+    .contacts {
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .card {
+        width: 65vw;
+        min-width: 600px;
+        margin: 0 auto;
+    }
+
+    @media screen and (max-width: 780px) {
+        :root {
+            font-size: 12px;
+        }
+
+        #filter {
+            bottom: 10px;
+            padding: 20px 17px;
+        }
+
+        .card {
+            width: 80vw;
+            min-width: 350px;
+        }
+
+            .card img {
+                height: 115px;
+                width: 115px;
+            }
+
+        .tags {
+            font-size: 1.1rem;
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    :root {
+        font-size: 10px;
+    }
+
+    #filter {
+        padding:;
+    }
+
+    .card {
+        width: 98vw;
+        min-width: 280px;
+    }
+
+    .title {
+        line-height: 1.1;
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
+    }
+
+    .tags {
+        margin: 0 8px;
+    }
+
+    .btn {
+        width: 35px;
+        height: 35px;
+    }
+}

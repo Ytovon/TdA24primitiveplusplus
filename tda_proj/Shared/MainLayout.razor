@@ -2,18 +2,20 @@
 
 <PageTitle>tda_proj</PageTitle>
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<div>
+    <header>
+        <NavLink href="/"><img src="images/logo_black.png" id="logo"></NavLink>
+    </header>
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
-            @Body
-        </article>
+        @Body
     </main>
+
+    <footer class="footer">
+        <hr class="footer_line">
+        <div class="footer_wrapper">
+            <p>© 2023 Teacher digital Agency</p>
+            <p>Created by: <span class="special_text">Primitive++</span></p>
+        </div>
+    </footer>
 </div>
