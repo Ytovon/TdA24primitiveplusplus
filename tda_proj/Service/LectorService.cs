@@ -41,17 +41,36 @@ namespace tda_proj.Service
         {
             using (tdaContext context = new tdaContext())
             {
-                return context.Lectors
-                     .Include(c => c.Contact)
-                        .ThenInclude(c => c.TelNumbers)
-                     .Include(c => c.Contact)
-                        .ThenInclude(c => c.Emails)
-                     .Include(c => c.claims)
-                     .Include(c => c.titlesAfter)
-                     .Include(c => c.titlesBefore)
-                     .Include(l => l.lectorTags)
-                        .ThenInclude(lt => lt.Tag)
-                        .FirstOrDefault(l => l.UUID == UUID);
+                
+              return context.Lectors
+                   .Include(l => l.lectorTags)
+                   .ThenInclude(lt => lt.Tag)
+                   .Select(x => new Lector
+                   {
+                   
+                   UUID = UUID,
+                   pictureUrl = x.pictureUrl,
+                   Contact = new Contact
+                   {
+                       Emails = x.Contact.Emails,
+                       TelNumbers = x.Contact.TelNumbers,
+                       ID = x.Contact.ID,
+                   },
+                   titlesBefore = x.titlesBefore,
+                   firstName = x.firstName,
+                   middleName = x.middleName,
+                   lastName = x.lastName,
+                   titlesAfter = x.titlesAfter,
+                   location = x.location,
+                   pricePerHour = x.pricePerHour,               
+                   claims = x.claims,
+                   bio = x.bio,
+                   lectorTags = x.lectorTags,
+                   
+                  
+                   
+               }).FirstOrDefault(l => l.UUID == UUID);
+
             }
         }
 

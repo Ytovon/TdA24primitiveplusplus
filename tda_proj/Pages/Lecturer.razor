@@ -54,7 +54,7 @@
                     <p>
                         <i class="fa-solid fa-phone fa-lg"></i>
 
-                        @foreach (var telNumber in telNumbers)
+                        @foreach (var telNumber in lector.Contact.TelNumbers)
                         {
                             @telNumber.TelNumber
                         }
@@ -63,7 +63,7 @@
                     <p>
                         <i class="fa-solid fa-envelope fa-lg"></i>
 
-                        @foreach (var email in emails)
+                        @foreach (var email in lector.Contact.Emails)
                         {
                             @email.Email
                         }
@@ -87,7 +87,6 @@
                     <button class="dalsi_btn btn" onclick="scrollRightSmooth()"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-
         </main>
     </div>
 
@@ -97,20 +96,16 @@
 @code {
     [Parameter]
     public Guid id { get; set; }
-    private Lector lector { get; set; }
+
+    private Lector lector { get; set; } = new Lector();
     LectorService lectorService = new LectorService();
-    Contact contact;
-    List<ContactEmail> emails;
-    List<ContactTelNumber> telNumbers;
+
     private List<Tag> tags = new List<Tag>();
 
     protected override void OnInitialized()
     {
         lector = lectorService.GetLectorByUUID(id);
-        contact = lector.Contact;
-        emails = contact.Emails.ToList();
-        telNumbers = contact.TelNumbers.ToList();
-        tags = lector.lectorTags.Select(lt => lt.Tag).ToList();
+        tags = lector.lectorTags.Select(x => x.Tag).ToList();
     }
 }
 

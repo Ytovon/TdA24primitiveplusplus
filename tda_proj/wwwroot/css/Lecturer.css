@@ -2,6 +2,14 @@
     1 - text se vypisuje i s tagy
     2 - background
 */
+:root {
+    --bila: white;
+    --cerna: black;
+    --tmave_modra: #00384D;
+    --svetle_modra: #74C7D3;
+    --zlata: #FECB2E;
+}
+
 .vizitka {
     width: 85%;
     height: 100%;
