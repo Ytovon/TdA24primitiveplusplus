@@ -10,14 +10,20 @@
     <main>
         @if (IsFilteringOn == false)
         {
+            <h1>filtrování vypnuto</h1>
+
+            /* filter bar */
             <div class="@(IsFilterShown ? "filter filter--open" : "filter")">
                 <h2>Filtrace</h2>
                 <button @onclick="SwitchValues">Klikni na mě!</button>
-                <p>click count: @clickCount</p>
+                <p>@priceMessage</p>
+                <i class="fa-solid fa-xmark x-mark" @onclick="ShowFilter"></i>
             </div>
-            <button id="filter" @onclick="ShowFilter"><i class="fa-solid fa-filter fa-2xl"></i></button>
-            <div class="cards">
 
+            /* filter button */
+            <button class="@(IsFilterShown ? "filter_btn filter_btn--hidden" : "filter_btn")" @onclick="ShowFilter"><i class="fa-solid fa-filter fa-2xl"></i></button>
+
+            <div class="cards">
 
 
                 @foreach (var lector in allLectors)
@@ -86,15 +92,21 @@
         }
         else
         {
+            <h1>filtrování zapnuto!</h1>
+
+            /* filter bar */
             <div class="@(IsFilterShown ? "filter filter--open" : "filter")">
                 <h2>Filtrace</h2>
                 <button @onclick="SwitchValues">Klikni na mě!</button>
-                <p>click count: @clickCount</p>
-
+                <p>@priceMessage</p>
+                <i class="fa-solid fa-xmark x-mark" @onclick="ShowFilter"></i>
             </div>
-            <button id="filter" @onclick="ShowFilter"><i class="fa-solid fa-filter fa-2xl"></i></button>
-            <div class="cards">
 
+            /* filter button */
+            <button class="@(IsFilterShown ? "filter_btn filter_btn--hidden" : "filter_btn")" @onclick="ShowFilter"><i class="fa-solid fa-filter fa-2xl"></i></button>
+
+
+            <div class="cards">
 
                 @foreach (var lector in specificLectors)
                 {
@@ -166,37 +178,43 @@
 
 
 @code {
-    // otevírání filter baru
+    // opening of filter bar
     private bool IsFilterShown = false;
 
-    // filter logika
-    private bool IsFilteringOn = false;
+    // filter logic
+    private bool IsFilteringOn;
 
+    // prices - filtration 
     private double minPriceOriginal;
     private double maxPriceOriginal;
     private double maxPrice;
     private double minPrice;
 
+    // list of all prices for getting min and max price
     private List<double> Prices = new List<double>();
+
+    // other filtration variables
     private List<string> Locations = new List<string>();
-    private List<string> ChosenTags = new List<string>(); // je to samé jako Tags ale Tags už je zabrané
+    private List<string> ChosenTags = new List<string>();
 
     private List<Lector> allLectors = new List<Lector>();
     private List<Lector> specificLectors = new List<Lector>();
+
+    // other variables
     private List<Tag> Tags = new List<Tag>();
+
     LectorService lectorService = new LectorService();
 
-    // konec filter logiky
 
     protected override async Task OnInitializedAsync()
     {
         allLectors = await lectorService.GetAllLectorsAsync();
 
+        // getting all prices into prices list 
         foreach (Lector lector in allLectors)
         {
             Prices.Add(lector.pricePerHour);
         }
-
 
         if (Prices.Any())
         {
@@ -204,8 +222,13 @@
             maxPriceOriginal = Prices.Max();
         }
 
+        // setting up filter properties normal value
+        minPrice = minPriceOriginal;
+        maxPrice = maxPriceOriginal;
 
-        maxPrice = 1500;
+
+        // variables to set filtration on
+        maxPrice = 1200;
 
         Locations.Add("Brno");
         Locations.Add("Praha");
@@ -213,17 +236,23 @@
         Locations.Add("Trutnov");
         Locations.Add("Bratislava");
 
+
+
+        // Check if filtering is on
         FilterState();
-        specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, Locations, ChosenTags);
+
+        // in future wont be needed
+        specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, Locations);
     }
 
 
-
+    // showing filter bar
     private void ShowFilter()
     {
         IsFilterShown = !IsFilterShown;
     }
 
+    // switching filtering on and off
     private void FilterState()
     {
         if (minPrice == minPriceOriginal && maxPrice == maxPriceOriginal && Locations.Any() == false && ChosenTags.Any() == false)
@@ -236,21 +265,21 @@
         }
     }
     private int clickCount = 0;
+    private string priceMessage = "";
 
+    // switching price values -- in future this method wont exist
     private async Task SwitchValues()
     {
-        if (clickCount % 2 == 0)
-        {
-            minPrice = 400;
-        }
-        else
-        {
-            minPrice = 150;
-        }
-        clickCount++;
+        minPrice = (clickCount % 2 == 0 ? 400 : 200);
 
-        // Await the asynchronous method to ensure UI is updated correctly
-        specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, Locations, ChosenTags);
+        priceMessage = "Minimální cena je " + minPrice;
+        clickCount++;       
+       
+        FilterState();
+        specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, Locations);
+
+        priceMessage += " počet lectorů v specificLectors " + specificLectors.Count;
+       
         StateHasChanged();
     }
 }

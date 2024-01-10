@@ -20,7 +20,7 @@ namespace tda_proj.Service
             }
         }
 
-        public async Task<List<Lector>> GetSpecificLectorsAsync(double minPrice, double maxPrice, List<string> Locations, List<string> Tagy)
+        public async Task<List<Lector>> GetSpecificLectorsAsync(double minPrice, double maxPrice, List<string> Locations)
         {
             using (tdaContext context = new tdaContext())
             {
