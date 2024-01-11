@@ -147,7 +147,7 @@ html{
     justify-content: center;
     background-color: white;
     border-radius: 3px;
-    box-shadow: 0px 8px 24px 0px rgba(0, 39, 54, 0.20);
+    box-shadow: 0px 8px 24px 0px rgba(0, 39, 54, 0.12);
     margin-bottom: 50px;
 }
 
@@ -161,7 +161,7 @@ html{
     align-items: center;
     background-color: white;
     border-radius: 3px;
-    box-shadow: 0px 8px 24px 0px rgba(0, 39, 54, 0.20);
+    box-shadow: 0px 8px 24px 0px rgba(0, 39, 54, 0.12);
     margin-bottom: 50px;
 }
 
@@ -183,7 +183,7 @@ html{
 .filter_tag {
     line-height: 2.25;
     background-color: #f7f7f7;
-    box-shadow: 0px 8px 24px 0px rgba(0, 39, 54, 0.20);
+    box-shadow: 0px 8px 24px 0px rgba(0, 39, 54, 0.12);
 }
 
 .location {

@@ -77,6 +77,16 @@
     .kontakty i {
         padding-right: 10px;
         color: var(--zlata);
+        line-height: 2;
+    }
+
+    .contact_emails{
+        display: flex;
+    }
+
+    .emails{
+        display: flex;
+        gap: 25px;
     }
 
 .text {
@@ -107,7 +117,7 @@
     border-radius: 50px;
     font-weight: 600;
     transition: 0.5s;
-    cursor: normal;
+    cursor: default;
     user-select: none;
 }
 
