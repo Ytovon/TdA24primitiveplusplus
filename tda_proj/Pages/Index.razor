@@ -135,23 +135,13 @@
                     <i class="fa-solid fa-xmark x-mark" @onclick="ShowFilter"></i>
                     <h2 id="value_title">Cenové rozpětí</h2>
                     
-                    <div class="range_slider_container">
-                        <div class="range_slider" id="rangeSlider">
-                          <div class="range_slider_handle" id="handle1"></div>
-                          <div class="range_slider_handle" id="handle2"></div>
-                        </div>
-                        <div class="range_slider_value">
-                          <span class="value"><span id="value1"></span>,-</span>
-                          <span class="value"><span id="value2"></span>,-</span>
-                        </div>
-                    </div>
+                    <tda_proj.Components.PriceRange></tda_proj.Components.PriceRange>
 
                     <div @onclick="SwitchValues" class="filter_tags">
                         <h2>Tagy</h2>
                         <i class="fa fa-angle-down fa-2xl"></i>
                         <div id="filter_tags" class="filter_dropdown">
                                 
-
                         </div>
                     </div>
                     
