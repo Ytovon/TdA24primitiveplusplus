@@ -42,16 +42,8 @@
                         <h2>Lokalita</h2>
                         <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d105512.05231173178!2d14.46976453260199!3d50.06844011154229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1scs!2scz!4v1704315526323!5m2!1scs!2scz" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
-
-                </div>
-                    
-
-
-
-            </div>
-                
-
-                
+                </div>                 
+            </div>               
 
             /* filter button */
             <button class="@(IsFilterShown ? "filter_btn filter_btn--hidden" : "filter_btn")" @onclick="ShowFilter"><i class="fa-solid fa-filter fa-2xl"></i></button>
@@ -110,14 +102,14 @@
                         </div>
 
                         <div class="tags">
-                            <button class="predchozi_btn btn"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button class="prev_btn btn"><i class="fa-solid fa-chevron-left"></i></button>
 
                             @foreach (var tag in Tags)
                             {
                                 <p class="tag">@tag.TagName</p>
                             }
 
-                            <button class="dalsi_btn btn"><i class="fa-solid fa-chevron-right"></i></button>
+                            <button class="prev_btn btn"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                     </div>
                 }
@@ -294,7 +286,7 @@
         FilterState();
 
         // in future wont be needed
-        specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, Locations);
+        specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, Locations, ChosenTags);
     }
 
 
@@ -328,7 +320,7 @@
         clickCount++;       
        
         FilterState();
-        specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, Locations);
+        specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, Locations,ChosenTags);
 
         priceMessage += " počet lectorů v specificLectors " + specificLectors.Count;
        

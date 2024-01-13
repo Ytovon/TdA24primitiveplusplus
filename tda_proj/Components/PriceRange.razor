@@ -1,5 +1,7 @@
-﻿@using tda_proj.Model;
+﻿@page "/slider"
+@using tda_proj.Model;
 @using tda_proj.Service;
+
 
 
 <head>
@@ -19,7 +21,7 @@
 </div>
 
 <div class="rz-p-12 rz-text-align-center">
-    <RadzenSlider Range="true" @bind-Value=@values TValue="IEnumerable<int>" />
+    <RadzenSlider Range="true"  TValue="IEnumerable<int>" />
 </div>
 
 @code {
