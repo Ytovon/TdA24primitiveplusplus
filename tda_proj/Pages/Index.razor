@@ -1,7 +1,9 @@
 ﻿@using tda_proj.Model;
 @using tda_proj.Service;
 
+
 @page "/"
+@inject IJSRuntime js;
 
 <head>
     <link href="css/main-page.css" rel="stylesheet" />
@@ -40,7 +42,9 @@
 
                     <div class="location">
                         <h2>Lokalita</h2>
-                        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d105512.05231173178!2d14.46976453260199!3d50.06844011154229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1scs!2scz!4v1704315526323!5m2!1scs!2scz" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                       <div id="map">
+
+                       </div>
                     </div>
                 </div>                 
             </div>               
@@ -101,17 +105,19 @@
                             <p>Cena za hodinu: <span class="special_text1">@lector.pricePerHour Kč</span></p>
                         </div>
 
-                        <div class="tags">
-                            <button class="prev_btn btn"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="tags" @ref="tagsContainer">
+                            <button class="prev_btn btn" @onclick="ScrollLeft"><i class="fa-solid fa-chevron-left"></i></button>
 
                             @foreach (var tag in Tags)
                             {
                                 <p class="tag">@tag.TagName</p>
                             }
 
-                            <button class="prev_btn btn"><i class="fa-solid fa-chevron-right"></i></button>
+                            <button class="next_btn btn" @onclick="ScrollRight"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                     </div>
+
+                   
                 }
             </div>
         }
@@ -126,24 +132,32 @@
                 <div class="filter_main">
                     <i class="fa-solid fa-xmark x-mark" @onclick="ShowFilter"></i>
                     <h2 id="value_title">Cenové rozpětí</h2>
-                    
-                    <tda_proj.Components.PriceRange></tda_proj.Components.PriceRange>
+
+                    <div class="range_slider_container">
+                        <div class="range_slider" id="rangeSlider">
+                            <div class="range_slider_handle" id="handle1"></div>
+                            <div class="range_slider_handle" id="handle2"></div>
+                        </div>
+                        <div class="range_slider_value">
+                            <span class="value"><span id="value1"></span>,-</span>
+                            <span class="value"><span id="value2"></span>,-</span>
+                        </div>
+                    </div>
 
                     <div @onclick="SwitchValues" class="filter_tags">
                         <h2>Tagy</h2>
                         <i class="fa fa-angle-down fa-2xl"></i>
                         <div id="filter_tags" class="filter_dropdown">
-                                
                         </div>
                     </div>
-                    
-                        <div class="location">
-                            <h2>Lokalita</h2>
-                            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d105512.05231173178!2d14.46976453260199!3d50.06844011154229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1scs!2scz!4v1704315526323!5m2!1scs!2scz" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                    <div class="location">
+                        <h2>Lokalita</h2>
+                        <div id="map">
                         </div>
-                        
+                    </div>
                 </div>
-                
+
             </div>
 
             /* filter button */
@@ -202,15 +216,15 @@
                             <p>Cena za hodinu: <span class="special_text1">@lector.pricePerHour Kč</span></p>
                         </div>
 
-                        <div class="tags">
-                            <button class="predchozi_btn btn"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="tags" @ref="tagsContainer">
+                            <button class="prev_btn btn" @onclick="ScrollLeft"><i class="fa-solid fa-chevron-left"></i></button>
 
                             @foreach (var tag in Tags)
                             {
                                 <p class="tag">@tag.TagName</p>
                             }
 
-                            <button class="dalsi_btn btn"><i class="fa-solid fa-chevron-right"></i></button>
+                            <button class="next_btn btn" @onclick="ScrollRight"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                     </div>
                 }
@@ -222,6 +236,8 @@
 
 
 @code {
+    private ElementReference tagsContainer;
+
     // opening of filter bar
     private bool IsFilterShown = false;
 
@@ -238,7 +254,8 @@
     private List<double> Prices = new List<double>();
 
     // other filtration variables
-    private List<string> Locations = new List<string>();
+    private List<string> allLocations = new List<string>();
+    private List<string> ChosenLocations = new List<string>();
     private List<string> ChosenTags = new List<string>();
 
     private List<Lector> allLectors = new List<Lector>();
@@ -254,10 +271,13 @@
     {
         allLectors = await lectorService.GetAllLectorsAsync();
 
+       
+
         // getting all prices into prices list 
         foreach (Lector lector in allLectors)
         {
             Prices.Add(lector.pricePerHour);
+            allLocations.Add(lector.location);
         }
 
         if (Prices.Any())
@@ -274,19 +294,23 @@
         // // variables to set filtration on
         // maxPrice = 1200;
 
-        // Locations.Add("Brno");
-        // Locations.Add("Praha");
-        // Locations.Add("Králíky");
-        // Locations.Add("Trutnov");
-        // Locations.Add("Bratislava");
-
-
+        ChosenLocations.Add("Ostrava");
 
         // Check if filtering is on
         FilterState();
 
         // in future wont be needed
-        specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, Locations, ChosenTags);
+        specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, ChosenLocations, ChosenTags);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        allLectors = await lectorService.GetAllLectorsAsync();       
+
+        if (!firstRender)
+        {
+            await js.InvokeVoidAsync("initMap",allLocations);
+        }
     }
 
 
@@ -299,7 +323,7 @@
     // switching filtering on and off
     private void FilterState()
     {
-        if (minPrice == minPriceOriginal && maxPrice == maxPriceOriginal && Locations.Any() == false && ChosenTags.Any() == false)
+        if (minPrice == minPriceOriginal && maxPrice == maxPriceOriginal && ChosenLocations.Any() == false && ChosenTags.Any() == false)
         {
             IsFilteringOn = false;
         }
@@ -318,12 +342,22 @@
 
         priceMessage = "Minimální cena je " + minPrice;
         clickCount++;       
-       
+
         FilterState();
-        specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, Locations,ChosenTags);
+        specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, ChosenLocations,ChosenTags);
 
         priceMessage += " počet lectorů v specificLectors " + specificLectors.Count;
-       
+
         StateHasChanged();
+    }
+
+    private async Task ScrollLeft()
+    {
+        await js.InvokeVoidAsync("scrollLeftSmooth",tagsContainer);
+    }
+    
+    private async Task ScrollRight()
+    {
+        await js.InvokeVoidAsync("scrollRightSmooth",tagsContainer);
     }
 }
