@@ -34,7 +34,7 @@ namespace tda_proj.Migrations
 
                     b.HasIndex("LectorUUID");
 
-                    b.ToTable("Claims");
+                    b.ToTable("Claims", (string)null);
                 });
 
             modelBuilder.Entity("tda_proj.Model.Contact", b =>
@@ -51,7 +51,7 @@ namespace tda_proj.Migrations
                     b.HasIndex("LectorUUID")
                         .IsUnique();
 
-                    b.ToTable("Contacts");
+                    b.ToTable("Contacts", (string)null);
                 });
 
             modelBuilder.Entity("tda_proj.Model.ContactEmail", b =>
@@ -71,7 +71,7 @@ namespace tda_proj.Migrations
 
                     b.HasIndex("ContactID");
 
-                    b.ToTable("Emails");
+                    b.ToTable("Emails", (string)null);
                 });
 
             modelBuilder.Entity("tda_proj.Model.ContactTelNumber", b =>
@@ -91,7 +91,7 @@ namespace tda_proj.Migrations
 
                     b.HasIndex("ContactID");
 
-                    b.ToTable("TelNumbers");
+                    b.ToTable("TelNumbers", (string)null);
                 });
 
             modelBuilder.Entity("tda_proj.Model.Lector", b =>
@@ -99,7 +99,7 @@ namespace tda_proj.Migrations
                     b.Property<Guid>("UUID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
-                        .HasDefaultValueSql("NEWID()");
+                        .HasDefaultValueSql("lower(hex(randomblob(4))) || '-' || lower(hex(randomblob(2))) || '-' || '4' || substr(lower(hex(randomblob(2))), 2) || '-' || 'a' || substr(lower(hex(randomblob(2))), 2) || '-' || lower(hex(randomblob(6)))");
 
                     b.Property<string>("bio")
                         .IsRequired()
@@ -129,7 +129,7 @@ namespace tda_proj.Migrations
 
                     b.HasKey("UUID");
 
-                    b.ToTable("Lectors");
+                    b.ToTable("Lectors", (string)null);
                 });
 
             modelBuilder.Entity("tda_proj.Model.LectorTag", b =>
@@ -144,7 +144,7 @@ namespace tda_proj.Migrations
 
                     b.HasIndex("LectorUUID");
 
-                    b.ToTable("LectorTags");
+                    b.ToTable("LectorTags", (string)null);
                 });
 
             modelBuilder.Entity("tda_proj.Model.Tag", b =>
@@ -152,7 +152,7 @@ namespace tda_proj.Migrations
                     b.Property<Guid>("TagUUID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
-                        .HasDefaultValueSql("NEWID()");
+                        .HasDefaultValueSql("lower(hex(randomblob(4))) || '-' || lower(hex(randomblob(2))) || '-' || '4' || substr(lower(hex(randomblob(2))), 2) || '-' || 'a' || substr(lower(hex(randomblob(2))), 2) || '-' || lower(hex(randomblob(6)))");
 
                     b.Property<string>("TagName")
                         .IsRequired()
@@ -160,7 +160,7 @@ namespace tda_proj.Migrations
 
                     b.HasKey("TagUUID");
 
-                    b.ToTable("Tags");
+                    b.ToTable("Tags", (string)null);
                 });
 
             modelBuilder.Entity("tda_proj.Model.TitleAfter", b =>
@@ -180,7 +180,7 @@ namespace tda_proj.Migrations
 
                     b.HasIndex("LectorUUID");
 
-                    b.ToTable("TitlesAfter");
+                    b.ToTable("TitlesAfter", (string)null);
                 });
 
             modelBuilder.Entity("tda_proj.Model.TitleBefore", b =>
@@ -200,7 +200,7 @@ namespace tda_proj.Migrations
 
                     b.HasIndex("LectorUUID");
 
-                    b.ToTable("TitlesBefore");
+                    b.ToTable("TitlesBefore", (string)null);
                 });
 
             modelBuilder.Entity("tda_proj.Model.Claims", b =>
