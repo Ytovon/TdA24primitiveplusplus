@@ -14,26 +14,7 @@
         {
             <h1>filtrování vypnuto</h1>
 
-            /* filter bar */
-            <div class="@(IsFilterShown ? "filter filter--open" : "filter")">
-                <h2 class="filter_title"><i class="fa-solid fa-filter fa-xs"></i>Filtrace</h2>
-
-                <div class="filter_main">
-                    <i class="fa-solid fa-xmark x-mark" @onclick="ShowFilter"></i>
-                    <h2 id="value_title">Cenové rozpětí</h2>
-
-                    <tda_proj.Components.PriceRange></tda_proj.Components.PriceRange>
-
-                    <tda_proj.Components.FilterTags></tda_proj.Components.FilterTags>
-
-                    <tda_proj.Components.Location></tda_proj.Components.Location>
-
-                </div>
-            </div>
-                           
-
-            /* filter button */
-            <button class="@(IsFilterShown ? "filter_btn filter_btn--hidden" : "filter_btn")" @onclick="ShowFilter"><i class="fa-solid fa-filter fa-2xl"></i></button>
+            <tda_proj.Components.Filter/>
 
             <div class="cards">
 
@@ -108,26 +89,7 @@
         {
             <h1>filtrování zapnuto!</h1>
 
-            /* filter bar */
-            <div class="@(IsFilterShown ? "filter filter--open" : "filter")">
-                <h2 class="filter_title"><i class="fa-solid fa-filter fa-xs"></i>Filtrace</h2>
-
-                <div class="filter_main">
-                    <i class="fa-solid fa-xmark x-mark" @onclick="ShowFilter"></i>
-                    <h2 id="value_title">Cenové rozpětí</h2>
-
-                    <tda_proj.Components.PriceRange></tda_proj.Components.PriceRange>                  
-
-                    <tda_proj.Components.FilterTags></tda_proj.Components.FilterTags>
-
-                    <tda_proj.Components.Location></tda_proj.Components.Location>
-
-                </div>
-            </div>
-
-            /* filter button */
-            <button class="@(IsFilterShown ? "filter_btn filter_btn--hidden" : "filter_btn")" @onclick="ShowFilter"><i class="fa-solid fa-filter fa-2xl"></i></button>
-
+            <tda_proj.Components.Filter/>
 
             <div class="cards">
 
@@ -199,12 +161,8 @@
 </body>
 
 
-
 @code {
     private ElementReference tagsContainer;
-
-    // opening of filter bar
-    private bool IsFilterShown = false;
 
     // filter logic
     private bool IsFilteringOn;
@@ -219,7 +177,6 @@
     private List<double> Prices = new List<double>();
 
     // other filtration variables
-    private List<string> allLocations = new List<string>();
     private List<string> ChosenLocations = new List<string>();
     private List<string> ChosenTags = new List<string>();
 
@@ -235,14 +192,12 @@
     protected override async Task OnInitializedAsync()
     {
         allLectors = await lectorService.GetAllLectorsAsync();
-
-       
+        
 
         // getting all prices into prices list 
         foreach (Lector lector in allLectors)
         {
             Prices.Add(lector.pricePerHour);
-            allLocations.Add(lector.location);
         }
 
         if (Prices.Any())
@@ -262,25 +217,10 @@
         ChosenLocations.Add("Ostrava");
 
         // Check if filtering is on
-        FilterState();
+        FilterState();      
 
         // in future wont be needed
         specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, ChosenLocations, ChosenTags);
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {       
-        if (!firstRender)
-        {
-            await js.InvokeVoidAsync("initMap",allLocations);
-        }
-    }
-
-
-    // showing filter bar
-    private void ShowFilter()
-    {
-        IsFilterShown = !IsFilterShown;
     }
 
     // switching filtering on and off
@@ -296,23 +236,7 @@
         }
     }
     private int clickCount = 0;
-    private string priceMessage = "";
-
-    // switching price values -- in future this method wont exist
-    private async Task SwitchValues()
-    {
-        minPrice = (clickCount % 2 == 0 ? 400 : 200);
-
-        priceMessage = "Minimální cena je " + minPrice;
-        clickCount++;       
-
-        FilterState();
-        specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, ChosenLocations,ChosenTags);
-
-        priceMessage += " počet lectorů v specificLectors " + specificLectors.Count;
-
-        StateHasChanged();
-    }
+    private string priceMessage = "";  
 
     private async Task ScrollLeft()
     {

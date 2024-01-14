@@ -5,25 +5,32 @@
     <link href="css/main-page.css" rel="stylesheet" />
 </head>
 
-<div @onclick="ToggleTags" class="filter_tags">
-    <h2>Tagy</h2>
-    <i class="fa fa-angle-down fa-2xl"></i>
-    <div id="filter_tags" class="filter_dropdown" style="@tagsDisplayStyle">
-        <p class="filter_tag">Dobrovolničení</p>
-        <p class="filter_tag">Studentské spolky</p>
-        <p class="filter_tag">Efektivní učení</p>
-        <p class="filter_tag">Prezentační dovednosti</p>
-        <p class="filter_tag">Marketing pro neziskové studentské projekty</p>
-        <p class="filter_tag">Mimoškolní aktivity</p>
-        <p class="filter_tag">Projektový management, event management</p>
-        <p class="filter_tag">Fundraising pro neziskové studentské projekty</p>
+<div>
+    <div @onclick="ToggleTags" class="filter_button">
+        <h2>Tagy</h2>
+        <i class="fa fa-angle-down fa-2xl" style='@(showTags ? "transform: rotate(180deg);" : "")'></i>
     </div>
+    <div id="filter_tags" class="@(showTags ? "filter_dropdown filter_dropdown--visible" : "filter_dropdown filter_dropdown--hidden") ">
+       
+        @foreach(var tag in allTags)
+        {
+            <label class="filter_tag">
+                <p> @tag.TagName</p>
+                <input type="checkbox" class="filter_input">
+            
+            </label>
+        }
+
+    </div>     
 </div>
 
 @code {
+    [Parameter]
+    public List<Tag> allTags { get; set; }
+
     private bool showTags = false;
 
-    private string tagsDisplayStyle => showTags ? "display: block;" : "display: none;";
+    // private string tagsDisplayStyle => showTags ? "display: block;" : "display: none;";
 
     private void ToggleTags()
     {
