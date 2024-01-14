@@ -101,10 +101,5 @@ namespace tda_proj.Service
                      }).FirstOrDefault(l => l.UUID == UUID);
             }
         }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> c338e5c593f6b602888850c51fa285719aad6089
     }
 }

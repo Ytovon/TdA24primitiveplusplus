@@ -26,23 +26,12 @@
 
                     <tda_proj.Components.FilterTags></tda_proj.Components.FilterTags>
 
-<<<<<<< HEAD
                     <tda_proj.Components.Location></tda_proj.Components.Location>
 
                 </div>
             </div>
-                
-=======
-                    <div class="location">
-                        <h2>Lokalita</h2>
-                       <div id="map">
+                           
 
-                       </div>
-                    </div>
-                </div>                 
-            </div>               
-
->>>>>>> c338e5c593f6b602888850c51fa285719aad6089
             /* filter button */
             <button class="@(IsFilterShown ? "filter_btn filter_btn--hidden" : "filter_btn")" @onclick="ShowFilter"><i class="fa-solid fa-filter fa-2xl"></i></button>
 
@@ -127,41 +116,13 @@
                     <i class="fa-solid fa-xmark x-mark" @onclick="ShowFilter"></i>
                     <h2 id="value_title">Cenové rozpětí</h2>
 
-<<<<<<< HEAD
-                    <tda_proj.Components.PriceRange></tda_proj.Components.PriceRange>
+                    <tda_proj.Components.PriceRange></tda_proj.Components.PriceRange>                  
 
                     <tda_proj.Components.FilterTags></tda_proj.Components.FilterTags>
 
                     <tda_proj.Components.Location></tda_proj.Components.Location>
 
                 </div>
-=======
-                    <div class="range_slider_container">
-                        <div class="range_slider" id="rangeSlider">
-                            <div class="range_slider_handle" id="handle1"></div>
-                            <div class="range_slider_handle" id="handle2"></div>
-                        </div>
-                        <div class="range_slider_value">
-                            <span class="value"><span id="value1"></span>,-</span>
-                            <span class="value"><span id="value2"></span>,-</span>
-                        </div>
-                    </div>
-
-                    <div @onclick="SwitchValues" class="filter_tags">
-                        <h2>Tagy</h2>
-                        <i class="fa fa-angle-down fa-2xl"></i>
-                        <div id="filter_tags" class="filter_dropdown">
-                        </div>
-                    </div>
-
-                    <div class="location">
-                        <h2>Lokalita</h2>
-                        <div id="map">
-                        </div>
-                    </div>
-                </div>
-
->>>>>>> c338e5c593f6b602888850c51fa285719aad6089
             </div>
 
             /* filter button */
@@ -308,9 +269,7 @@
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        allLectors = await lectorService.GetAllLectorsAsync();       
-
+    {       
         if (!firstRender)
         {
             await js.InvokeVoidAsync("initMap",allLocations);
@@ -355,16 +314,13 @@
         StateHasChanged();
     }
 
-<<<<<<< HEAD
-=======
     private async Task ScrollLeft()
     {
-        await js.InvokeVoidAsync("scrollLeftSmooth",tagsContainer);
+        await js.InvokeVoidAsync("scrollLeftSmooth", tagsContainer);
     }
-    
+
     private async Task ScrollRight()
     {
-        await js.InvokeVoidAsync("scrollRightSmooth",tagsContainer);
+        await js.InvokeVoidAsync("scrollRightSmooth", tagsContainer);
     }
->>>>>>> c338e5c593f6b602888850c51fa285719aad6089
 }
