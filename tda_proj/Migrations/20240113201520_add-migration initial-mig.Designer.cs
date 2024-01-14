@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using tda_proj.Data;
 
@@ -10,9 +11,11 @@ using tda_proj.Data;
 namespace tda_proj.Migrations
 {
     [DbContext(typeof(tdaContext))]
-    partial class tdaContextModelSnapshot : ModelSnapshot
+    [Migration("20240113201520_add-migration initial-mig")]
+    partial class addmigrationinitialmig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.14");
@@ -34,7 +37,7 @@ namespace tda_proj.Migrations
 
                     b.HasIndex("LectorUUID");
 
-                    b.ToTable("Claims", (string)null);
+                    b.ToTable("Claims");
                 });
 
             modelBuilder.Entity("tda_proj.Model.Contact", b =>
@@ -51,7 +54,7 @@ namespace tda_proj.Migrations
                     b.HasIndex("LectorUUID")
                         .IsUnique();
 
-                    b.ToTable("Contacts", (string)null);
+                    b.ToTable("Contacts");
                 });
 
             modelBuilder.Entity("tda_proj.Model.ContactEmail", b =>
@@ -71,7 +74,7 @@ namespace tda_proj.Migrations
 
                     b.HasIndex("ContactID");
 
-                    b.ToTable("Emails", (string)null);
+                    b.ToTable("Emails");
                 });
 
             modelBuilder.Entity("tda_proj.Model.ContactTelNumber", b =>
@@ -91,7 +94,7 @@ namespace tda_proj.Migrations
 
                     b.HasIndex("ContactID");
 
-                    b.ToTable("TelNumbers", (string)null);
+                    b.ToTable("TelNumbers");
                 });
 
             modelBuilder.Entity("tda_proj.Model.Lector", b =>
@@ -129,7 +132,7 @@ namespace tda_proj.Migrations
 
                     b.HasKey("UUID");
 
-                    b.ToTable("Lectors", (string)null);
+                    b.ToTable("Lectors");
                 });
 
             modelBuilder.Entity("tda_proj.Model.LectorTag", b =>
@@ -144,7 +147,7 @@ namespace tda_proj.Migrations
 
                     b.HasIndex("LectorUUID");
 
-                    b.ToTable("LectorTags", (string)null);
+                    b.ToTable("LectorTags");
                 });
 
             modelBuilder.Entity("tda_proj.Model.Tag", b =>
@@ -160,7 +163,7 @@ namespace tda_proj.Migrations
 
                     b.HasKey("TagUUID");
 
-                    b.ToTable("Tags", (string)null);
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("tda_proj.Model.TitleAfter", b =>
@@ -180,7 +183,7 @@ namespace tda_proj.Migrations
 
                     b.HasIndex("LectorUUID");
 
-                    b.ToTable("TitlesAfter", (string)null);
+                    b.ToTable("TitlesAfter");
                 });
 
             modelBuilder.Entity("tda_proj.Model.TitleBefore", b =>
@@ -200,7 +203,7 @@ namespace tda_proj.Migrations
 
                     b.HasIndex("LectorUUID");
 
-                    b.ToTable("TitlesBefore", (string)null);
+                    b.ToTable("TitlesBefore");
                 });
 
             modelBuilder.Entity("tda_proj.Model.Claims", b =>

@@ -1,5 +1,6 @@
 ﻿@using tda_proj.Model;
 @using tda_proj.Service;
+@inject IJSRuntime js;
 
 
 @page "/lecturer/{id:guid}"
@@ -77,7 +78,7 @@
 
                 <p class="text">@lector.bio</p>
 
-                <div id="vizitka_tagy" class="tagy">
+                <div id="vizitka_tagy" class="tagy" @ref="tagsContainer">
 
                     <button class="predchozi_btn btn" onclick="scrollLeftSmooth()"><i class="fa-solid fa-chevron-left"></i></button>
 
@@ -107,6 +108,8 @@
     List<ContactTelNumber> telNumbers;
     private List<Tag> tags = new List<Tag>();
 
+    private ElementReference tagsContainer;
+
     protected override void OnInitialized()
     {
         lector = lectorService.GetLectorByUUID(id);
@@ -114,6 +117,16 @@
         emails = contact.Emails.ToList();
         telNumbers = contact.TelNumbers.ToList();
         tags = lector.lectorTags.Select(lt => lt.Tag).ToList();
+    }
+
+    private async Task ScrollLeft()
+    {
+        await js.InvokeVoidAsync("scrollLeftSmooth", tagsContainer);
+    }
+
+    private async Task ScrollRight()
+    {
+        await js.InvokeVoidAsync("scrollRightSmooth", tagsContainer);
     }
 }
 

@@ -90,6 +90,7 @@ html{
     justify-content: center;
     align-items: center;
     line-height: 1.2;
+    padding-block:1.5rem
 }
 
 .filter_main {
@@ -192,7 +193,7 @@ html{
     gap: 15px;
 }
 
-.map {
+#map {
     width: 100%;
     height: 35vh;
     max-height: 350px;
@@ -323,11 +324,11 @@ html{
         height: 38px;
     }
 
-.dalsi_btn {
+.next_btn {
     right: 9px;
 }
 
-.predchozi_btn {
+.prev_btn {
     left: 9px;
 }
 
