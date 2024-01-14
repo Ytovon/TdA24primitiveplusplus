@@ -1,1 +1,37 @@
-﻿INSERT INTO Lectors (firstName, middleName, lastName, claims, pictureUrl, location, bio, pricePerHour) VALUES ('Tomáš', 'Nový', 'Krátký', 'Programátor / backend / milovník koček', 'https://tourdeapp.cz/storage/images/2023_02_25/412ff296a291f021bbb6de10e8d0b94863fa89308843b/big.png.webp', 'Ostrava', 'Jsem student na Vysoké škole báňské - Technické univerzitě Ostrava, kde studuji strojírenství. Baví mě konstruovat a vytvářet nové technologické řešení. Rád se zapojuji do projektů v oblasti průmyslu a technologií.&amp;amp;amp;lt;/p&amp;amp;amp;gt;', 1500); -- Insert Contact INSERT INTO Contacts (LectorUUID) VALUES ('da4e781d-7f8c-45ff-aabc-1b310b999d7f'); -- Insert ContactEmails INSERT INTO Emails (Email, ContactID) VALUES ('kratky@email.cz', 1), ('tomas.novy@example.com', 1); -- Insert ContactTelNumbers INSERT INTO TelNumbers (TelNumber, ContactID) VALUES ('+420 987 654 321', 1); -- Insert TitlesBefore INSERT INTO TitlesBefore (Title, LectorUUID) VALUES ('Ing.', 'da4e781d-7f8c-45ff-aabc-1b310b999d7f'); -- Insert TitlesAfter INSERT INTO TitlesAfter (Title, LectorUUID) VALUES ('Ph.D.', 'da4e781d-7f8c-45ff-aabc-1b310b999d7f'); -- Insert Tags INSERT INTO Tags (TagName) VALUES ('Strojírenství'), ('Průmyslové projekty'), ('Technologie'), ('Inovace'); -- Insert LectorTags INSERT INTO LectorTags (LectorUUID, LectorTagUUID) VALUES ('da4e781d-7f8c-45ff-aabc-1b310b999d7f', '7ec7d8aa-ba79-4b2c-aca4-c22fda98e8a6'), ('da4e781d-7f8c-45ff-aabc-1b310b999d7f', '3d6e25e9-ed43-4876-a7be-522594c3d9cc'), ('da4e781d-7f8c-45ff-aabc-1b310b999d7f', '1fd7294f-af19-4f16-a4b9-5c7f276c2c71'), ('da4e781d-7f8c-45ff-aabc-1b310b999d7f', 'e93d1121-5d3f-4858-a001-d44cce5936bc'); DELETE FROM Lectors WHERE UUID = 'eb155a93-83e4-4bba-a0f5-cc5226c1508e';
+﻿-- Vložení do tabulky Lectors
+INSERT INTO Lectors (UUID, firstName, middleName, lastName, claims, pictureUrl, location, bio, pricePerHour)
+VALUES ('2d76a76d-aa8a-4b22-9a76-7b37d1c0a8e8', 'Ondřej', 'Pavel', 'Novák', 'Data Engineer', 'https://thispersondoesnotexist.com/', 'Liberec', 'Jsem specialistou na správu dat a datové sklady. Pracuji s nástroji pro extrakci, transformaci a načítání dat a zabezpečuji efektivní tok dat v podnikovém prostředí. Mé dovednosti zahrnují SQL, Python a Big Data technologie.', 1800);
+
+-- Vložení do tabulky Contacts
+INSERT INTO Contacts (LectorUUID)
+VALUES ('2d76a76d-aa8a-4b22-9a76-7b37d1c0a8e8');
+
+-- Vložení do tabulky Emails
+INSERT INTO Emails (Email, ContactID)
+VALUES ('ondrej.novak@email.cz', 9), ('ondrej@example.com', 9);
+
+-- Vložení do tabulky TelNumbers
+INSERT INTO TelNumbers (TelNumber, ContactID)
+VALUES ('+420 567 890 123', 9);
+
+-- Vložení do tabulky TitlesBefore
+INSERT INTO TitlesBefore (Title, LectorUUID)
+VALUES ('Ing.', '2d76a76d-aa8a-4b22-9a76-7b37d1c0a8e8');
+
+-- Vložení do tabulky TitlesAfter
+INSERT INTO TitlesAfter (Title, LectorUUID)
+VALUES ('Ph.D.', '2d76a76d-aa8a-4b22-9a76-7b37d1c0a8e8');
+
+-- Vložení do tabulky Tags
+INSERT INTO Tags (TagUUID, TagName)
+VALUES ('1b3361c3-046f-48b5-b369-59ef78608649', 'Data Engineering'), 
+       ('d84d54e2-2825-4d8f-8d5f-27e0b619c09d', 'Big Data'), 
+       ('ba0b0d82-8d2c-4b7d-b01e-7f853e7d6e5f', 'SQL'), 
+       ('5384371c-e29c-413d-bd47-3d6a632876ef', 'Python');
+
+-- Vložení do tabulky LectorTags
+INSERT INTO LectorTags (LectorUUID, LectorTagUUID)
+VALUES ('2d76a76d-aa8a-4b22-9a76-7b37d1c0a8e8', '1b3361c3-046f-48b5-b369-59ef78608649'), 
+       ('2d76a76d-aa8a-4b22-9a76-7b37d1c0a8e8', 'd84d54e2-2825-4d8f-8d5f-27e0b619c09d'), 
+       ('2d76a76d-aa8a-4b22-9a76-7b37d1c0a8e8', 'ba0b0d82-8d2c-4b7d-b01e-7f853e7d6e5f'), 
+       ('2d76a76d-aa8a-4b22-9a76-7b37d1c0a8e8', '5384371c-e29c-413d-bd47-3d6a632876ef');

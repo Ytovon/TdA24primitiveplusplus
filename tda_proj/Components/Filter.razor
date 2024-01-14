@@ -7,7 +7,6 @@
 
     <div class="filter_main">
         <i class="fa-solid fa-xmark x-mark" @onclick="ShowFilter"></i>
-        <h2 id="value_title">Cenové rozpětí</h2>
 
         <tda_proj.Components.PriceRange />
 
@@ -54,7 +53,7 @@
         foreach (var lector in allLectors)
         {
             allLocations.Add(lector.location);
-            allTags = lector.lectorTags.Select(lt => lt.Tag).ToList();
+            allTags.AddRange(lector.lectorTags.Select(lt => lt.Tag).ToList());
         }
 
         // abecední řazení

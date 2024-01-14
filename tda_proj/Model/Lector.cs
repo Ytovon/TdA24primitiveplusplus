@@ -19,7 +19,7 @@ namespace tda_proj.Model
         public string lastName { get; set; }
         public List<TitleBefore>? titlesBefore { get; set; } = new List<TitleBefore>();
         public List<TitleAfter>? titlesAfter { get; set; } = new List<TitleAfter>();
-        public List<Claims> claims { get; set; } = new List<Claims>();
+        public string claims { get; set; }
         
         [Required]
         public string pictureUrl { get; set; }

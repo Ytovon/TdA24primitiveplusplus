@@ -11,7 +11,7 @@ using tda_proj.Data;
 namespace tda_proj.Migrations
 {
     [DbContext(typeof(tdaContext))]
-    [Migration("20240113201520_add-migration initial-mig")]
+    [Migration("20240114231817_add-migration initial-mig")]
     partial class addmigrationinitialmig
     {
         /// <inheritdoc />
@@ -19,26 +19,6 @@ namespace tda_proj.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.14");
-
-            modelBuilder.Entity("tda_proj.Model.Claims", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<Guid>("LectorUUID")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("LectorUUID");
-
-                    b.ToTable("Claims");
-                });
 
             modelBuilder.Entity("tda_proj.Model.Contact", b =>
                 {
@@ -105,6 +85,10 @@ namespace tda_proj.Migrations
                         .HasDefaultValueSql("lower(hex(randomblob(4))) || '-' || lower(hex(randomblob(2))) || '-' || '4' || substr(lower(hex(randomblob(2))), 2) || '-' || 'a' || substr(lower(hex(randomblob(2))), 2) || '-' || lower(hex(randomblob(6)))");
 
                     b.Property<string>("bio")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("claims")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -206,17 +190,6 @@ namespace tda_proj.Migrations
                     b.ToTable("TitlesBefore");
                 });
 
-            modelBuilder.Entity("tda_proj.Model.Claims", b =>
-                {
-                    b.HasOne("tda_proj.Model.Lector", "Lector")
-                        .WithMany("claims")
-                        .HasForeignKey("LectorUUID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Lector");
-                });
-
             modelBuilder.Entity("tda_proj.Model.Contact", b =>
                 {
                     b.HasOne("tda_proj.Model.Lector", "Lector")
@@ -302,8 +275,6 @@ namespace tda_proj.Migrations
                 {
                     b.Navigation("Contact")
                         .IsRequired();
-
-                    b.Navigation("claims");
 
                     b.Navigation("lectorTags");
 

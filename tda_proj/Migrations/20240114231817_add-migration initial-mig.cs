@@ -19,6 +19,7 @@ namespace tda_proj.Migrations
                     firstName = table.Column<string>(type: "TEXT", nullable: false),
                     middleName = table.Column<string>(type: "TEXT", nullable: true),
                     lastName = table.Column<string>(type: "TEXT", nullable: false),
+                    claims = table.Column<string>(type: "TEXT", nullable: false),
                     pictureUrl = table.Column<string>(type: "TEXT", nullable: false),
                     location = table.Column<string>(type: "TEXT", nullable: false),
                     bio = table.Column<string>(type: "TEXT", nullable: false),
@@ -39,26 +40,6 @@ namespace tda_proj.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tags", x => x.TagUUID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Claims",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    LectorUUID = table.Column<Guid>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Claims", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Claims_Lectors_LectorUUID",
-                        column: x => x.LectorUUID,
-                        principalTable: "Lectors",
-                        principalColumn: "UUID",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -185,11 +166,6 @@ namespace tda_proj.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Claims_LectorUUID",
-                table: "Claims",
-                column: "LectorUUID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Contacts_LectorUUID",
                 table: "Contacts",
                 column: "LectorUUID",
@@ -224,9 +200,6 @@ namespace tda_proj.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Claims");
-
             migrationBuilder.DropTable(
                 name: "Emails");
 

@@ -49,18 +49,7 @@
 
                         @* claim *@
                         <div class="subtitle">
-                            @for (int i = 0; i < lector.claims.Count; i++)
-                            {
-                                @if (i < lector.claims.Count - 1)
-                                {
-                                    <p>@lector.claims[i].Name</p>
-                                    <p> /</p>
-                                }
-                                else
-                                {
-                                    <p>@lector.claims[i].Name</p>
-                                }
-                            }
+                            @lector.claims;
                         </div>
 
                         <div class="contacts">
@@ -123,18 +112,7 @@
 
                         @* claim *@
                         <div class="subtitle">
-                            @for (int i = 0; i < lector.claims.Count; i++)
-                            {
-                                @if (i < lector.claims.Count - 1)
-                                {
-                                    <p>@lector.claims[i].Name</p>
-                                    <p> /</p>
-                                }
-                                else
-                                {
-                                    <p>@lector.claims[i].Name</p>
-                                }
-                            }
+                           @lector.claims;
                         </div>
 
                         <div class="contacts">
@@ -192,7 +170,7 @@
     protected override async Task OnInitializedAsync()
     {
         allLectors = await lectorService.GetAllLectorsAsync();
-        
+
 
         // getting all prices into prices list 
         foreach (Lector lector in allLectors)
@@ -213,8 +191,8 @@
 
         // // variables to set filtration on
         // maxPrice = 1200;
-
-        ChosenLocations.Add("Ostrava");
+        ChosenTags.Add("Výzkum");
+        ChosenTags.Add("Moderní rozhraní");
 
         // Check if filtering is on
         FilterState();      

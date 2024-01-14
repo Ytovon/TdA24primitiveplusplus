@@ -34,18 +34,7 @@
                 </h1>
 
                 <p class="podnadpis">
-                    @for (int i = 0; i < lector.claims.Count; i++)
-                    {
-                        @if (i < lector.claims.Count - 1)
-                        {
-                        <p>@lector.claims[i].Name</p>
-                        <p> /</p>
-                        }
-                        else
-                        {
-                        <p>@lector.claims[i].Name</p>
-                        }
-                    }
+                    @lector.claims;
                 </p>
 
                 <img src="@lector.pictureUrl">
