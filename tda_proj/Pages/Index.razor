@@ -1,7 +1,4 @@
-﻿@using tda_proj.Model;
-@using tda_proj.Service;
-
-@page "/"
+﻿@page "/"
 
 <head>
     <link href="css/main-page.css" rel="stylesheet" />
@@ -28,7 +25,7 @@
                         <NavLink href=@($"lecturer/{lector.UUID}") class="info"><i class="fa-solid fa-circle-info"></i></NavLink>
                         <img src="@lector.pictureUrl">
 
-                        @*  header *@
+                        @*  header *@d
                         <h1 class="title">
                             @foreach (var titleBefore in lector.titlesBefore)
                             {
