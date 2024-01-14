@@ -86,7 +86,10 @@
 
     .emails{
         display: flex;
-        gap: 25px;
+        column-gap: 1.25rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
     }
 
 .text {
@@ -270,6 +273,11 @@
 
     .kontakty {
         font-size: 16px;
+    }
+
+    .contact_emails{
+        justify-content: center;
+        line-height: 1.6;
     }
 
     .text {

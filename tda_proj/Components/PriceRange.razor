@@ -1,30 +1,24 @@
 ﻿@using tda_proj.Model;
 @using tda_proj.Service;
 
-
 <head>
     <link href="css/main-page.css" rel="stylesheet" />
 </head>
 
-
-<div class="range_slider_container">
+@* <div class="range_slider_container">
     <div class="range_slider" id="rangeSlider">
         <div class="range_slider_handle" id="handle1"></div>
         <div class="range_slider_handle" id="handle2"></div>
     </div>
     <div class="range_slider_value">
-        <span class="value">@value1,-</span>
-        <span class="value">@value2,-</span>
+        <span class="value"><span id="value1"></span>,-</span>
+        <span class="value"><span id="value2"></span>,-</span>
     </div>
-</div>
+</div> *@
 
-<div class="rz-p-12 rz-text-align-center">
-    <RadzenSlider Range="true" @bind-Value=@values TValue="IEnumerable<int>" />
-</div>
+<div class="range_slider_container"></div>
 
-@code {
-    int value1 = 20;
-    int value2 = 80;
 
-    IEnumerable<int> values = new int[] { 14, 78 };
+@code{
+
 }

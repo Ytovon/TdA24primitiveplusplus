@@ -26,6 +26,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xGaWx0ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/vyhna/Source/Repos/Ytovon/TdA24primitiveplusplus/tda_proj/Components/FilterTags.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xGaWx0ZXJUYWdzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vyhna/Source/Repos/Ytovon/TdA24primitiveplusplus/tda_proj/Components/Location.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMb2NhdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/vyhna/Source/Repos/Ytovon/TdA24primitiveplusplus/tda_proj/Components/PriceRange.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQcmljZVJhbmdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
