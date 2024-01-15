@@ -191,8 +191,12 @@
 
         // // variables to set filtration on
         // maxPrice = 1200;
-        ChosenTags.Add("Výzkum");
-        ChosenTags.Add("Moderní rozhraní");
+        // ChosenTags.Add("Výzkum");
+        // ChosenTags.Add("Moderní rozhraní");
+
+        // ChosenLocations.Add("Liberec");
+
+        // minPrice = 1300;
 
         // Check if filtering is on
         FilterState();      
@@ -224,5 +228,9 @@
     private async Task ScrollRight()
     {
         await js.InvokeVoidAsync("scrollRightSmooth", tagsContainer);
+    }
+    public void HandleMarkerClick()
+    {
+        
     }
 }

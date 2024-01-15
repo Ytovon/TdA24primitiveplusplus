@@ -1,4 +1,31 @@
-﻿/* úprava písma*/
+﻿#customControl {
+    position: absolute;
+    top: 10px !important;
+    left: 10px;
+    background-color: #fff;
+    padding: 10px;
+    width: 200px
+}
+#map_control{
+    display:flex;
+    align-items:center;
+    gap:3px;
+}
+#map_title{
+    text-align:center;
+    font-size:13px;
+    font-weight:500;
+    margin-bottom:8px
+}
+.map_pin{
+    width:22px;
+}
+.gm-fullscreen-control{
+    top:13px !important;
+}
+
+
+/* úprava písma*/
 p {
     font-family: Open Sans;
 }

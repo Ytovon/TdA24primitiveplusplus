@@ -2,11 +2,32 @@
 
 function initMap(cities) {
 
-
+    // info about the map
     const map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 49.8175, lng: 15.4730 },
         zoom: 6,
-    }); 
+        mapTypeControl: false, // Hide map type control buttons
+        mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.SATELLITE],
+        streetViewControl: false, // Hide Street View control
+    });
+
+
+    // creation of control window
+    const customControlDiv = document.createElement('div');
+    customControlDiv.id = 'customControl';
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(customControlDiv);
+
+    // Add content to the custom control
+    customControlDiv.innerHTML = `
+                <h3 id="map_title">Stisknutím přepnete</h3>
+                <div id="map_control">
+                    <img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png" alt="Your Image" class="map_pin">
+                    <p>Nefiltrované</p>
+                    <img src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png" alt="Your Image" class="map_pin">
+                    <p>Filtrované</p>
+                </div>
+            ` 
+    
 
     // Iterate through the array of cities and add markers
     cities.forEach(city => {
@@ -39,7 +60,8 @@ function getCoordinates(cityName, map) {
                     map: map,
                     title: cityName, // Initial title is the city name
                     icon: defaultMarkerColor,
-                });
+                }); 
+
 
                 // Optionally, you can add additional information to the marker
                 const infowindow = new google.maps.InfoWindow({
@@ -58,8 +80,9 @@ function getCoordinates(cityName, map) {
 
                 // Track the marker state
                 let isMarkerClicked = false;
-
+                let chosenCitiesArr = new Array(); 
                 // Add a click event listener to toggle the marker color and update the title
+
                 marker.addListener('click', function () {
                     if (!isMarkerClicked) {
                         const clickedMarkerColor = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
@@ -70,10 +93,16 @@ function getCoordinates(cityName, map) {
 
                         // Optionally, you can open an info window when the marker is clicked
                         infowindow.open(map, marker);
-                    } else {
+                        chosenCitiesArr.push(cityName);
+                    }
+                    else {
                         marker.setIcon(defaultMarkerColor);
                         // Optionally, you can close the info window when the marker is clicked again
                         infowindow.close();
+                        chosenCitiesArr.push(cityName);
+
+                        //this need to be handled
+                        chosenCitiesArr.pop()
                     }
 
                     // Toggle the marker state
