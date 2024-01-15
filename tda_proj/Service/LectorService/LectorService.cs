@@ -5,11 +5,9 @@ using tda_proj.Data;
 
 namespace tda_proj.Service.LectorService
 {
-    public class LectorService : ILectorService
+    public class LectorService
     {
-        private static List<Lector> lectorsapi = new List<Lector>
-        {
-        };
+        
         public async Task<List<Lector>> GetAllLectorsAsync()
         {
             using (tdaContext context = new tdaContext())
@@ -78,78 +76,6 @@ namespace tda_proj.Service.LectorService
             }
         }
 
-        private readonly tdaContext _context;
-
-        public LectorService(tdaContext context)
-        {
-            _context = context;
-        }
-
-        //Vyporadat se s nullability
-
-        public async Task<List<Lector>> GetAllLectors()
-        {
-            var lectors = await _context.Lectors.ToListAsync();
-            return lectors;
-        }
-        
-
-        public async Task<Lector> GetLectorByUUIDapi(Guid UUID)
-        {
-            var lector = await _context.Lectors.FindAsync(UUID);
-            if (lector is null)
-                return null;
-
-            return lector;
-        }
-
-        public async Task<List<Lector>> AddLector(Lector lector)
-        {
-            _context.Lectors.Add(lector);
-            await _context.SaveChangesAsync();
-            return lectorsapi;
-        }
-
-        public async Task<Lector> UpdateLectorByUUID(Guid UUID, Lector request)
-        {
-            var lector = await _context.Lectors.FindAsync(UUID);
-            if (lector is null)
-                return null;
-
-
-            //Předělat podle původní metody v LectorServicu
-            lector.titlesBefore = request.titlesBefore;
-            lector.firstName = request.firstName;
-            lector.middleName = request.middleName;
-            lector.lastName = request.lastName;
-            lector.titlesAfter = request.titlesAfter;
-            lector.pictureUrl = request.pictureUrl;
-            lector.location = request.location;
-            lector.claims = request.claims;
-            lector.bio = request.bio;
-            lector.lectorTags = request.lectorTags;
-            lector.pricePerHour = request.pricePerHour;
-            lector.Contact = request.Contact;
-            //lector.Contact (email)
-            //lector.Contact (Telnumber)
-
-            await _context.SaveChangesAsync();
-
-            return lector;
-
-
-        }
-        //metody add, delete a update metody styl zápisu: await _context.Lectors.ToListAsync;?
-        public async Task<Lector> DeleteLectorByUUID(Guid UUID, Lector request)
-        {
-            var lector = await _context.Lectors.FindAsync(UUID);    
-            if (lector is null)
-                return null;
-
-            _context.Lectors.Remove(lector);
-            await _context.SaveChangesAsync();
-            return lector;
-            
-        }
+ 
     }
 }

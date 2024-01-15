@@ -1,7 +1,7 @@
 global using tda_proj.Model;
 global using tda_proj.Data;
 global using tda_proj.Service;
-global using tda_proj.Service.LectorService;
+global using tda_proj.Service.LectorServiceApi;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,7 +10,7 @@ builder.Services.AddServerSideBlazor();
 //Swagger (nefunguje)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<ILectorService, LectorService>();
+builder.Services.AddScoped<ILectorServiceApi, LectorServiceApi>();
 builder.Services.AddDbContext<tdaContext>();
 
 

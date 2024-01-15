@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Text.RegularExpressions;
 using tda_proj.Service;
-using tda_proj.Service.LectorService;
+using tda_proj.Service.LectorServiceApi;
 
 
 namespace tda_proj.Controllers
@@ -13,23 +13,23 @@ namespace tda_proj.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private readonly ILectorService _lectorserviceAPI;
+        private readonly ILectorServiceApi _lectorserviceAPI;
 
-        public ValuesController(ILectorService lectorserviceAPI)
+        public ValuesController(ILectorServiceApi lectorserviceAPI)
         {
             _lectorserviceAPI = lectorserviceAPI;
         }
 
         //Získání záznamů všech lektorů
         [HttpGet]
-        public async Task<ActionResult<List<Lector>>> GetAllLectors()
+        public async Task<ActionResult<List<Lector>>> GetAllLectorsapi()
         {
-            return await _lectorserviceAPI.GetAllLectors();
+            return await _lectorserviceAPI.GetAllLectorsapi();
         }
 
         //Dle UUID najde lektora a vrátí jeho údaje
         [HttpGet("{UUID}")]
-        public async Task<ActionResult<Lector>> GetLectorByUUID(Guid UUID)
+        public async Task<ActionResult<Lector>> GetLectorByUUIDapi(Guid UUID)
         {
             var result = await _lectorserviceAPI.GetLectorByUUIDapi(UUID);
             if (result is null)
@@ -41,16 +41,16 @@ namespace tda_proj.Controllers
 
         //Dodělat u zbývajících requestů error messages
         [HttpPost]
-        public async Task<ActionResult<List<Lector>>> AddLector(Lector lector)
+        public async Task<ActionResult<List<Lector>>> AddLectorapi(Lector lector)
         {
-            var result = await _lectorserviceAPI.AddLector(lector);
+            var result = await _lectorserviceAPI.AddLectorapi(lector);
             return Ok(result);
         }
 
         [HttpPut("{UUID}")]
-        public async Task<ActionResult<Lector>> UpdateLectorByUUID(Guid UUID, Lector request)
+        public async Task<ActionResult<Lector>> UpdateLectorByUUIDapi(Guid UUID, Lector request)
         {
-           var result = await _lectorserviceAPI.UpdateLectorByUUID(UUID, request);
+           var result = await _lectorserviceAPI.UpdateLectorByUUIDapi(UUID, request);
             if (result is null) 
                 return NotFound("User not found");
 
@@ -58,10 +58,10 @@ namespace tda_proj.Controllers
         }
 
         [HttpDelete("{UUID}")]
-        public async Task<ActionResult<Lector>> DeleteLectorByUUID(Guid UUID, Lector request)
+        public async Task<ActionResult<Lector>> DeleteLectorByUUIDapi(Guid UUID, Lector request)
         {
 
-            var result = await _lectorserviceAPI.DeleteLectorByUUID(UUID, request);
+            var result = await _lectorserviceAPI.DeleteLectorByUUIDapi(UUID, request);
             if (result is null)
                 return NotFound("User not found");
             

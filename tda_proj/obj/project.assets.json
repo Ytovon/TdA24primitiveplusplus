@@ -3601,26 +3601,37 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jedli\\.nuget\\packages\\": {}
+    "C:\\Users\\c22jedlicka\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jedli\\Source\\Repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\tda_proj.csproj",
+      "projectUniqueName": "C:\\Users\\c22jedlicka\\Source\\Repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\tda_proj.csproj",
       "projectName": "tda_proj",
-      "projectPath": "C:\\Users\\jedli\\Source\\Repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\tda_proj.csproj",
-      "packagesPath": "C:\\Users\\jedli\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jedli\\Source\\Repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\obj\\",
+      "projectPath": "C:\\Users\\c22jedlicka\\Source\\Repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\tda_proj.csproj",
+      "packagesPath": "C:\\Users\\c22jedlicka\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\c22jedlicka\\Source\\Repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\jedli\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\c22jedlicka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

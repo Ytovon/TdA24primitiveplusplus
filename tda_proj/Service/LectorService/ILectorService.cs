@@ -1,16 +1,16 @@
 ﻿namespace tda_proj.Service
 {
-    public interface ILectorService
+    public interface ILectorServiceApi
     {
         
-        Task<List<Lector>> GetAllLectors();
+        Task<List<Lector>> GetAllLectorsapi();
 
         Task<Lector> GetLectorByUUIDapi(Guid UUID);
 
-        Task<List<Lector>> AddLector(Lector lector);
+        Task<List<Lector>> AddLectorapi(Lector lector);
 
-        Task<Lector> UpdateLectorByUUID(Guid UUID, Lector request);
+        Task<Lector> UpdateLectorByUUIDapi(Guid UUID, Lector request);
 
-        Task<Lector> DeleteLectorByUUID(Guid UUID, Lector request);
+        Task<Lector> DeleteLectorByUUIDapi(Guid UUID, Lector request);
     }
 }
