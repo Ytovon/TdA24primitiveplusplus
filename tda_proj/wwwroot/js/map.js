@@ -1,5 +1,11 @@
 ﻿const apiKey = 'AIzaSyDLa6NLI1CdkhwiZeERKyVsgQRc1ORZXgE';
 
+window.Index = {
+    handleMarkerClick: function () {
+        DotNet.invokeMethodAsync('tda_proj', 'HandleMarkerClick');
+    }
+};
+
 function initMap(cities) {
 
     // info about the map
@@ -36,6 +42,7 @@ function initMap(cities) {
     
 }
 
+let chosenCitiesArr = [];
 function getCoordinates(cityName, map) {
     const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(cityName)}&key=${apiKey}`;
 
@@ -80,7 +87,7 @@ function getCoordinates(cityName, map) {
 
                 // Track the marker state
                 let isMarkerClicked = false;
-                let chosenCitiesArr = new Array(); 
+                
                 // Add a click event listener to toggle the marker color and update the title
 
                 marker.addListener('click', function () {
@@ -99,14 +106,21 @@ function getCoordinates(cityName, map) {
                         marker.setIcon(defaultMarkerColor);
                         // Optionally, you can close the info window when the marker is clicked again
                         infowindow.close();
-                        chosenCitiesArr.push(cityName);
 
                         //this need to be handled
-                        chosenCitiesArr.pop()
+                        // Find the index of the item with the specified city name
+                        const indexToRemove = chosenCitiesArr.findIndex(item => item === cityName);
+
+                        // Remove the item from the array
+                    
+                        chosenCitiesArr.splice(indexToRemove, 1);                       
+                      
                     }
+                    console.log(chosenCitiesArr)                    
 
                     // Toggle the marker state
                     isMarkerClicked = !isMarkerClicked;
+                    window.Index.handleMarkerClick(chosenCitiesArr);
                 });
 
                 // Center the map on the markers
