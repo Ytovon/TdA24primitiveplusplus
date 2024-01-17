@@ -6,8 +6,8 @@ namespace tda_proj.Model
     {
         [Key]
         public Guid TagUUID { get; set; }
-        public string TagName { get; set; }
-
+        public string TagName { get; set; }        
+        public bool IsChecked {  get; set; } = false;
         public List<LectorTag> Tags { get; set; } = new List<LectorTag>();
 
         public Tag() { }

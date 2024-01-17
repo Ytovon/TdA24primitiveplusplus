@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using tda_proj.Data;
 
@@ -10,9 +11,11 @@ using tda_proj.Data;
 namespace tda_proj.Migrations
 {
     [DbContext(typeof(tdaContext))]
-    partial class tdaContextModelSnapshot : ModelSnapshot
+    [Migration("20240117233821_tagUpdate")]
+    partial class tagUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.14");

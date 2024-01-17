@@ -14,11 +14,17 @@
        
         @foreach(var tag in allTags)
         {
-            <label class="filter_tag">
+            <label class="filter_tag" @onclick="() => InsertTag(tag)">
                 <p> @tag.TagName</p>
-                <input type="checkbox" class="filter_input">
-            
+                <input type="checkbox" class="filter_input" name="@tag.TagName">            
             </label>
+        }
+        @if(chosenTags != null)
+        {
+            @foreach(string tagName in chosenTags)
+            {
+                <p>@tagName</p>
+            }
         }
 
     </div>     
@@ -28,6 +34,8 @@
     [Parameter]
     public List<Tag> allTags { get; set; }
 
+    public List<string> chosenTags { get; set; }
+
     private bool showTags = false;
 
     // private string tagsDisplayStyle => showTags ? "display: block;" : "display: none;";
@@ -35,5 +43,21 @@
     private void ToggleTags()
     {
         showTags = !showTags;
+    }
+    private void InsertTag(Tag tag)
+    {
+        if(tag.IsChecked == false)
+        {
+            tag.IsChecked = true;
+            chosenTags.Add(tag.TagName);
+        }
+        else
+        {
+            tag.IsChecked = false;
+            if (chosenTags.Contains(tag.TagName))
+            {
+                chosenTags.Remove(tag.TagName);
+            }
+        }
     }
 }

@@ -10,16 +10,24 @@
     <h2>Lokalita</h2>
     <div id="map"> </div>
 
-    <button id="filter_button" @onclick="GetAndSend">Filtrovat!</button>
+    <p class="@(InfoTextShown ? "location_info-text location_info-text--visible" : "location_info-text")">Filtr byl úspěšně přidán!</p>
+
+    <button id="filter_button" @onclick="GetAndSend">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        Filtrovat       
+    </button>
 </div>
 
 @code {
     //passing data to parent
-    [Parameter] public Action<List<string>> OnValueSent { get; set; }
+    [Parameter] 
+    public Action<List<string>> OnValueSent { get; set; }
 
     // getting data from js
     private List<string>? result;
     private DotNetObjectReference<Location>? objRef;
+
+    private bool InfoTextShown = false;
 
     protected override void OnInitialized()
     {
@@ -29,12 +37,19 @@
     // gets data from js and sends them to filter.razor
     private async Task GetAndSend()
     {
-
+        ShowAndWait();
         // get data from js (map.js)
         result = await js.InvokeAsync<List<string>>("filterCallback", objRef);
 
         // sends them to parent
         OnValueSent?.Invoke(result);
+    }
+    private async Task ShowAndWait()
+    {
+        InfoTextShown = true;
+        await Task.Delay(3000);
+        InfoTextShown = false;
+        StateHasChanged();
     }
 
     public void Dispose() => objRef?.Dispose();

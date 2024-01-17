@@ -125,7 +125,7 @@ html{
     padding: 30px 40px 100px 40px;
     background-color: #f7f7f7;
     text-align: left;
-    position: relative;
+    position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -140,6 +140,7 @@ html{
 /* price range */
 .range_slider_container {
     width: 100%;
+    margin-top:50px;
 }
 
 .range_slider {
@@ -180,7 +181,7 @@ html{
 }
 
 #value_title{
-    margin-bottom: 10px;
+    margin-bottom: 18px;
 }
 
 /* filter tags */
@@ -198,6 +199,7 @@ html{
     cursor: pointer;
     z-index: 200;
     user-select: none;
+   
 }
 
 .filter_dropdown {
@@ -237,6 +239,17 @@ html{
     flex-wrap: wrap;
     gap: 10px;
 }
+.location_info-text{
+    margin-top:12px;
+    font-weight:500;
+    visibility:hidden;
+    opacity:0;
+    transition:0.2s;
+}
+.location_info-text--visible{
+    visibility:visible;
+    opacity:1;
+}
 
 #map {
     width: 100%;
@@ -244,21 +257,38 @@ html{
     max-height: 350px;
 }
 
+#filter_button i {
+    transition: 0.4s ease;
+}
+
 #filter_button {
     font-size: 14px;
     font-weight: 600;
-    margin-top: 5px;
+    margin-top: 0px;
     width: 100%;
     height: 30px;
-    background-color: white;
-    border-radius: 4px;
+    background-color: var(--zlata);
+    border-radius: 3px;
     cursor: pointer;
-    box-shadow: 0px 8px 24px rgba(0, 39, 54, 0.1);
+    box-shadow: 0px 8px 12px rgba(0, 39, 54, 0.06);
+    padding: 22px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    transition: 0.2s;
+    border: none;
+    gap: 9px;
+    letter-spacing: 0.35px;
 }
+    #filter_button:hover > i {
+        transform:rotate(90deg);
+    }
 
-#filter_button:active{
-    background-color: #f3f3f3;
+#filter_button:active > i{
+    background-color: white;!important
 }
+   
 
 /* not filter */
 
@@ -346,7 +376,7 @@ html{
     justify-content: normal;
     padding-inline: 1rem;
     scroll-behavior: smooth; /* Add this line */
-    margin: 0 18px;
+    margin: 0 0px;
     scrollbar-width: none;
 }
 
