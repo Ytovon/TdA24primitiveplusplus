@@ -4,9 +4,10 @@ window.filterCallback = () => {
     return chosenCitiesArr;
 };
 
-window.resetArr = () => {
-    chosenCitiesArr = [];
+window.setArr = (value) => {
+    chosenCitiesArr = value;
 };
+
 
 function initMap(cities) {
 

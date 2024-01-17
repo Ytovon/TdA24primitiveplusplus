@@ -33,9 +33,6 @@
         // get data from js (map.js)
         result = await js.InvokeAsync<List<string>>("filterCallback", objRef);
 
-        // clears js array
-        await js.InvokeVoidAsync("resetArr");
-
         // sends them to parent
         OnValueSent?.Invoke(result);
     }

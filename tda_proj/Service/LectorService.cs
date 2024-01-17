@@ -47,7 +47,7 @@ namespace tda_proj.Service
                     .Include(l => l.lectorTags)
                     .ThenInclude(lt => lt.Tag)
                     .Where(x => LlocationsList.Count == 0 || LlocationsList.Select(l => l.location).Contains(x.location))
-                    .Where(y => LtagList.Select(l => l.location).Contains(y.location))
+                    .Where(y => LtagList.Count == 0 || LtagList.Select(l => l.location).Contains(y.location))
                     .Where(p => p.pricePerHour >= minPrice && p.pricePerHour <= maxPrice)
                     .Select(x => new Lector
                     {

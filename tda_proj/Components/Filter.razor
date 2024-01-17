@@ -65,7 +65,7 @@
     // on initialized method
     protected override async Task OnInitializedAsync()
     {
-       
+
         allLectors = await lectorService.GetAllLectorsAsync();
 
 
@@ -78,6 +78,6 @@
 
         // abecední řazení
         allTags = allTags.OrderBy(tag => tag.TagName).ToList();
-       
+
     }
 }

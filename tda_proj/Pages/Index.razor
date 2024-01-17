@@ -203,13 +203,12 @@
         // only for manual filtration start
         // // variables to set filtration on
         // maxPrice = 1200;
-        // ChosenTags.Add("Výzkum");
         // ChosenTags.Add("Moderní rozhraní");
 
         // ChosenLocations.Add("Liberec");
 
         // minPrice = 1300;        
-        
+
         // Check if filtering is on
         FilterState(); 
         specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, ChosenLocations, ChosenTags);
@@ -219,6 +218,18 @@
     {
         ChosenLocations = value;
         specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, ChosenLocations, ChosenTags);
+
+        // solving of problem with index.razor re-render
+        if(IsFilteringOn == false && value != null || IsFilteringOn == true && value == null)
+        {
+            List<string> list = new List<string>();
+            await js.InvokeVoidAsync("setArr", list);
+        }
+        else
+        {            
+            await js.InvokeVoidAsync("setArr", value);
+        }
+
         FilterState();
         StateHasChanged();
     }
