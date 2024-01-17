@@ -12,7 +12,7 @@
 
         <tda_proj.Components.FilterTags allTags="allTags" />
 
-        <tda_proj.Components.Location />
+        <tda_proj.Components.Location OnValueSent="HandleValueFromChild" />
 
     </div>
 </div>
@@ -20,8 +20,25 @@
 <button class="@(IsFilterShown ? "filter_btn filter_btn--hidden" : "filter_btn")" @onclick="ShowFilter"><i class="fa-solid fa-filter fa-2xl"></i></button>
 
 @code{
+    //passing data to parent
+    [Parameter] public Action<List<string>> OnValueSentFilter { get; set; }
+
+    private async Task SendToParent(List<string> value) 
+    {
+        OnValueSentFilter?.Invoke(value);
+    }
+
+    // gets value from map and sends it to Index.razor
+    private async void HandleValueFromChild(List<string> value)
+    {
+        SendToParent(value);
+        StateHasChanged();
+    }    
+
+
     //components variables
     private List<string> allLocations = new List<string>();
+    private List<string> chosenLocations = new List<string>();
     private List<Tag> allTags = new List<Tag>();
 
     private List<Lector> allLectors = new List<Lector>();
@@ -30,22 +47,25 @@
     // filter variable
     private bool IsFilterShown = false;
 
-
+    // for showing filter
     private void ShowFilter()
     {
         IsFilterShown = !IsFilterShown;
     }
 
+    // map creation from js
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (!firstRender)
+        if (firstRender)
         {
             await js.InvokeVoidAsync("initMap", allLocations);
         }
-    }
+    }  
 
+    // on initialized method
     protected override async Task OnInitializedAsync()
     {
+       
         allLectors = await lectorService.GetAllLectorsAsync();
 
 
@@ -58,5 +78,6 @@
 
         // abecední řazení
         allTags = allTags.OrderBy(tag => tag.TagName).ToList();
+       
     }
 }

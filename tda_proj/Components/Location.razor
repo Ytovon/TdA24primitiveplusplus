@@ -1,5 +1,6 @@
 ﻿@using tda_proj.Model;
 @using tda_proj.Service;
+@inject IJSRuntime js;
 
 <head>
     <link href="css/main-page.css" rel="stylesheet" />
@@ -7,10 +8,37 @@
 
 <div class="location">
      <h2>Lokalita</h2>
-      <div id="map"> </div>    
+      <div id="map"> </div>
+
+    <button @onclick="GetAndSend">Filtrovat!</button>
 </div>
-               
 
 @code {
+    //passing data to parent
+    [Parameter] public Action<List<string>> OnValueSent { get; set; }
 
+    // getting data from js
+    private List<string>? result;
+    private DotNetObjectReference<Location>? objRef;
+
+    protected override void OnInitialized()
+    {
+        objRef = DotNetObjectReference.Create(this);  
+    }    
+
+    // gets data from js and sends them to filter.razor
+    private async Task GetAndSend()
+    {
+
+        // get data from js (map.js)
+        result = await js.InvokeAsync<List<string>>("filterCallback", objRef);
+
+        // clears js array
+        await js.InvokeVoidAsync("resetArr");
+
+        // sends them to parent
+        OnValueSent?.Invoke(result);
+    }
+
+    public void Dispose() => objRef?.Dispose();
 }

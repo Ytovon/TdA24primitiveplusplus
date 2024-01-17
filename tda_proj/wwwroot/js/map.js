@@ -1,9 +1,11 @@
 ﻿const apiKey = 'AIzaSyDLa6NLI1CdkhwiZeERKyVsgQRc1ORZXgE';
 
-window.Index = {
-    handleMarkerClick: function () {
-        DotNet.invokeMethodAsync('tda_proj', 'HandleMarkerClick');
-    }
+window.filterCallback = () => {
+    return chosenCitiesArr;
+};
+
+window.resetArr = () => {
+    chosenCitiesArr = [];
 };
 
 function initMap(cities) {
@@ -56,7 +58,6 @@ function getCoordinates(cityName, map) {
         .then(data => {
             if (data.results.length > 0) {
                 const location = data.results[0].geometry.location;
-                console.log(`Coordinates for ${cityName}: Latitude ${location.lat}, Longitude ${location.lng}`);
 
                 // Set the default marker color
                 const defaultMarkerColor = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
@@ -120,7 +121,8 @@ function getCoordinates(cityName, map) {
 
                     // Toggle the marker state
                     isMarkerClicked = !isMarkerClicked;
-                    window.Index.handleMarkerClick(chosenCitiesArr);
+                   
+                    window.filterCallback();
                 });
 
                 // Center the map on the markers
@@ -131,4 +133,3 @@ function getCoordinates(cityName, map) {
         })
         .catch(error => console.error('Error:', error));
 }
-
