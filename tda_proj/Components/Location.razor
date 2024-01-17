@@ -1,4 +1,4 @@
-﻿@using tda_proj.Model;
+﻿﻿@using tda_proj.Model;
 @using tda_proj.Service;
 @inject IJSRuntime js;
 
@@ -7,10 +7,10 @@
 </head>
 
 <div class="location">
-     <h2>Lokalita</h2>
-      <div id="map"> </div>
+    <h2>Lokalita</h2>
+    <div id="map"> </div>
 
-    <button @onclick="GetAndSend">Filtrovat!</button>
+    <button id="filter_button" @onclick="GetAndSend">Filtrovat!</button>
 </div>
 
 @code {
@@ -23,8 +23,8 @@
 
     protected override void OnInitialized()
     {
-        objRef = DotNetObjectReference.Create(this);  
-    }    
+        objRef = DotNetObjectReference.Create(this);
+    }
 
     // gets data from js and sends them to filter.razor
     private async Task GetAndSend()

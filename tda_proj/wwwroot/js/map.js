@@ -35,14 +35,14 @@ function initMap(cities) {
                     <img src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png" alt="Your Image" class="map_pin">
                     <p>Filtrované</p>
                 </div>
-            ` 
-    
+            `
+
 
     // Iterate through the array of cities and add markers
     cities.forEach(city => {
         getCoordinates(city, map);
     });
-    
+
 }
 
 let chosenCitiesArr = [];
@@ -69,7 +69,7 @@ function getCoordinates(cityName, map) {
                     map: map,
                     title: cityName, // Initial title is the city name
                     icon: defaultMarkerColor,
-                }); 
+                });
 
 
                 // Optionally, you can add additional information to the marker
@@ -89,7 +89,7 @@ function getCoordinates(cityName, map) {
 
                 // Track the marker state
                 let isMarkerClicked = false;
-                
+
                 // Add a click event listener to toggle the marker color and update the title
 
                 marker.addListener('click', function () {
@@ -114,15 +114,15 @@ function getCoordinates(cityName, map) {
                         const indexToRemove = chosenCitiesArr.findIndex(item => item === cityName);
 
                         // Remove the item from the array
-                    
-                        chosenCitiesArr.splice(indexToRemove, 1);                       
-                      
+
+                        chosenCitiesArr.splice(indexToRemove, 1);
+
                     }
-                    console.log(chosenCitiesArr)                    
+                    console.log(chosenCitiesArr)
 
                     // Toggle the marker state
                     isMarkerClicked = !isMarkerClicked;
-                   
+
                     window.filterCallback();
                 });
 

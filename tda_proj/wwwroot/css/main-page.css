@@ -116,28 +116,28 @@ html{
     gap: 20px;
     justify-content: center;
     align-items: center;
-    line-height: 1.2;
-    padding-block:1.5rem
+    line-height: 1;
+    padding-block: 0.5rem;
 }
 
 .filter_main {
-    padding: 50px 40px 100px 40px;
+    height: 100%;
+    padding: 30px 40px 100px 40px;
     background-color: #f7f7f7;
     text-align: left;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
     .filter_main h2 {
         font-weight: 800;
-        font-size: 18px;
+        font-size: 17px;
         font-family: Open Sans;
     }
 
 /* price range */
-#value_title {
-    margin-bottom: 30px;
-}
-
 .range_slider_container {
     width: 100%;
 }
@@ -163,7 +163,7 @@ html{
 .range_slider_value {
     display: flex;
     justify-content: space-between;
-    margin-top: 25px;
+    margin-top: 20px;
     font-size: 14px;
     color: #333;
 }
@@ -177,14 +177,17 @@ html{
     background-color: white;
     border-radius: 3px;
     box-shadow: 0px 8px 24px 0px rgba(0, 39, 54, 0.12);
-    margin-bottom: 50px;
+}
+
+#value_title{
+    margin-bottom: 10px;
 }
 
 /* filter tags */
 .filter_button {
     position: relative;
     width: 100%;
-    height: 45px;
+    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -199,7 +202,7 @@ html{
 
 .filter_dropdown {
     position: absolute;
-    width: 340px;
+    width: 100%;
     z-index: 100;
     overflow-y: auto;
     max-height: 240px;
@@ -223,25 +226,41 @@ html{
     display: flex;
     justify-content: space-between;
     user-select: none;
+    margin-right: 63px;
 }
 .filter_tag .filter_input{
     width:15px;
 }
 
 .location {
-    margin-top:40px;
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px;
 }
 
-
-/* map */
 #map {
     width: 100%;
-    aspect-ratio:1/1;
+    aspect-ratio:1/0.8;
     max-height: 350px;
 }
+
+#filter_button {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 5px;
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0px 8px 24px rgba(0, 39, 54, 0.1);
+}
+
+#filter_button:active{
+    background-color: #f3f3f3;
+}
+
+/* not filter */
 
 .background_image {
     background: url(images/icons_tda.png), repeat;
@@ -297,6 +316,8 @@ html{
     flex-direction: row;
     justify-content: center;
     gap: 5px;
+    flex-wrap: wrap;
+
 }
 
 .subtitle {
@@ -342,7 +363,7 @@ html{
     border-radius: 50px;
     font-weight: 600;
     transition: 0.5s;
-    cursor: normal;
+    cursor: default;
     user-select: none;
 }
 
@@ -474,12 +495,13 @@ html{
         height: 100vh;
     }
 
-    .filter_main h2 {
-        font-size: 16px;
+    .filter_main{
+        justify-content: space-between;
+        
     }
 
-    .location {
-        padding-bottom: 100%;
+    .filter_main h2 {
+        font-size: 16px;
     }
 
     .cards {
@@ -508,6 +530,11 @@ html{
 
     .filter {
         min-width: none;
+    }
+
+    .filter_main{
+        justify-content: left;
+        gap: 40px;
     }
 
     .cards {
@@ -541,8 +568,13 @@ html{
 }
 
 @media screen and (max-height: 700px) {
+    .filter{
+        position: absolute;
+    }
+
     .filter_main {
         padding-top: 30px;
+        gap: 20px;
     }
 
     #value_title {
@@ -551,5 +583,12 @@ html{
 
     .filter_tags {
         margin-bottom: 30px;
+    }
+}
+
+@media screen and (min-height: 850px) {
+    .filter_main{
+        justify-content: normal;
+        gap: 4vh;
     }
 }

@@ -1,4 +1,4 @@
-﻿@using tda_proj.Model;
+﻿﻿@using tda_proj.Model;
 @using tda_proj.Service;
 
 
@@ -12,8 +12,8 @@
 <body>
     <main>
         @if (IsFilteringOn == false)
-        {             
-            
+        {
+
             <h1>filtrování vypnuto</h1>
 
             <tda_proj.Components.Filter OnValueSentFilter="HandleValueFromChild" />
@@ -72,7 +72,7 @@
                         </div>
                     </div>
 
-                   
+
                 }
             </div>
         }
@@ -84,7 +84,7 @@
             <tda_proj.Components.Filter OnValueSentFilter="HandleValueFromChild" />
 
             //if lector is null
-            @if(specificLectors == null)
+            @if (specificLectors == null)
             {
                 <p>Zadanému filtru neodpovídá jediný lektor</p>
             }
@@ -155,7 +155,7 @@
     // filter logic
     private bool IsFilteringOn;
 
-    // prices - filtration 
+    // prices - filtration
     private double minPriceOriginal;
     private double maxPriceOriginal;
     private double maxPrice;
@@ -184,7 +184,7 @@
         allLectors = await lectorService.GetAllLectorsAsync();
 
         ChosenLocations = new List<string>();
-        // getting all prices into prices list 
+        // getting all prices into prices list
         foreach (Lector lector in allLectors)
         {
             Prices.Add(lector.pricePerHour);
@@ -207,10 +207,10 @@
 
         // ChosenLocations.Add("Liberec");
 
-        // minPrice = 1300;        
+        // minPrice = 1300;
 
         // Check if filtering is on
-        FilterState(); 
+        FilterState();
         specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, ChosenLocations, ChosenTags);
     }
 
@@ -220,13 +220,13 @@
         specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, ChosenLocations, ChosenTags);
 
         // solving of problem with index.razor re-render
-        if(IsFilteringOn == false && value != null || IsFilteringOn == true && value == null)
+        if (IsFilteringOn == false && value != null || IsFilteringOn == true && value == null)
         {
             List<string> list = new List<string>();
             await js.InvokeVoidAsync("setArr", list);
         }
         else
-        {            
+        {
             await js.InvokeVoidAsync("setArr", value);
         }
 
@@ -244,11 +244,11 @@
         else
         {
             IsFilteringOn = true;
-        }     
+        }
     }
 
     private int clickCount = 0;
-    private string priceMessage = "";  
+    private string priceMessage = "";
 
     private async Task ScrollLeft()
     {
