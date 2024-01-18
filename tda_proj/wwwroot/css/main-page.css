@@ -513,6 +513,10 @@ html{
         font-size: 12px;
     }
 
+    #customControl{
+        display: none;
+    }
+
     #filter {
         top: 85%;
         right: 10px;
@@ -521,7 +525,7 @@ html{
 
     .filter {
         width: 100vw;
-        max-width: none;
+        max-width: 380px;
         height: 100vh;
     }
 
@@ -617,6 +621,10 @@ html{
 }
 
 @media screen and (min-height: 850px) {
+    .filter_title{
+        padding-block: 1.5rem;
+    }
+
     .filter_main{
         justify-content: normal;
         gap: 4vh;
