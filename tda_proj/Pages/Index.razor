@@ -18,7 +18,7 @@
 
             <tda_proj.Components.Filter OnValueSentFilter="HandleValueFromChild" />
 
-            <div class="cards">
+            <div class="cards background_image">
 
 
                 @foreach (var lector in allLectors)
@@ -71,9 +71,8 @@
                             <button class="next_btn btn" @onclick="ScrollRight"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                     </div>
-
-
                 }
+
             </div>
         }
         //if filtrating is on
@@ -90,7 +89,7 @@
             }
             else
             {
-                <div class="cards">
+                <div class="cards background_image">
                     @foreach (var lector in specificLectors)
                     {
                         Tags = lector.lectorTags.Select(lt => lt.Tag).ToList();
@@ -133,10 +132,12 @@
                             <div class="tags" @ref="tagsContainer">
                                 <button class="prev_btn btn" @onclick="ScrollLeft"><i class="fa-solid fa-chevron-left"></i></button>
 
-                                @foreach (var tag in Tags)
-                                {
-                                    <p class="tag">@tag.TagName</p>
-                                }
+                                <span id="tags_size">
+                                    @foreach (var tag in Tags)
+                                    {
+                                        <p class="tag">@tag.TagName</p>
+                                    }
+                                </span>
 
                                 <button class="next_btn btn" @onclick="ScrollRight"><i class="fa-solid fa-chevron-right"></i></button>
                             </div>
@@ -145,6 +146,7 @@
                 </div>
             }
         }
+
     </main>
 </body>
 
@@ -212,6 +214,7 @@
         FilterState();
         specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, ChosenLocations, ChosenTags);
     }
+
 
     private async void HandleValueFromChild(List<string> value)
     {

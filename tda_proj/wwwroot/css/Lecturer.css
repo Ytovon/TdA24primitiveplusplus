@@ -86,8 +86,8 @@
 
     .emails{
         display: flex;
-        column-gap: 1.25rem;
         flex-wrap: wrap;
+        column-gap: 1.25rem;
         justify-content: center;
         align-items: center;
     }
@@ -246,6 +246,10 @@
         padding: 0px 5px;
     }
 
+    .contact_emails{
+        justify-content: center;
+    }
+
     .footer_wrapper {
         flex-direction: column;
         align-items: center;
@@ -276,8 +280,11 @@
     }
 
     .contact_emails{
-        justify-content: center;
-        line-height: 1.6;
+        line-height: 1.5;
+    }
+
+    .emails{
+        display: block;
     }
 
     .text {
