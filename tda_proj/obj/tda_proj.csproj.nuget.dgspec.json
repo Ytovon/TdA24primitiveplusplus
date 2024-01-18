@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Develop\\C#\\prg\\tda_proj\\tda_proj\\tda_proj.csproj": {}
+    "C:\\Users\\jedli\\Source\\Repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\tda_proj.csproj": {}
   },
   "projects": {
-    "C:\\Develop\\C#\\prg\\tda_proj\\tda_proj\\tda_proj.csproj": {
+    "C:\\Users\\jedli\\Source\\Repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\tda_proj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Develop\\C#\\prg\\tda_proj\\tda_proj\\tda_proj.csproj",
+        "projectUniqueName": "C:\\Users\\jedli\\Source\\Repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\tda_proj.csproj",
         "projectName": "tda_proj",
-        "projectPath": "C:\\Develop\\C#\\prg\\tda_proj\\tda_proj\\tda_proj.csproj",
-        "packagesPath": "C:\\Users\\Jenda\\.nuget\\packages\\",
-        "outputPath": "C:\\Develop\\C#\\prg\\tda_proj\\tda_proj\\obj\\",
+        "projectPath": "C:\\Users\\jedli\\Source\\Repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\tda_proj.csproj",
+        "packagesPath": "C:\\Users\\jedli\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jedli\\Source\\Repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Jenda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jedli\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
