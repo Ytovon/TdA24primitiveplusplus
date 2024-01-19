@@ -6,10 +6,46 @@
     <link href="css/main-page.css" rel="stylesheet" />
 </head>
 
+<div class="range_slider_container">
+    <h2 class="value_title"> Cenové rozpětí </h2>
+    <SfSlider Value=@RangeValue Type="SliderType.Range" Min="MinValue" Max="MaxValue">
+        <SliderTooltip IsVisible="true"></SliderTooltip>
 
-<SfSlider Value=@RangeValue Type="SliderType.Range"></SfSlider>
+    </SfSlider>
+
+    <div class="range_slider_value">
+        <span class="value"><span id="value1"></span>@MinValue,-</span>
+        <span class="value"><span id="value2"></span>@MaxValue,-</span>
+    </div>
+
+</div>
+
+<style>
+    .e-control-wrapper.e-slider-container .e-slider .e-handle {
+        background-color: var(--zlata);
+        border: none;
+        font-size: 15px;
+        width: 15px;
+        height: 15px;
+    }
+
+        .e-control-wrapper.e-slider-container .e-slider .e-handle:hover {
+            background-color: var(--tmave_modra);
+        }
+
+    .e-control-wrapper.e-slider-container .e-slider .e-range {
+        background-color: var(--cerna);
+    }
+
+    .e-control-wrapper.e-slider-container.e-horizontal .e-handle {
+        top: calc(50% - 8px)
+    }
+
+</style>
+
 
 @code {
     public int[] RangeValue = { 0, 1000 };
+    int MinValue = 0;
+    int MaxValue = 1000;
 }
-

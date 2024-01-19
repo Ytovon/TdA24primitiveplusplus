@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Components.Web;
 using System.Reflection;
 using Syncfusion.Blazor;
 
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NAaF5cWWJCfEx3TXxbf1x0ZF1MYFRbR3JPMyBoS35RckViWHZeeXBURWVfUkN1");
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

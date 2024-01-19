@@ -9,11 +9,13 @@
     <div class="filter_main">
         <i class="fa-solid fa-xmark x-mark" @onclick="ShowFilter"></i>
 
-        <tda_proj.Components.PriceRange />
+            <tda_proj.Components.PriceRange/>
 
-        <tda_proj.Components.FilterTags allTags="allTags" />
+            <span class="tags_location">
+            <tda_proj.Components.FilterTags allTags="allTags" />
 
-        <tda_proj.Components.Location OnValueSent="HandleValueFromChild" IsFilteringOn=IsFilteringOn />
+            <tda_proj.Components.Location OnValueSent="HandleValueFromChild" IsFilteringOn=IsFilteringOn />
+            </span>
 
     </div>
 </div>
