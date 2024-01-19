@@ -12,10 +12,11 @@
 
     <p class="@(InfoTextShown ? "location_info-text location_info-text--visible" : "location_info-text")">@FilterMessage</p>
 
-    <button id="filter_button" @onclick="GetAndSend">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        Filtrovat
-    </button>
+        <button id="filter_button" @onclick="GetAndSend">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Filtrovat
+        </button>
+
 </div>
 
 @code {

@@ -83,14 +83,21 @@
 
     .contact_emails{
         display: flex;
+        flex-wrap: nowrap
     }
 
     .emails{
         display: flex;
-        flex-wrap: wrap;
-        column-gap: 1.25rem;
+        flex-wrap: nowrap;
         justify-content: center;
         align-items: center;
+        display: flex;
+    }
+
+    .only_emails{
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 1vw;
     }
 
 /* úprava tagů */
@@ -207,7 +214,7 @@
     }
 
     .tagy {
-        width: 95%;
+        width: 93.5%;
     }
 }
 
@@ -243,6 +250,11 @@
     }
 
     .contact_emails{
+        justify-content: center;
+    }
+
+    .only_emails{
+        column-gap: 2vw;
         justify-content: center;
     }
 
