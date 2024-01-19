@@ -13,7 +13,7 @@
 
         <tda_proj.Components.FilterTags allTags="allTags" />
 
-        <tda_proj.Components.Location OnValueSent="HandleValueFromChild" />
+        <tda_proj.Components.Location OnValueSent="HandleValueFromChild" IsFilteringOn=IsFilteringOn />
 
     </div>
 </div>
@@ -48,6 +48,9 @@
     // filter variable
     private bool IsFilterShown = false;
 
+   [Parameter]
+    public bool IsFilteringOn { get; set; } = false;
+
     // for showing filter
     private void ShowFilter()
     {
@@ -77,7 +80,7 @@
             allTags.AddRange(lector.lectorTags.Select(lt => lt.Tag).ToList());
         }
 
-        // abecední řazení
+        // alphabetic ordering
         allTags = allTags.OrderBy(tag => tag.TagName).ToList();
 
     }

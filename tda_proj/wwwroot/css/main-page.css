@@ -245,6 +245,7 @@ html{
     visibility:hidden;
     opacity:0;
     transition:0.2s;
+    min-width:200px;
 }
 .location_info-text--visible{
     visibility:visible;

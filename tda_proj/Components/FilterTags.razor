@@ -1,10 +1,6 @@
 ﻿@using tda_proj.Model;
 @using tda_proj.Service;
 
-<head>
-    <link href="css/main-page.css" rel="stylesheet" />
-</head>
-
 <div>
     <div @onclick="ToggleTags" class="filter_button">
         <h2>Tagy</h2>
@@ -14,50 +10,41 @@
        
         @foreach(var tag in allTags)
         {
-            <label class="filter_tag" @onclick="() => InsertTag(tag)">
-                <p> @tag.TagName</p>
-                <input type="checkbox" class="filter_input" name="@tag.TagName">            
-            </label>
+            <div class="filter_tag">
+                <p>@tag.TagName</p>
+                <input type="checkbox" class="filter_input"  @onclick="() => InsertTag(tag)">           
+            </div>
         }
-        @if(chosenTags != null)
-        {
-            @foreach(string tagName in chosenTags)
-            {
-                <p>@tagName</p>
-            }
-        }
-
     </div>     
 </div>
+
 
 @code {
     [Parameter]
     public List<Tag> allTags { get; set; }
 
-    public List<string> chosenTags { get; set; }
+    public List<string> chosenTags { get; set; } = new List<string>();
 
     private bool showTags = false;
 
-    // private string tagsDisplayStyle => showTags ? "display: block;" : "display: none;";
 
     private void ToggleTags()
     {
         showTags = !showTags;
     }
+
     private void InsertTag(Tag tag)
     {
         if(tag.IsChecked == false)
         {
-            tag.IsChecked = true;
             chosenTags.Add(tag.TagName);
         }
         else
         {
-            tag.IsChecked = false;
-            if (chosenTags.Contains(tag.TagName))
-            {
-                chosenTags.Remove(tag.TagName);
-            }
+            chosenTags.Remove(tag.TagName);
         }
+
+        tag.IsChecked = !tag.IsChecked;
+        StateHasChanged();
     }
 }

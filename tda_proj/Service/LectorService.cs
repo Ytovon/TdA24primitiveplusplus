@@ -95,8 +95,7 @@ namespace tda_proj.Service
                          pricePerHour = x.pricePerHour,
                          bio = x.bio,
                          lectorTags = x.lectorTags,
-
-
+                         claims = x.claims,
 
                      }).FirstOrDefault(l => l.UUID == UUID);
             }

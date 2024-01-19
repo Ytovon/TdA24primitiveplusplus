@@ -33,9 +33,9 @@
                     }
                 </h1>
 
-                <p class="podnadpis">
-                    @lector.claims;
-                </p>
+                <div class="podnadpis">
+                    @lector.claims
+                </div>
 
                 <img src="@lector.pictureUrl">
 
@@ -65,7 +65,7 @@
                     <p>Cena za hodinu: <i>@lector.pricePerHour</i>Kč</p>
                 </div>
 
-                <p class="text">@lector.bio</p>
+                @lector.bio
 
                 <div id="vizitka_tagy" class="tagy" @ref="tagsContainer">
 

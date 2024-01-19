@@ -10,17 +10,17 @@
     <h2>Lokalita</h2>
     <div id="map"> </div>
 
-    <p class="@(InfoTextShown ? "location_info-text location_info-text--visible" : "location_info-text")">Filtr byl úspěšně přidán!</p>
+    <p class="@(InfoTextShown ? "location_info-text location_info-text--visible" : "location_info-text")">@FilterMessage</p>
 
     <button id="filter_button" @onclick="GetAndSend">
         <i class="fa-solid fa-magnifying-glass"></i>
-        Filtrovat       
+        Filtrovat
     </button>
 </div>
 
 @code {
     //passing data to parent
-    [Parameter] 
+    [Parameter]
     public Action<List<string>> OnValueSent { get; set; }
 
     // getting data from js
@@ -28,6 +28,10 @@
     private DotNetObjectReference<Location>? objRef;
 
     private bool InfoTextShown = false;
+    private string FilterMessage = "";
+
+    [Parameter]
+    public bool IsFilteringOn { get; set; }
 
     protected override void OnInitialized()
     {
@@ -37,18 +41,32 @@
     // gets data from js and sends them to filter.razor
     private async Task GetAndSend()
     {
-        ShowAndWait();
         // get data from js (map.js)
         result = await js.InvokeAsync<List<string>>("filterCallback", objRef);
+        ShowFilterMessage(result);
 
-        // sends them to parent
+        // sends data to parent
         OnValueSent?.Invoke(result);
     }
-    private async Task ShowAndWait()
+    // showing
+    private async Task ShowFilterMessage(List<string> locations)
     {
+        if (!locations.Any() && IsFilteringOn == false)
+        {
+            FilterMessage = "Zadejte alespoň jeden filtrovací parametr!";
+        }
+        else if (locations.Any())
+        {
+            FilterMessage = "Filtr byl úspěšně přidán!";
+        }
+        else if (!locations.Any() && IsFilteringOn == true)
+        {
+            FilterMessage = "Filtr byl úspěšně odebrán!";
+        }
         InfoTextShown = true;
-        await Task.Delay(3000);
+        await Task.Delay(2000);
         InfoTextShown = false;
+
         StateHasChanged();
     }
 

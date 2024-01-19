@@ -11,12 +11,7 @@
 </head>
 <body>
     <main>
-        @if (IsFilteringOn == false)
-        {
-
-            <h1>filtrování vypnuto</h1>
-
-            <tda_proj.Components.Filter OnValueSentFilter="HandleValueFromChild" />
+            <tda_proj.Components.Filter OnValueSentFilter="HandleValueFromChild" IsFilteringOn=IsFilteringOn/>
 
             <div class="cards">
 
@@ -28,6 +23,7 @@
                     <div class="card">
                         <NavLink href=@($"lecturer/{lector.UUID}") class="info"><i class="fa-solid fa-circle-info"></i></NavLink>
                         <img src="@lector.pictureUrl">
+                       
 
                         @*  header *@
                         <h1 class="title">
@@ -51,7 +47,7 @@
 
                         @* claim *@
                         <div class="subtitle">
-                            @lector.claims;
+                            @lector.claims
                         </div>
 
                         <div class="contacts">
@@ -71,79 +67,8 @@
                             <button class="next_btn btn" @onclick="ScrollRight"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                     </div>
-
-
                 }
             </div>
-        }
-        //if filtrating is on
-        else
-        {
-            <h1>filtrování zapnuto!</h1>
-
-            <tda_proj.Components.Filter OnValueSentFilter="HandleValueFromChild" />
-
-            //if lector is null
-            @if (specificLectors == null)
-            {
-                <p>Zadanému filtru neodpovídá jediný lektor</p>
-            }
-            else
-            {
-                <div class="cards">
-                    @foreach (var lector in specificLectors)
-                    {
-                        Tags = lector.lectorTags.Select(lt => lt.Tag).ToList();
-
-                        <div class="card">
-                            <NavLink href=@($"lecturer/{lector.UUID}") class="info"><i class="fa-solid fa-circle-info"></i></NavLink>
-                            <img src="@lector.pictureUrl">
-
-                            @*  header *@
-                            <h1 class="title">
-                                @foreach (var titleBefore in lector.titlesBefore)
-                                {
-                                    @titleBefore.Title
-                                }
-
-                                <h1>
-                                    @lector.firstName
-                                    @lector.middleName
-                                    @lector.lastName
-                                </h1>
-
-                                @foreach (var titleAfter in lector.titlesAfter)
-                                {
-                                    @titleAfter.Title
-                                }
-                            </h1>
-
-
-                            @* claim *@
-                            <div class="subtitle">
-                                @lector.claims;
-                            </div>
-
-                            <div class="contacts">
-                                <p><span class="special_text1"><i class="fa-solid fa-location-dot fa-xl"></i></span>  @lector.location</p>
-                                <p> | </p>
-                                <p>Cena za hodinu: <span class="special_text1">@lector.pricePerHour Kč</span></p>
-                            </div>
-
-                            <div class="tags" @ref="tagsContainer">
-                                <button class="prev_btn btn" @onclick="ScrollLeft"><i class="fa-solid fa-chevron-left"></i></button>
-
-                                @foreach (var tag in Tags)
-                                {
-                                    <p class="tag">@tag.TagName</p>
-                                }
-
-                                <button class="next_btn btn" @onclick="ScrollRight"><i class="fa-solid fa-chevron-right"></i></button>
-                            </div>
-                        </div>
-                    }
-                </div>
-            }
         }
     </main>
 </body>
@@ -151,7 +76,7 @@
 @code {
     private ElementReference tagsContainer;
 
-    // filter logic
+    // filter on/off
     private bool IsFilteringOn;
 
     // prices - filtration
@@ -180,15 +105,17 @@
 
     protected override async Task OnInitializedAsync()
     {
-        allLectors = await lectorService.GetAllLectorsAsync();
+        FilterState();
 
         ChosenLocations = new List<string>();
-        // getting all prices into prices list
+
+        // filling prices for getting min/,ax
         foreach (Lector lector in allLectors)
         {
             Prices.Add(lector.pricePerHour);
         }
 
+        // getting min and max prices
         if (Prices.Any())
         {
             minPriceOriginal = Prices.Min();
@@ -198,50 +125,27 @@
         // setting up filter properties normal value
         minPrice = minPriceOriginal;
         maxPrice = maxPriceOriginal;
-
-        // only for manual filtration start
-        // // variables to set filtration on
-        // maxPrice = 1200;
-        // ChosenTags.Add("Moderní rozhraní");
-
-        // ChosenLocations.Add("Liberec");
-
-        // minPrice = 1300;
-
-        // Check if filtering is on
-        FilterState();
-        specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, ChosenLocations, ChosenTags);
     }
 
     private async void HandleValueFromChild(List<string> value)
     {
         ChosenLocations = value;
         specificLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, ChosenLocations, ChosenTags);
-
-        // solving of problem with index.razor re-render
-        if (IsFilteringOn == false && value != null || IsFilteringOn == true && value == null)
-        {
-            List<string> list = new List<string>();
-            await js.InvokeVoidAsync("setArr", list);
-        }
-        else
-        {
-            await js.InvokeVoidAsync("setArr", value);
-        }
-
         FilterState();
         StateHasChanged();
     }
 
     // switching filtering on and off
-    private void FilterState()
+    private async Task FilterState()
     {
         if (minPrice == minPriceOriginal && maxPrice == maxPriceOriginal && ChosenLocations.Any() == false && ChosenTags.Any() == false)
         {
+            allLectors = await lectorService.GetAllLectorsAsync();
             IsFilteringOn = false;
         }
         else
         {
+            allLectors = await lectorService.GetSpecificLectorsAsync(minPrice, maxPrice, ChosenLocations, ChosenTags);
             IsFilteringOn = true;
         }
     }
