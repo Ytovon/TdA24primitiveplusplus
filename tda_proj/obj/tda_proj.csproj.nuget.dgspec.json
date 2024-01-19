@@ -1,27 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vyhna\\Source\\Repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\tda_proj.csproj": {}
+    "C:\\Users\\c22vyhnalek\\source\\repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\tda_proj.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vyhna\\Source\\Repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\tda_proj.csproj": {
+    "C:\\Users\\c22vyhnalek\\source\\repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\tda_proj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vyhna\\Source\\Repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\tda_proj.csproj",
+        "projectUniqueName": "C:\\Users\\c22vyhnalek\\source\\repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\tda_proj.csproj",
         "projectName": "tda_proj",
-        "projectPath": "C:\\Users\\vyhna\\Source\\Repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\tda_proj.csproj",
-        "packagesPath": "C:\\Users\\vyhna\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vyhna\\Source\\Repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\obj\\",
+        "projectPath": "C:\\Users\\c22vyhnalek\\source\\repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\tda_proj.csproj",
+        "packagesPath": "C:\\Users\\c22vyhnalek\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\c22vyhnalek\\source\\repos\\Ytovon\\TdA24primitiveplusplus\\tda_proj\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\vyhna\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\c22vyhnalek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -57,6 +65,18 @@
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.19.5, )"
+            },
+            "Syncfusion.Blazor.Core": {
+              "target": "Package",
+              "version": "[24.1.46, )"
+            },
+            "Syncfusion.Blazor.Inputs": {
+              "target": "Package",
+              "version": "[24.1.46, )"
+            },
+            "Syncfusion.Blazor.Themes": {
+              "target": "Package",
+              "version": "[24.1.46, )"
             }
           },
           "imports": [
@@ -78,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

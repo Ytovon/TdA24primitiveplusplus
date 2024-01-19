@@ -9,55 +9,55 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = tda_proj
 build_property.RootNamespace = tda_proj
-build_property.ProjectDir = C:\Users\vyhna\Source\Repos\Ytovon\TdA24primitiveplusplus\tda_proj\
+build_property.ProjectDir = C:\Users\c22vyhnalek\source\repos\Ytovon\TdA24primitiveplusplus\tda_proj\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\vyhna\Source\Repos\Ytovon\TdA24primitiveplusplus\tda_proj
+build_property.MSBuildProjectDirectory = C:\Users\c22vyhnalek\source\repos\Ytovon\TdA24primitiveplusplus\tda_proj
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/vyhna/Source/Repos/Ytovon/TdA24primitiveplusplus/tda_proj/App.razor]
+[C:/Users/c22vyhnalek/source/repos/Ytovon/TdA24primitiveplusplus/tda_proj/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vyhna/Source/Repos/Ytovon/TdA24primitiveplusplus/tda_proj/Components/Filter.razor]
+[C:/Users/c22vyhnalek/source/repos/Ytovon/TdA24primitiveplusplus/tda_proj/Components/Filter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xGaWx0ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vyhna/Source/Repos/Ytovon/TdA24primitiveplusplus/tda_proj/Components/FilterTags.razor]
+[C:/Users/c22vyhnalek/source/repos/Ytovon/TdA24primitiveplusplus/tda_proj/Components/FilterTags.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xGaWx0ZXJUYWdzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vyhna/Source/Repos/Ytovon/TdA24primitiveplusplus/tda_proj/Components/Location.razor]
+[C:/Users/c22vyhnalek/source/repos/Ytovon/TdA24primitiveplusplus/tda_proj/Components/Location.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMb2NhdGlvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vyhna/Source/Repos/Ytovon/TdA24primitiveplusplus/tda_proj/Components/PriceRange.razor]
+[C:/Users/c22vyhnalek/source/repos/Ytovon/TdA24primitiveplusplus/tda_proj/Components/PriceRange.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQcmljZVJhbmdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vyhna/Source/Repos/Ytovon/TdA24primitiveplusplus/tda_proj/Pages/Index.razor]
+[C:/Users/c22vyhnalek/source/repos/Ytovon/TdA24primitiveplusplus/tda_proj/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vyhna/Source/Repos/Ytovon/TdA24primitiveplusplus/tda_proj/Pages/Lecturer.razor]
+[C:/Users/c22vyhnalek/source/repos/Ytovon/TdA24primitiveplusplus/tda_proj/Pages/Lecturer.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGVjdHVyZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vyhna/Source/Repos/Ytovon/TdA24primitiveplusplus/tda_proj/_Imports.razor]
+[C:/Users/c22vyhnalek/source/repos/Ytovon/TdA24primitiveplusplus/tda_proj/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vyhna/Source/Repos/Ytovon/TdA24primitiveplusplus/tda_proj/Shared/MainLayout.razor]
+[C:/Users/c22vyhnalek/source/repos/Ytovon/TdA24primitiveplusplus/tda_proj/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-e52g6e0gyv
 
-[C:/Users/vyhna/Source/Repos/Ytovon/TdA24primitiveplusplus/tda_proj/Pages/Error.cshtml]
+[C:/Users/c22vyhnalek/source/repos/Ytovon/TdA24primitiveplusplus/tda_proj/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vyhna/Source/Repos/Ytovon/TdA24primitiveplusplus/tda_proj/Pages/_Host.cshtml]
+[C:/Users/c22vyhnalek/source/repos/Ytovon/TdA24primitiveplusplus/tda_proj/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

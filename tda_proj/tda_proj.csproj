@@ -21,6 +21,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+    <PackageReference Include="Syncfusion.Blazor.Core" Version="24.1.46" />
+    <PackageReference Include="Syncfusion.Blazor.Inputs" Version="24.1.46" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="24.1.46" />
   </ItemGroup>
 
 </Project>

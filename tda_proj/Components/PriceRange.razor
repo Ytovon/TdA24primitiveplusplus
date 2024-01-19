@@ -1,19 +1,14 @@
 ﻿@using tda_proj.Model;
 @using tda_proj.Service;
+@using Syncfusion.Blazor.Inputs
 
 <head>
     <link href="css/main-page.css" rel="stylesheet" />
 </head>
 
-<div class="range_slider_container">
-    <h2 id="value_title">Cenové rozpětí</h2>
 
-    <div class="range_slider" id="rangeSlider">
-        <div class="range_slider_handle" id="handle1"></div>
-        <div class="range_slider_handle" id="handle2"></div>
-    </div>
-    <div class="range_slider_value">
-        <span class="value"><span id="value1"></span>,-</span>
-        <span class="value"><span id="value2"></span>,-</span>
-    </div>
-</div>
+<SfSlider Value=@RangeValue Type="SliderType.Range"></SfSlider>
+
+@code {
+    public int[] RangeValue = { 0, 1000 };
+}
