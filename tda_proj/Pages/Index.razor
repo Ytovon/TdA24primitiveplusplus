@@ -13,7 +13,7 @@
     <main>
             <tda_proj.Components.Filter OnValueSentFilter="HandleValueFromChild" IsFilteringOn=IsFilteringOn/>
 
-            <div class="cards">
+            <div class="cards background_image">
 
 
                 @foreach (var lector in allLectors)
@@ -68,8 +68,84 @@
                         </div>
                     </div>
                 }
+
             </div>
         }
+<<<<<<< HEAD
+=======
+        //if filtrating is on
+        else
+        {
+            <h1>filtrování zapnuto!</h1>
+
+            <tda_proj.Components.Filter OnValueSentFilter="HandleValueFromChild" />
+
+            //if lector is null
+            @if (specificLectors == null)
+            {
+                <p>Zadanému filtru neodpovídá jediný lektor</p>
+            }
+            else
+            {
+                <div class="cards background_image">
+                    @foreach (var lector in specificLectors)
+                    {
+                        Tags = lector.lectorTags.Select(lt => lt.Tag).ToList();
+
+                        <div class="card">
+                            <NavLink href=@($"lecturer/{lector.UUID}") class="info"><i class="fa-solid fa-circle-info"></i></NavLink>
+                            <img src="@lector.pictureUrl">
+
+                            @*  header *@
+                            <h1 class="title">
+                                @foreach (var titleBefore in lector.titlesBefore)
+                                {
+                                    @titleBefore.Title
+                                }
+
+                                <h1>
+                                    @lector.firstName
+                                    @lector.middleName
+                                    @lector.lastName
+                                </h1>
+
+                                @foreach (var titleAfter in lector.titlesAfter)
+                                {
+                                    @titleAfter.Title
+                                }
+                            </h1>
+
+
+                            @* claim *@
+                            <div class="subtitle">
+                                @lector.claims;
+                            </div>
+
+                            <div class="contacts">
+                                <p><span class="special_text1"><i class="fa-solid fa-location-dot fa-xl"></i></span>  @lector.location</p>
+                                <p> | </p>
+                                <p>Cena za hodinu: <span class="special_text1">@lector.pricePerHour Kč</span></p>
+                            </div>
+
+                            <div class="tags" @ref="tagsContainer">
+                                <button class="prev_btn btn" @onclick="ScrollLeft"><i class="fa-solid fa-chevron-left"></i></button>
+
+                                <span id="tags_size">
+                                    @foreach (var tag in Tags)
+                                    {
+                                        <p class="tag">@tag.TagName</p>
+                                    }
+                                </span>
+
+                                <button class="next_btn btn" @onclick="ScrollRight"><i class="fa-solid fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        }
+
+>>>>>>> 454a874caba37c3e8e281b6255e9f1647c3a4e24
     </main>
 </body>
 
@@ -126,6 +202,7 @@
         minPrice = minPriceOriginal;
         maxPrice = maxPriceOriginal;
     }
+
 
     private async void HandleValueFromChild(List<string> value)
     {

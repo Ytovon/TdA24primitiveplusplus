@@ -34,7 +34,11 @@
                 </h1>
 
                 <div class="podnadpis">
+<<<<<<< HEAD
                     @lector.claims
+=======
+                    @lector.claims;
+>>>>>>> 454a874caba37c3e8e281b6255e9f1647c3a4e24
                 </div>
 
                 <img src="@lector.pictureUrl">
@@ -50,10 +54,10 @@
                         }
                     </p>
 
-                    <p class="contact_emails">
-                        <i class="fa-solid fa-envelope fa-lg"></i>
-
+                    <p class="contact_emails">                       
                         <span class="emails">
+                            <i class="fa-solid fa-envelope fa-lg"></i>
+
                             @foreach (var email in emails)
                             {
                                 <p>@email.Email</p>
@@ -69,16 +73,16 @@
 
                 <div id="vizitka_tagy" class="tagy" @ref="tagsContainer">
 
-                    <button class="predchozi_btn btn" onclick="scrollLeftSmooth()"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="predchozi_btn btn" @onclick="ScrollLeft"><i class="fa-solid fa-chevron-left"></i></button>
 
                     @foreach (var tag in tags)
                     {
                         <p class="tag">@tag.TagName</p>
-
                     }
 
-                    <button class="dalsi_btn btn" onclick="scrollRightSmooth()"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button class="dalsi_btn btn" @onclick="ScrollRight"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
+
             </div>
 
         </main>
@@ -118,41 +122,6 @@
         await js.InvokeVoidAsync("scrollRightSmooth", tagsContainer);
     }
 }
-
-<script>
-    var scrollsize = 250;
-
-    function scrollLeftSmooth(element) {
-        setTimeout(() => {
-            element.scrollTo({
-                left: element.scrollLeft - scrollsize,
-                behavior: 'smooth'
-            });
-        }, 80); // Delay of 1000 milliseconds (1 second)
-    }
-
-    function scrollRightSmooth(element) {
-        setTimeout(() => {
-            element.scrollTo({
-                behavior: 'smooth',
-                left: element.scrollLeft + scrollsize, // Adjust the scroll distance as needed
-            });
-        }, 80); // Delay of 1000 milliseconds (1 second)
-    }
-    document.querySelectorAll('.tags').forEach(function (element) {
-        var prevButton = element.querySelector('.predchozi_btn');
-        var nextButton = element.querySelector('.dalsi_btn');
-
-        prevButton.addEventListener('click', function () {
-            scrollLeftSmooth(element);
-        });
-
-        nextButton.addEventListener('click', function () {
-            scrollRightSmooth(element);
-        });
-    });
-
-</script>
 
 
 

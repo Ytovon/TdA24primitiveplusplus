@@ -18,8 +18,8 @@ function scrollRightSmooth(element) {
     }, 80); // Delay of 1000 milliseconds (1 second)
 }
 document.querySelectorAll('.tags').forEach(function (element) {
-    var prevButton = element.querySelector('.prev_btn');
-    var nextButton = element.querySelector('.next_btn');
+    var prevButton = element.querySelector('.predchozi_btn');
+    var nextButton = element.querySelector('.dalsi_btn');
 
     prevButton.addEventListener('click', function () {
         scrollLeftSmooth(element);

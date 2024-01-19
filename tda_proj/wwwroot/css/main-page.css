@@ -140,7 +140,6 @@ html{
 /* price range */
 .range_slider_container {
     width: 100%;
-    margin-top:50px;
 }
 
 .range_slider {
@@ -294,8 +293,9 @@ html{
 /* not filter */
 
 .background_image {
-    background: url(images/icons_tda.png), repeat;
+    background: url(../images/icon_background.png), repeat;
     background-size: cover;
+    position: center;
 }
 
 .cards {
@@ -367,6 +367,10 @@ html{
     margin-bottom: 40px;
 }
 
+.contacts i{
+    padding-right: 5px;
+}
+
 .tags {
     display: flex;
     flex-wrap: nowrap;
@@ -377,9 +381,21 @@ html{
     justify-content: normal;
     padding-inline: 1rem;
     scroll-behavior: smooth; /* Add this line */
-    margin: 0 0px;
+    margin: 0px;
     scrollbar-width: none;
 }
+
+#myDiv {
+    position: absolute;
+    background-color: #3498db; /* nebo jiné barvy */
+    height: 50px;
+}
+
+    #myDiv.small {
+        background-color: #e74c3c; /* nová barva pro malý div */
+    }
+
+  
 
     .tags::-webkit-scrollbar {
         display: none;
@@ -483,10 +499,15 @@ html{
 
 @media screen and (max-width: 900px) and (max-height: 500px) {
     .filter {
-        width: 100vw;
+        width: 100%;
         max-width: none;
         height: 100vh;
-        position: absolute;
+        position: fixed;
+    }
+
+    .filter_main{
+        width: 100%;
+        position: relative;
     }
 
     .cards {
@@ -514,6 +535,10 @@ html{
         font-size: 12px;
     }
 
+    #customControl{
+        display: none;
+    }
+
     #filter {
         top: 85%;
         right: 10px;
@@ -528,7 +553,7 @@ html{
 
     .filter_main{
         justify-content: space-between;
-        
+        width: 100vw;
     }
 
     .filter_main h2 {
@@ -585,7 +610,7 @@ html{
 
     .tags {
         font-size: 11px;
-        margin: 0 12px;
+        margin: 0 15px;
     }
 
         .tags p {
@@ -593,16 +618,13 @@ html{
         }
 
     .btn {
-        height: 30px;
-        width: 30px;
+        height: 32px;
+        width: 32px;
+        font-size: 18px;
     }
 }
 
 @media screen and (max-height: 700px) {
-    .filter{
-        position: absolute;
-    }
-
     .filter_main {
         padding-top: 30px;
         gap: 20px;
@@ -618,6 +640,10 @@ html{
 }
 
 @media screen and (min-height: 850px) {
+    .filter_title{
+        padding-block: 1.5rem;
+    }
+
     .filter_main{
         justify-content: normal;
         gap: 4vh;
